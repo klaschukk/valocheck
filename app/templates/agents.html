@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}{{ player.name }}#{{ player.tag }} Agent Stats | ValoCheck{% endblock %}
+
+{% block content %}
+<div class="container player-page">
+    <div class="page-back">
+        <a href="/player/{{ player.name }}/{{ player.tag }}/">&larr; {{ player.name }}#{{ player.tag }}</a>
+    </div>
+    <h1>Agent Stats</h1>
+    {% if player.agents %}
+    <div class="agents-table">
+        <div class="agents-table-header">
+            <span>Agent</span>
+            <span>Games</span>
+            <span>Win Rate</span>
+            <span>K/D</span>
+            <span>Kills</span>
+            <span>Deaths</span>
+        </div>
+        {% for a in player.agents %}
+        <div class="agent-row">
+            <div class="agent-name">{{ a.name }}</div>
+            <div class="agent-games">{{ a.games }}</div>
+            <div class="agent-wr">{{ a.win_rate }}%</div>
+            <div class="agent-kd">{{ a.kd }}</div>
+            <div>{{ a.kills }}</div>
+            <div>{{ a.deaths }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty-state">No agent data available.</p>
+    {% endif %}
+</div>
+{% endblock %}

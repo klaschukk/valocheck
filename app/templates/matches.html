@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{ player.name }}#{{ player.tag }} Match History | ValoCheck{% endblock %}
+
+{% block content %}
+<div class="container player-page">
+    <div class="page-back">
+        <a href="/player/{{ player.name }}/{{ player.tag }}/">&larr; {{ player.name }}#{{ player.tag }}</a>
+    </div>
+    <h1>Match History</h1>
+    {% if player.matches %}
+    <div class="matches-list">
+        {% for m in player.matches %}
+        <div class="match-card {{ 'match-win' if m.won else 'match-loss' }}">
+            <div class="match-result">{{ "W" if m.won else "L" }}</div>
+            <div class="match-map">{{ m.map }}</div>
+            <div class="match-agent">{{ m.agent }}</div>
+            <div class="match-score">{{ m.rounds_won }}-{{ m.rounds_lost }}</div>
+            <div class="match-kda">{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</div>
+            <div class="match-kd-diff {{ 'positive' if m.kd_diff > 0 else 'negative' if m.kd_diff < 0 else '' }}">
+                {{ '+' if m.kd_diff > 0 else '' }}{{ m.kd_diff }}
+            </div>
+            <div class="match-date">{{ m.started_at }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty-state">No matches found.</p>
+    {% endif %}
+</div>
+{% endblock %}

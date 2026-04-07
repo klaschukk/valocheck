@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1 class="hero-title">
+            <span class="hero-valo">VALO</span><span class="hero-check">CHECK</span>
+        </h1>
+        <p class="hero-subtitle">Instant Valorant stats. Search any player.</p>
+        <form class="search-form" action="/search" method="get" autocomplete="off">
+            <div class="search-wrapper">
+                <input
+                    type="text"
+                    name="q"
+                    class="search-input"
+                    placeholder="Name#TAG"
+                    required
+                    autofocus
+                    aria-label="Search player by Riot ID"
+                >
+                <button type="submit" class="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                    </svg>
+                </button>
+            </div>
+            {% if error %}
+            <p class="search-error">{{ error }}</p>
+            {% endif %}
+        </form>
+        <div class="hero-examples">
+            <span>Try:</span>
+            <a href="/player/TenZ/0505/">TenZ#0505</a>
+            <a href="/player/Aspas/5765/">Aspas#5765</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

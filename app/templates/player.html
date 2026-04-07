@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}{{ player.name }}#{{ player.tag }} — Valorant Stats | ValoCheck{% endblock %}
+{% block description %}{{ player.name }}#{{ player.tag }} Valorant stats: {{ player.current_rank }}, K/D {{ player.kd }}, {{ player.win_pct }}% win rate. Track matches and agent performance.{% endblock %}
+{% block og_title %}{{ player.name }}#{{ player.tag }} — Valorant Stats | ValoCheck{% endblock %}
+{% block og_description %}{{ player.name }}#{{ player.tag }} Valorant stats: {{ player.current_rank }}, K/D {{ player.kd }}, {{ player.win_pct }}% win rate.{% endblock %}
+{% block twitter_title %}{{ player.name }}#{{ player.tag }} — Valorant Stats | ValoCheck{% endblock %}
+{% block twitter_description %}{{ player.name }}#{{ player.tag }} Valorant stats: {{ player.current_rank }}, K/D {{ player.kd }}, {{ player.win_pct }}% win rate.{% endblock %}
+
+{% block content %}
+<div class="container player-page">
+    {# Player Header #}
+    <section class="player-header">
+        <div class="player-avatar">
+            {% if player.card and player.card.get('small') %}
+            <img src="{{ player.card.small }}" alt="{{ player.name }}" width="80" height="80">
+            {% else %}
+            <div class="avatar-placeholder"></div>
+            {% endif %}
+        </div>
+        <div class="player-info">
+            <h1 class="player-name">{{ player.name }}<span class="player-tag">#{{ player.tag }}</span></h1>
+            <div class="player-rank">
+                <span class="rank-badge rank-{{ player.current_rank.split(' ')[0]|lower }}">
+                    {{ player.current_rank }}
+                </span>
+                <span class="rank-rr">{{ player.current_rr }} RR</span>
+            </div>
+            {% if player.peak_rank and player.peak_rank != player.current_rank %}
+            <div class="player-peak">Peak: {{ player.peak_rank }}</div>
+            {% endif %}
+        </div>
+    </section>
+
+    {# Stats Overview #}
+    <section class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value">{{ player.kd }}</div>
+            <div class="stat-label">K/D</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ player.win_pct }}%</div>
+            <div class="stat-label">Win Rate</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ player.hs_pct }}%</div>
+            <div class="stat-label">HS%</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ player.top_agent }}</div>
+            <div class="stat-label">Top Agent</div>
+        </div>
+    </section>
+
+    {# Recent Matches #}
+    <section class="section">
+        <div class="section-header">
+            <h2>Recent Matches</h2>
+            <a href="/player/{{ player.name }}/{{ player.tag }}/matches/" class="link-more">View All</a>
+        </div>
+        {% if player.matches %}
+        <div class="matches-list">
+            {% for m in player.matches[:5] %}
+            <div class="match-card {{ 'match-win' if m.won else 'match-loss' }}">
+                <div class="match-result">{{ "W" if m.won else "L" }}</div>
+                <div class="match-map">{{ m.map }}</div>
+                <div class="match-agent">{{ m.agent }}</div>
+                <div class="match-score">{{ m.rounds_won }}-{{ m.rounds_lost }}</div>
+                <div class="match-kda">{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</div>
+                <div class="match-kd-diff {{ 'positive' if m.kd_diff > 0 else 'negative' if m.kd_diff < 0 else '' }}">
+                    {{ '+' if m.kd_diff > 0 else '' }}{{ m.kd_diff }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="empty-state">No recent matches found.</p>
+        {% endif %}
+    </section>
+
+    {# Agent Stats #}
+    <section class="section">
+        <div class="section-header">
+            <h2>Agent Stats</h2>
+            <a href="/player/{{ player.name }}/{{ player.tag }}/agents/" class="link-more">View All</a>
+        </div>
+        {% if player.agents %}
+        <div class="agents-list">
+            {% for a in player.agents[:5] %}
+            <div class="agent-row">
+                <div class="agent-name">{{ a.name }}</div>
+                <div class="agent-games">{{ a.games }} games</div>
+                <div class="agent-wr">{{ a.win_rate }}% WR</div>
+                <div class="agent-kd">{{ a.kd }} K/D</div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="empty-state">No agent data available.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "name": "{{ player.name }}#{{ player.tag }} Valorant Stats",
+    "description": "{{ player.name }}#{{ player.tag }} — {{ player.current_rank }}, K/D {{ player.kd }}, {{ player.win_pct }}% win rate",
+    "url": "{{ config.BASE_URL }}/player/{{ player.name }}/{{ player.tag }}/",
+    "mainEntity": {
+        "@type": "Person",
+        "name": "{{ player.name }}#{{ player.tag }}"
+    }
+}
+</script>
+{% endblock %}

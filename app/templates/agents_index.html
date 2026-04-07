@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}All Agents — Valorant | ValoCheck{% endblock %}
+{% block description %}Browse all Valorant agents. View abilities, roles, and stats for every agent in the game.{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Agents</h1>
+    {% if agents %}
+    <div class="content-grid">
+        {% for agent in agents %}
+        <a href="/agents/{{ agent.slug }}/" class="content-card">
+            <div class="content-card-img">
+                <img src="{{ agent.icon }}" alt="{{ agent.name }}" width="80" height="80" loading="lazy">
+            </div>
+            <div class="content-card-info">
+                <div class="content-card-name">{{ agent.name }}</div>
+                <div class="content-card-meta">{{ agent.role }}</div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty-state">No agent data available.</p>
+    {% endif %}
+</div>
+{% endblock %}

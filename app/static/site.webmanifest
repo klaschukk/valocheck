@@ -1,0 +1,21 @@
+{
+  "name": "ValoCheck",
+  "short_name": "ValoCheck",
+  "description": "Fast Valorant stats tracker",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1923",
+  "theme_color": "#ff4655",
+  "icons": [
+    {
+      "src": "/static/img/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/img/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

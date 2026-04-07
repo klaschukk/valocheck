@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}All Maps — Valorant | ValoCheck{% endblock %}
+{% block description %}Browse all Valorant maps. View previews, callouts, and map details.{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Maps</h1>
+    {% if maps %}
+    <div class="content-grid maps-grid">
+        {% for map in maps %}
+        <a href="/maps/{{ map.slug }}/" class="content-card map-card">
+            <div class="map-card-img">
+                <img src="{{ map.splash }}" alt="{{ map.name }}" loading="lazy">
+            </div>
+            <div class="content-card-info">
+                <div class="content-card-name">{{ map.name }}</div>
+                {% if map.coordinates %}
+                <div class="content-card-meta">{{ map.coordinates }}</div>
+                {% endif %}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty-state">No map data available.</p>
+    {% endif %}
+</div>
+{% endblock %}

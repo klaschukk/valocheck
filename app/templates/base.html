@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ValoCheck — Valorant Stats Tracker{% endblock %}</title>
+    <meta name="description" content="{% block description %}Fast Valorant stats tracker. Check any player's rank, K/D, win rate, and match history.{% endblock %}">
+    <link rel="canonical" href="{% block canonical %}{{ config.BASE_URL }}{{ request.path }}{% endblock %}">
+    {# Open Graph #}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ValoCheck">
+    <meta property="og:title" content="{% block og_title %}ValoCheck — Valorant Stats Tracker{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Fast Valorant stats tracker. Check any player's rank, K/D, win rate, and match history.{% endblock %}">
+    <meta property="og:url" content="{{ config.BASE_URL }}{{ request.path }}">
+    <meta property="og:image" content="{% block og_image %}{{ url_for('static', filename='img/og.png', _external=True) }}{% endblock %}">
+    {# Twitter #}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}ValoCheck — Valorant Stats Tracker{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Fast Valorant stats tracker. Check any player's rank, K/D, win rate, and match history.{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{{ url_for('static', filename='img/og.png', _external=True) }}{% endblock %}">
+    {# Favicon #}
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32x32.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    {% include '_partials/_header.html' %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    {% include '_partials/_footer.html' %}
+    {% block json_ld %}{% endblock %}
+</body>
+</html>

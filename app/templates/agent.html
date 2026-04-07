@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}{{ agent.name }} — Valorant Agent | ValoCheck{% endblock %}
+{% block description %}{{ agent.name }} ({{ agent.role }}) — {{ agent.description[:150] }}{% endblock %}
+{% block og_title %}{{ agent.name }} — Valorant Agent Guide | ValoCheck{% endblock %}
+{% block og_description %}{{ agent.name }} ({{ agent.role }}) abilities, role, and tips.{% endblock %}
+
+{% block content %}
+<div class="container agent-page">
+    <div class="page-back"><a href="/agents/">All Agents</a></div>
+
+    <section class="agent-header">
+        <div class="agent-icon-large">
+            <img src="{{ agent.icon }}" alt="{{ agent.name }}" width="120" height="120">
+        </div>
+        <div class="agent-header-info">
+            <h1>{{ agent.name }}</h1>
+            <div class="agent-role-badge">{{ agent.role }}</div>
+            <p class="agent-desc">{{ agent.description }}</p>
+        </div>
+    </section>
+
+    {% if agent.abilities %}
+    <section class="section">
+        <h2>Abilities</h2>
+        <div class="abilities-list">
+            {% for ab in agent.abilities %}
+            <div class="ability-card">
+                <div class="ability-header">
+                    <span class="ability-slot">{{ ab.slot }}</span>
+                    <span class="ability-name">{{ ab.name }}</span>
+                </div>
+                <p class="ability-desc">{{ ab.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "name": "{{ agent.name }} — Valorant Agent Guide",
+    "description": "{{ agent.description[:200] }}",
+    "url": "{{ config.BASE_URL }}/agents/{{ agent.slug }}/"
+}
+</script>
+{% endblock %}

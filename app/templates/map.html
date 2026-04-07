@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}{{ map.name }} — Valorant Map | ValoCheck{% endblock %}
+{% block description %}{{ map.name }} Valorant map guide. Callouts, layout, and tips.{% endblock %}
+{% block og_title %}{{ map.name }} — Valorant Map Guide | ValoCheck{% endblock %}
+
+{% block content %}
+<div class="container map-page">
+    <div class="page-back"><a href="/maps/">All Maps</a></div>
+
+    <section class="map-header-section">
+        <h1>{{ map.name }}</h1>
+        {% if map.coordinates %}
+        <p class="map-coords">{{ map.coordinates }}</p>
+        {% endif %}
+    </section>
+
+    <section class="map-preview">
+        <img src="{{ map.splash }}" alt="{{ map.name }}" class="map-splash-img">
+    </section>
+
+    {% if map.callouts %}
+    <section class="section">
+        <h2>Callouts</h2>
+        <div class="callouts-grid">
+            {% set ns = namespace(regions={}) %}
+            {% for c in map.callouts %}
+                {% set sr = c.super_region or 'Other' %}
+                {% if sr not in ns.regions %}
+                    {% set _ = ns.regions.update({sr: []}) %}
+                {% endif %}
+                {% set _ = ns.regions[sr].append(c.region) %}
+            {% endfor %}
+            {% for sr, names in ns.regions.items() %}
+            <div class="callout-group">
+                <h3 class="callout-super-region">{{ sr }}</h3>
+                <div class="callout-names">
+                    {% for name in names %}
+                    <span class="callout-tag">{{ name }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+</div>
+{% endblock %}

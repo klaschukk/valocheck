@@ -1,0 +1,1473 @@
+[
+  {
+    "uuid": "224b0a95-48b9-f703-1bd8-67aca101a61f",
+    "name": "Abyss",
+    "slug": "abyss",
+    "coordinates": "70° 50' AJ\" N, 9° 00' VX\" W",
+    "splash": "/static/img/maps/abyss.png",
+    "callouts": [
+      {
+        "region": "Bridge",
+        "super_region": "A"
+      },
+      {
+        "region": "Link",
+        "super_region": "A"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "A"
+      },
+      {
+        "region": "Main",
+        "super_region": "A"
+      },
+      {
+        "region": "Site",
+        "super_region": "A"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Tower",
+        "super_region": "A"
+      },
+      {
+        "region": "Bend",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Link",
+        "super_region": "B"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "B"
+      },
+      {
+        "region": "Main",
+        "super_region": "B"
+      },
+      {
+        "region": "Nest",
+        "super_region": "B"
+      },
+      {
+        "region": "Bottom",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Site",
+        "super_region": "B"
+      },
+      {
+        "region": "Catwalk",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Danger",
+        "super_region": "B"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Library",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Secret",
+        "super_region": "A"
+      },
+      {
+        "region": "Security",
+        "super_region": "A"
+      },
+      {
+        "region": "Top",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Tower",
+        "super_region": "B"
+      },
+      {
+        "region": "Vent",
+        "super_region": "A"
+      }
+    ]
+  },
+  {
+    "uuid": "7eaecc1b-4337-bbf6-6ab9-04b8f06b3319",
+    "name": "Ascent",
+    "slug": "ascent",
+    "coordinates": "45°26'BF'N,12°20'Q'E",
+    "splash": "/static/img/maps/ascent.png",
+    "callouts": [
+      {
+        "region": "Tree",
+        "super_region": "A"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "A"
+      },
+      {
+        "region": "Main",
+        "super_region": "A"
+      },
+      {
+        "region": "Window",
+        "super_region": "A"
+      },
+      {
+        "region": "Site",
+        "super_region": "A"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "B"
+      },
+      {
+        "region": "Main",
+        "super_region": "B"
+      },
+      {
+        "region": "Boat House",
+        "super_region": "B"
+      },
+      {
+        "region": "Bottom",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Site",
+        "super_region": "B"
+      },
+      {
+        "region": "Catwalk",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Cubby",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Garden",
+        "super_region": "A"
+      },
+      {
+        "region": "Market",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Courtyard",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Link",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Pizza",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Rafters",
+        "super_region": "A"
+      },
+      {
+        "region": "Top",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Wine",
+        "super_region": "A"
+      }
+    ]
+  },
+  {
+    "uuid": "1f10dab3-4294-3827-fa35-c2aa00213cf3",
+    "name": "Basic Training",
+    "slug": "basic-training",
+    "coordinates": null,
+    "splash": "/static/img/maps/basic-training.png",
+    "callouts": []
+  },
+  {
+    "uuid": "2c9d57ec-4431-9c5e-2939-8f9ef6dd5cba",
+    "name": "Bind",
+    "slug": "bind",
+    "coordinates": "34°2'A'N,6°51'Z'W",
+    "splash": "/static/img/maps/bind.png",
+    "callouts": [
+      {
+        "region": "Exit",
+        "super_region": "A"
+      },
+      {
+        "region": "Link",
+        "super_region": "A"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "A"
+      },
+      {
+        "region": "Short",
+        "super_region": "A"
+      },
+      {
+        "region": "Site",
+        "super_region": "A"
+      },
+      {
+        "region": "Teleporter",
+        "super_region": "A"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Exit",
+        "super_region": "B"
+      },
+      {
+        "region": "Hall",
+        "super_region": "B"
+      },
+      {
+        "region": "Link",
+        "super_region": "B"
+      },
+      {
+        "region": "Fountain",
+        "super_region": "B"
+      },
+      {
+        "region": "Long",
+        "super_region": "B"
+      },
+      {
+        "region": "Short",
+        "super_region": "B"
+      },
+      {
+        "region": "Site",
+        "super_region": "B"
+      },
+      {
+        "region": "Teleporter",
+        "super_region": "B"
+      },
+      {
+        "region": "Window",
+        "super_region": "B"
+      },
+      {
+        "region": "Bath",
+        "super_region": "A"
+      },
+      {
+        "region": "Cave",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Cubby",
+        "super_region": "A"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Elbow",
+        "super_region": "B"
+      },
+      {
+        "region": "Garden",
+        "super_region": "B"
+      },
+      {
+        "region": "Lamps",
+        "super_region": "A"
+      },
+      {
+        "region": "Tower",
+        "super_region": "A"
+      }
+    ]
+  },
+  {
+    "uuid": "2fb9a4fd-47b8-4e7d-a969-74b4046ebd53",
+    "name": "Breeze",
+    "slug": "breeze",
+    "coordinates": "26°11'AG\"N 71°10'WY\"W",
+    "splash": "/static/img/maps/breeze.png",
+    "callouts": [
+      {
+        "region": "Hall",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Bridge",
+        "super_region": "A"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Arches",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Wood Doors",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Pillar",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Top",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Nest",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Window",
+        "super_region": "B"
+      },
+      {
+        "region": "Main",
+        "super_region": "B"
+      },
+      {
+        "region": "Elbow",
+        "super_region": "B"
+      },
+      {
+        "region": "Site",
+        "super_region": "B"
+      },
+      {
+        "region": "Tunnel",
+        "super_region": "B"
+      },
+      {
+        "region": "Ramp",
+        "super_region": "A"
+      },
+      {
+        "region": "Back",
+        "super_region": "B"
+      },
+      {
+        "region": "Wall",
+        "super_region": "B"
+      },
+      {
+        "region": "Cannon",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Bottom",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "A"
+      },
+      {
+        "region": "Shop",
+        "super_region": "A"
+      },
+      {
+        "region": "Site",
+        "super_region": "A"
+      },
+      {
+        "region": "Pyramids",
+        "super_region": "A"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      }
+    ]
+  },
+  {
+    "uuid": "1c18ab1f-420d-0d8b-71d0-77ad3c439115",
+    "name": "Corrode",
+    "slug": "corrode",
+    "coordinates": "48° 38' FH\" N8, 1° 33' YV\" W8",
+    "splash": "/static/img/maps/corrode.png",
+    "callouts": [
+      {
+        "region": "Crane",
+        "super_region": "A"
+      },
+      {
+        "region": "Elbow",
+        "super_region": "A"
+      },
+      {
+        "region": "Link",
+        "super_region": "A"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "A"
+      },
+      {
+        "region": "Main",
+        "super_region": "A"
+      },
+      {
+        "region": "Pocket",
+        "super_region": "A"
+      },
+      {
+        "region": "Site",
+        "super_region": "A"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Yard",
+        "super_region": "A"
+      },
+      {
+        "region": "Arch",
+        "super_region": "B"
+      },
+      {
+        "region": "Elbow",
+        "super_region": "B"
+      },
+      {
+        "region": "Link",
+        "super_region": "B"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "B"
+      },
+      {
+        "region": "Main",
+        "super_region": "B"
+      },
+      {
+        "region": "Bottom",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Site",
+        "super_region": "B"
+      },
+      {
+        "region": "Tower",
+        "super_region": "B"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Stairs",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Window",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Top",
+        "super_region": "Mid"
+      }
+    ]
+  },
+  {
+    "uuid": "690b3ed2-4dff-945b-8223-6da834e30d24",
+    "name": "District",
+    "slug": "district",
+    "coordinates": null,
+    "splash": "/static/img/maps/district.png",
+    "callouts": [
+      {
+        "region": "Box",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Nest",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Stairs",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Wall",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Box",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Nest",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Stairs",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Wall",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Generator",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Horseshoe",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Sewer",
+        "super_region": "Mid"
+      }
+    ]
+  },
+  {
+    "uuid": "2c09d728-42d5-30d8-43dc-96a05cc7ee9d",
+    "name": "Drift",
+    "slug": "drift",
+    "coordinates": null,
+    "splash": "/static/img/maps/drift.png",
+    "callouts": [
+      {
+        "region": "Alley",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Nest",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Tower",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Yard",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Alley",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Nest",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Tower",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Yard",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Water",
+        "super_region": "Mid"
+      }
+    ]
+  },
+  {
+    "uuid": "b529448b-4d60-346e-e89e-00a4c527a405",
+    "name": "Fracture",
+    "slug": "fracture",
+    "coordinates": "35°48'BI\"N 106°08'YQ\"W",
+    "splash": "/static/img/maps/fracture.png",
+    "callouts": [
+      {
+        "region": "Bridge",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Bench",
+        "super_region": "B"
+      },
+      {
+        "region": "Arcade",
+        "super_region": "B"
+      },
+      {
+        "region": "Tower",
+        "super_region": "B"
+      },
+      {
+        "region": "Site",
+        "super_region": "B"
+      },
+      {
+        "region": "Generator",
+        "super_region": "B"
+      },
+      {
+        "region": "Link",
+        "super_region": "B"
+      },
+      {
+        "region": "Canteen",
+        "super_region": "B"
+      },
+      {
+        "region": "Link",
+        "super_region": "A"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Main",
+        "super_region": "B"
+      },
+      {
+        "region": "Tree",
+        "super_region": "B"
+      },
+      {
+        "region": "Tunnel",
+        "super_region": "B"
+      },
+      {
+        "region": "Hall",
+        "super_region": "A"
+      },
+      {
+        "region": "Door",
+        "super_region": "A"
+      },
+      {
+        "region": "Rope",
+        "super_region": "A"
+      },
+      {
+        "region": "Main",
+        "super_region": "A"
+      },
+      {
+        "region": "Site",
+        "super_region": "A"
+      },
+      {
+        "region": "Drop",
+        "super_region": "A"
+      },
+      {
+        "region": "Dish",
+        "super_region": "A"
+      },
+      {
+        "region": "Gate",
+        "super_region": "A"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      }
+    ]
+  },
+  {
+    "uuid": "d6336a5a-428f-c591-98db-c8a291159134",
+    "name": "Glitch",
+    "slug": "glitch",
+    "coordinates": null,
+    "splash": "/static/img/maps/glitch.png",
+    "callouts": []
+  },
+  {
+    "uuid": "2bee0dc9-4ffe-519b-1cbd-7fbe763a6047",
+    "name": "Haven",
+    "slug": "haven",
+    "coordinates": "27°28'A'N,89°38'WZ'E",
+    "splash": "/static/img/maps/haven.png",
+    "callouts": [
+      {
+        "region": "Garden",
+        "super_region": "A"
+      },
+      {
+        "region": "Link",
+        "super_region": "A"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "A"
+      },
+      {
+        "region": "Long",
+        "super_region": "A"
+      },
+      {
+        "region": "Sewer",
+        "super_region": "A"
+      },
+      {
+        "region": "Site",
+        "super_region": "A"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Back",
+        "super_region": "B"
+      },
+      {
+        "region": "Site",
+        "super_region": "B"
+      },
+      {
+        "region": "Link",
+        "super_region": "C"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "C"
+      },
+      {
+        "region": "Long",
+        "super_region": "C"
+      },
+      {
+        "region": "Garage",
+        "super_region": "C"
+      },
+      {
+        "region": "Window",
+        "super_region": "C"
+      },
+      {
+        "region": "Site",
+        "super_region": "C"
+      },
+      {
+        "region": "Cubby",
+        "super_region": "C"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Doors",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Courtyard",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Window",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Tower",
+        "super_region": "A"
+      }
+    ]
+  },
+  {
+    "uuid": "e2ad5c54-4114-a870-9641-8ea21279579a",
+    "name": "Icebox",
+    "slug": "icebox",
+    "coordinates": "76°44' A\"N 149°30' Z\"E",
+    "splash": "/static/img/maps/icebox.png",
+    "callouts": [
+      {
+        "region": "Garage",
+        "super_region": "B"
+      },
+      {
+        "region": "Belt",
+        "super_region": "A"
+      },
+      {
+        "region": "Nest",
+        "super_region": "A"
+      },
+      {
+        "region": "Pipes",
+        "super_region": "A"
+      },
+      {
+        "region": "Rafters",
+        "super_region": "A"
+      },
+      {
+        "region": "Screen",
+        "super_region": "A"
+      },
+      {
+        "region": "Site",
+        "super_region": "A"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Yellow",
+        "super_region": "B"
+      },
+      {
+        "region": "Back",
+        "super_region": "B"
+      },
+      {
+        "region": "Cubby",
+        "super_region": "B"
+      },
+      {
+        "region": "Green",
+        "super_region": "B"
+      },
+      {
+        "region": "Hall",
+        "super_region": "B"
+      },
+      {
+        "region": "Hut",
+        "super_region": "B"
+      },
+      {
+        "region": "Kitchen",
+        "super_region": "B"
+      },
+      {
+        "region": "Orange",
+        "super_region": "B"
+      },
+      {
+        "region": "Site",
+        "super_region": "B"
+      },
+      {
+        "region": "Snowman",
+        "super_region": "B"
+      },
+      {
+        "region": "Snow Pile",
+        "super_region": "B"
+      },
+      {
+        "region": "Tube",
+        "super_region": "B"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Blue",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Boiler",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Pallet",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Fence",
+        "super_region": "B"
+      }
+    ]
+  },
+  {
+    "uuid": "12452a9d-48c3-0b02-e7eb-0381c3520404",
+    "name": "Kasbah",
+    "slug": "kasbah",
+    "coordinates": null,
+    "splash": "/static/img/maps/kasbah.png",
+    "callouts": [
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Angle Box",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Link",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Pit",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Tower",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Ramp",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Flat Box",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Nest",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Tunnel",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Window",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Angle Box",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Link",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Pit",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Tower",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Ramp",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Flat Box",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Nest",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Tunnel",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Window",
+        "super_region": "Attacker Side"
+      }
+    ]
+  },
+  {
+    "uuid": "2fe4ed3a-450a-948b-6d6b-e89a78e680a9",
+    "name": "Lotus",
+    "slug": "lotus",
+    "coordinates": "14°07'AD.4\"N8 74°53'XY\"E8",
+    "splash": "/static/img/maps/lotus.png",
+    "callouts": [
+      {
+        "region": "Top",
+        "super_region": "A"
+      },
+      {
+        "region": "Drop",
+        "super_region": "A"
+      },
+      {
+        "region": "Site",
+        "super_region": "A"
+      },
+      {
+        "region": "Hut",
+        "super_region": "A"
+      },
+      {
+        "region": "Tree",
+        "super_region": "A"
+      },
+      {
+        "region": "Door",
+        "super_region": "A"
+      },
+      {
+        "region": "Main",
+        "super_region": "A"
+      },
+      {
+        "region": "Rubble",
+        "super_region": "A"
+      },
+      {
+        "region": "Root",
+        "super_region": "A"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "A"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "C"
+      },
+      {
+        "region": "Pillars",
+        "super_region": "B"
+      },
+      {
+        "region": "Main",
+        "super_region": "B"
+      },
+      {
+        "region": "Door",
+        "super_region": "C"
+      },
+      {
+        "region": "Site",
+        "super_region": "B"
+      },
+      {
+        "region": "Link",
+        "super_region": "A"
+      },
+      {
+        "region": "Upper",
+        "super_region": "B"
+      },
+      {
+        "region": "Waterfall",
+        "super_region": "C"
+      },
+      {
+        "region": "Link",
+        "super_region": "C"
+      },
+      {
+        "region": "Stairs",
+        "super_region": "A"
+      },
+      {
+        "region": "Mound",
+        "super_region": "C"
+      },
+      {
+        "region": "Main",
+        "super_region": "C"
+      },
+      {
+        "region": "Bend",
+        "super_region": "C"
+      },
+      {
+        "region": "Site",
+        "super_region": "C"
+      },
+      {
+        "region": "Hall",
+        "super_region": "C"
+      },
+      {
+        "region": "Gravel",
+        "super_region": "C"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      }
+    ]
+  },
+  {
+    "uuid": "fd267378-4d1d-484f-ff52-77821ed10dc2",
+    "name": "Pearl",
+    "slug": "pearl",
+    "coordinates": "38°42'ED\"N8 9°08'XS\"W8",
+    "splash": "/static/img/maps/pearl.png",
+    "callouts": [
+      {
+        "region": "Hall",
+        "super_region": "B"
+      },
+      {
+        "region": "Doors",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Connector",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Water",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Flowers",
+        "super_region": "A"
+      },
+      {
+        "region": "Secret",
+        "super_region": "A"
+      },
+      {
+        "region": "Dugout",
+        "super_region": "A"
+      },
+      {
+        "region": "Site",
+        "super_region": "A"
+      },
+      {
+        "region": "Records",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Top",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Tunnel",
+        "super_region": "B"
+      },
+      {
+        "region": "Tower",
+        "super_region": "B"
+      },
+      {
+        "region": "Main",
+        "super_region": "A"
+      },
+      {
+        "region": "Restaurant",
+        "super_region": "A"
+      },
+      {
+        "region": "Link",
+        "super_region": "B"
+      },
+      {
+        "region": "Art",
+        "super_region": "A"
+      },
+      {
+        "region": "Link",
+        "super_region": "A"
+      },
+      {
+        "region": "Plaza",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Shops",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Club",
+        "super_region": "B"
+      },
+      {
+        "region": "Ramp",
+        "super_region": "B"
+      },
+      {
+        "region": "Main",
+        "super_region": "B"
+      },
+      {
+        "region": "Site",
+        "super_region": "B"
+      },
+      {
+        "region": "Screen",
+        "super_region": "B"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      }
+    ]
+  },
+  {
+    "uuid": "de28aa9b-4cbe-1003-320e-6cb3ec309557",
+    "name": "Piazza",
+    "slug": "piazza",
+    "coordinates": null,
+    "splash": "/static/img/maps/piazza.png",
+    "callouts": []
+  },
+  {
+    "uuid": "a9009649-421f-d5d5-f80c-0cbe02c125bb",
+    "name": "Skirmish A",
+    "slug": "skirmish-a",
+    "coordinates": null,
+    "splash": "/static/img/maps/skirmish-a.png",
+    "callouts": []
+  },
+  {
+    "uuid": "a38a3f9a-4042-844c-8970-a3ac2f7ce93d",
+    "name": "Skirmish B",
+    "slug": "skirmish-b",
+    "coordinates": null,
+    "splash": "/static/img/maps/skirmish-b.png",
+    "callouts": []
+  },
+  {
+    "uuid": "a264de0f-4a04-9c78-c97a-a6b192ce6e86",
+    "name": "Skirmish C",
+    "slug": "skirmish-c",
+    "coordinates": null,
+    "splash": "/static/img/maps/skirmish-c.png",
+    "callouts": []
+  },
+  {
+    "uuid": "d960549e-485c-e861-8d71-aa9d1aed12a2",
+    "name": "Split",
+    "slug": "split",
+    "coordinates": "35°41'CD'N,139°41'WX'E",
+    "splash": "/static/img/maps/split.png",
+    "callouts": [
+      {
+        "region": "Back",
+        "super_region": "A"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "A"
+      },
+      {
+        "region": "Main",
+        "super_region": "A"
+      },
+      {
+        "region": "Rafters",
+        "super_region": "A"
+      },
+      {
+        "region": "Ramps",
+        "super_region": "A"
+      },
+      {
+        "region": "Screens",
+        "super_region": "A"
+      },
+      {
+        "region": "Sewer",
+        "super_region": "A"
+      },
+      {
+        "region": "Site",
+        "super_region": "A"
+      },
+      {
+        "region": "Tower",
+        "super_region": "A"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      },
+      {
+        "region": "Alley",
+        "super_region": "B"
+      },
+      {
+        "region": "Back",
+        "super_region": "B"
+      },
+      {
+        "region": "Link",
+        "super_region": "B"
+      },
+      {
+        "region": "Garage",
+        "super_region": "B"
+      },
+      {
+        "region": "Rafters",
+        "super_region": "B"
+      },
+      {
+        "region": "Site",
+        "super_region": "B"
+      },
+      {
+        "region": "Stairs",
+        "super_region": "B"
+      },
+      {
+        "region": "Tower",
+        "super_region": "B"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "B"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Bottom",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Mail",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Top",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Vent",
+        "super_region": "Mid"
+      }
+    ]
+  },
+  {
+    "uuid": "92584fbe-486a-b1b2-9faa-39b0f486b498",
+    "name": "Sunset",
+    "slug": "sunset",
+    "coordinates": "34° 2′ C″ N, 118° 12′ YT″ W",
+    "splash": "/static/img/maps/sunset.png",
+    "callouts": [
+      {
+        "region": "Boba",
+        "super_region": "B"
+      },
+      {
+        "region": "Tiles",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Market",
+        "super_region": "B"
+      },
+      {
+        "region": "Site",
+        "super_region": "B"
+      },
+      {
+        "region": "Main",
+        "super_region": "B"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "B"
+      },
+      {
+        "region": "Bottom",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Courtyard",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Lobby",
+        "super_region": "A"
+      },
+      {
+        "region": "Main",
+        "super_region": "A"
+      },
+      {
+        "region": "Link",
+        "super_region": "A"
+      },
+      {
+        "region": "Site",
+        "super_region": "A"
+      },
+      {
+        "region": "Elbow",
+        "super_region": "A"
+      },
+      {
+        "region": "Alley",
+        "super_region": "A"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Defender Side"
+      },
+      {
+        "region": "Top",
+        "super_region": "Mid"
+      },
+      {
+        "region": "Spawn",
+        "super_region": "Attacker Side"
+      }
+    ]
+  }
+]

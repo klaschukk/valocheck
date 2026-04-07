@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}{% if region %}{{ regions[region] }} Leaderboard{% else %}Leaderboard{% endif %} | ValoCheck{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Leaderboard</h1>
+    <div class="region-tabs">
+        {% for r, label in regions.items() %}
+        <a href="/leaderboard/{{ r }}/" class="region-tab {{ 'active' if region == r else '' }}">{{ label }}</a>
+        {% endfor %}
+    </div>
+
+    {% if players %}
+    <div class="leaderboard-table">
+        <div class="lb-header">
+            <span>#</span>
+            <span>Player</span>
+            <span>Rank Rating</span>
+            <span>Wins</span>
+        </div>
+        {% for p in players %}
+        <div class="lb-row">
+            <span class="lb-pos">{{ p.rank | default(p.leaderboardRank | default(loop.index)) }}</span>
+            <span class="lb-name">
+                {% set pname = p.name | default(p.gameName | default('')) %}
+                {% set ptag = p.tag | default(p.tagLine | default('')) %}
+                {% if pname %}
+                <a href="/player/{{ pname }}/{{ ptag | default('NA') }}/">{{ pname }}#{{ ptag | default('NA') }}</a>
+                {% else %}
+                Secret Agent
+                {% endif %}
+            </span>
+            <span class="lb-rr">{{ p.rr | default(p.rankedRating | default(0)) }}</span>
+            <span class="lb-wins">{{ p.wins | default(p.numberOfWins | default(0)) }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% elif region %}
+    <p class="empty-state">Loading leaderboard data...</p>
+    {% else %}
+    <p class="empty-state">Select a region to view the leaderboard.</p>
+    {% endif %}
+</div>
+{% endblock %}

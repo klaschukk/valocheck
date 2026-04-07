@@ -1,0 +1,6 @@
+venv/
+data/cache.db
+data/leaderboard/
+__pycache__/
+*.pyc
+.env
