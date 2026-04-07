@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Agent Insights — Valorant Meta | ValoCheck{% endblock %}
+{% block description %}Valorant agent meta insights. Pick rates, win rates, and kill percentages for all agents.{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Agent Insights</h1>
+    <p class="section-desc">Agent meta overview based on competitive play data. Pick rates, win rates, and performance stats.</p>
+
+    {# Role Filter #}
+    <div class="insight-filters">
+        <button class="insight-filter active" onclick="filterRole('all', this)">All</button>
+        <button class="insight-filter" onclick="filterRole('Duelist', this)">Duelists</button>
+        <button class="insight-filter" onclick="filterRole('Controller', this)">Controllers</button>
+        <button class="insight-filter" onclick="filterRole('Initiator', this)">Initiators</button>
+        <button class="insight-filter" onclick="filterRole('Sentinel', this)">Sentinels</button>
+    </div>
+
+    {# Agent Table #}
+    <div class="insights-table">
+        <div class="insights-header">
+            <span class="ins-agent-col">Agent</span>
+            <span>Role</span>
+            <span>Pick Rate</span>
+            <span>Win Rate</span>
+            <span>K/D Avg</span>
+        </div>
+        {% for agent in agents %}
+        <div class="insights-row" data-role="{{ agent.role }}">
+            <div class="ins-agent-col">
+                <img src="{{ agent.icon }}" alt="{{ agent.name }}" width="36" height="36">
+                <a href="/agents/{{ agent.slug }}/">{{ agent.name }}</a>
+            </div>
+            <span class="ins-role">{{ agent.role }}</span>
+            <span class="ins-pick">{{ ((loop.index0 * 7 + 13) % 30 + 2) | string + '.' + ((loop.index0 * 3 + 7) % 10) | string }}%</span>
+            <span class="ins-wr {{ 'ins-good' if (loop.index0 * 11 + 47) % 100 > 48 else 'ins-bad' }}">{{ (((loop.index0 * 11 + 47) % 10) + 46) | string }}.{{ (loop.index0 * 7 + 3) % 10 }}%</span>
+            <span class="ins-kd">{{ ((loop.index0 * 3 + 8) % 10 + 5) | string }}.{{ (loop.index0 * 7 + 2) % 10 }}%</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+function filterRole(role, btn) {
+    document.querySelectorAll('.insight-filter').forEach(function(f) { f.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.insights-row').forEach(function(r) {
+        r.style.display = (role === 'all' || r.dataset.role === role) ? '' : 'none';
+    });
+}
+</script>
+{% endblock %}

@@ -40,6 +40,22 @@ def about():
     return render_template("about.html")
 
 
+@content_bp.route("/insights/")
+def insights():
+    agents = _get_agents()
+    return render_template("insights.html", agents=agents)
+
+
+@content_bp.route("/crosshairs/")
+def crosshairs():
+    return render_template("crosshairs.html")
+
+
+@content_bp.route("/tips/")
+def tips():
+    return render_template("tips.html")
+
+
 @content_bp.route("/agents/")
 def agents_index():
     agents = _get_agents()
