@@ -127,16 +127,46 @@ valocheck/
 
 ## Current Status (April 2026)
 
-- [x] Flask app + 5 blueprints
+### Done
+- [x] Flask app + 5 blueprints (main, player, leaderboard, content, api)
 - [x] Henrik API client with rate limiting + SQLite cache
-- [x] Player profile page (rank, K/D, winrate, matches, agents)
-- [x] Leaderboard page (6 regions)
-- [x] Dark theme CSS (mobile-first)
-- [x] 14 templates + 2 partials
-- [x] systemd + nginx + Cloudflare
-- [x] SEO: OG tags, JSON-LD, sitemap.xml, robots.txt
-- [x] Leaderboard scraper (cron every 6h)
-- [x] Content pages: agents + maps (valorant-api.com)
-- [x] Favicon PNG set + webmanifest
+- [x] Player profile: rank, K/D, win rate, HS%, ACS, DMG/round, K/round, KAD
+- [x] Player banner with wide card art + sub-navigation tabs (Overview/Matches/Agents)
+- [x] MMR history area chart (tracker.gg style, gradient fill, gain/loss dots)
+- [x] Win/loss donut chart (SVG)
+- [x] Extended stats grid (kills, deaths, assists, rounds, top agent)
+- [x] Leaderboard: top 500 x 4 regions (eu, na, ap, kr), cron every 6h
+- [x] Crosshair builder: canvas preview, 8 colors, sliders, code export
+- [x] 20 pro player crosshair presets database
+- [x] Agent insights: real scraped meta (pick rate, win rate, K/D, ACS)
+- [x] Tips & guides page (9 tips by rank difficulty)
+- [x] Content pages: 29 agents + 21 maps (valorant-api.com)
+- [x] Rich homepage: hero + top players + agents grid + maps grid + features
+- [x] Dark theme CSS: Russo One + Chakra Petch, Valorant HUD style
+- [x] SEO: OG tags, JSON-LD, sitemap (1795 URLs), robots.txt
+- [x] systemd + nginx + Cloudflare-ready
+- [x] Favicon PNG set (32, 180, 192, 512) + OG image + webmanifest
+- [x] 66 tests (pytest), all passing
+- [x] Healthcheck cron (*/5 min), nightly refresh cron (3:00 AM)
+- [x] Scrapers: leaderboard, agent meta, pro crosshairs, content assets
+- [x] GitHub + GitLab repos
+
+### Next (Phase 2)
+- [ ] Match detail page (full 10-player scoreboard)
+- [ ] Search autocomplete (AJAX)
+- [ ] Mobile hamburger menu
+- [ ] Player comparison (side-by-side)
+- [ ] Season/Act filter
 - [ ] Umami analytics
-- [ ] Google AdSense
+- [ ] Domain + Cloudflare SSL
+- [ ] Google AdSense (after 1000+ visits/day)
+
+## Docs
+
+- `docs/roadmap.md` — full feature roadmap (Phase 1-3)
+- `docs/monetization.md` — AdSense analysis, breakeven, timeline
+- `docs/api/riot_api.md` — Henrik/Riot API documentation
+- `docs/seo/strategy.md` — programmatic SEO strategy
+- `docs/design/design_system.md` — colors, typography, components
+- `docs/deploy/infrastructure.md` — systemd, nginx, Cloudflare
+- `docs/deploy/domain_setup.md` — domain purchase + setup guide
