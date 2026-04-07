@@ -3,7 +3,7 @@
         <a href="/" class="logo">
             <span class="logo-valo">VALO</span><span class="logo-check">CHECK</span>
         </a>
-        <nav class="main-nav">
+        <nav class="main-nav" id="mainNav">
             <a href="/leaderboard/">Leaderboard</a>
             <a href="/insights/">Insights</a>
             <a href="/crosshairs/">Crosshairs</a>
@@ -11,5 +11,8 @@
             <a href="/maps/">Maps</a>
             <a href="/tips/">Tips</a>
         </nav>
+        <button class="burger" id="burgerBtn" aria-label="Menu" onclick="document.getElementById('mainNav').classList.toggle('nav-open');this.classList.toggle('burger-open')">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </header>

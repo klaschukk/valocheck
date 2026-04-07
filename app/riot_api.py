@@ -138,6 +138,11 @@ def get_player_profile(name: str, tag: str) -> dict[str, Any] | None:
     agent_stats: dict[str, dict] = {}
 
     for match in matches_raw:
+        # Cache full match data for match detail page
+        match_id = match.get("metadata", {}).get("matchid", "")
+        if match_id:
+            cache_set(f"match:{match_id}", match, ttl=86400)  # 24h
+
         metadata = match.get("metadata", {})
         players = match.get("players", {})
         all_players = players.get("all_players", [])

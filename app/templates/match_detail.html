@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% set meta = match.metadata %}
+{% set teams = match.teams %}
+{% set all_players = match.players.all_players %}
+
+{% block title %}{{ meta.map }} — Match Detail | ValoCheck{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-back"><a href="javascript:history.back()">&larr; Back</a></div>
+
+    {# Match Header #}
+    <div class="match-header-card">
+        <div class="match-header-info">
+            <h1>{{ meta.map }}</h1>
+            <div class="match-header-meta">
+                <span>{{ meta.mode }}</span>
+                <span>{{ meta.game_start_patched }}</span>
+                <span>{{ meta.rounds_played }} rounds</span>
+            </div>
+        </div>
+        <div class="match-header-score">
+            {% for team_id, team_data in teams.items() %}
+            <div class="match-score-team {{ 'score-win' if team_data.has_won else 'score-loss' }}">
+                <span class="score-label">{{ team_id | capitalize }}</span>
+                <span class="score-num">{{ team_data.rounds_won }}</span>
+            </div>
+            {% if not loop.last %}<span class="score-vs">:</span>{% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    {# Scoreboards by team #}
+    {% set team_names = teams.keys() | list %}
+    {% for team_id in team_names %}
+    {% set team_data = teams[team_id] %}
+    <div class="scoreboard-section">
+        <div class="scoreboard-header {{ 'sb-win' if team_data.has_won else 'sb-loss' }}">
+            <span>{{ team_id | capitalize }} Team</span>
+            <span>{{ team_data.rounds_won }} rounds {{ 'WIN' if team_data.has_won else 'LOSS' }}</span>
+        </div>
+        <div class="scoreboard-table">
+            <div class="sb-row sb-row-header">
+                <span class="sb-agent-col">Agent</span>
+                <span class="sb-player-col">Player</span>
+                <span>ACS</span>
+                <span>K</span>
+                <span>D</span>
+                <span>A</span>
+                <span>+/-</span>
+                <span>HS%</span>
+            </div>
+            {% for p in all_players | sort(attribute='stats.score', reverse=true) %}
+            {% if p.team | lower == team_id | lower %}
+            {% set s = p.stats %}
+            {% set total_shots = s.headshots + s.bodyshots + s.legshots %}
+            {% set hs = ((s.headshots / total_shots * 100) | round(0) | int) if total_shots > 0 else 0 %}
+            {% set rounds = team_data.rounds_won + team_data.rounds_lost %}
+            {% set acs = (s.score / rounds) | round(0) | int if rounds > 0 else 0 %}
+            <div class="sb-row">
+                <span class="sb-agent-col">
+                    <img src="/static/img/agents/{{ p.character | lower | replace(' ', '-') | replace('/', '-') }}.png" alt="{{ p.character }}" width="32" height="32" onerror="this.style.display='none'">
+                </span>
+                <span class="sb-player-col">
+                    <a href="/player/{{ p.name }}/{{ p.tag }}/">{{ p.name }}<span class="sb-tag">#{{ p.tag }}</span></a>
+                </span>
+                <span class="sb-acs">{{ acs }}</span>
+                <span class="sb-kills">{{ s.kills }}</span>
+                <span class="sb-deaths">{{ s.deaths }}</span>
+                <span class="sb-assists">{{ s.assists }}</span>
+                <span class="sb-diff {{ 'positive' if s.kills - s.deaths > 0 else 'negative' if s.kills - s.deaths < 0 else '' }}">{{ '+' if s.kills - s.deaths > 0 else '' }}{{ s.kills - s.deaths }}</span>
+                <span class="sb-hs">{{ hs }}%</span>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

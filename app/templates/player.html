@@ -143,14 +143,14 @@
             <div class="section-head"><h2>Recent Matches</h2><a href="/player/{{ player.name }}/{{ player.tag }}/matches/">View All</a></div>
             {% if player.matches %}
                 {% for m in player.matches[:10] %}
-                <div class="match-row">
+                <a href="/match/{{ m.match_id }}/" class="match-row match-row-link">
                     <div class="match-result {{ 'win' if m.won else 'loss' }}">{{ "W" if m.won else "L" }}</div>
                     <div class="match-map">{{ m.map }}</div>
                     <div class="match-agent">{{ m.agent }}</div>
                     <div class="match-score">{{ m.rounds_won }}-{{ m.rounds_lost }}</div>
                     <div class="match-kda">{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</div>
                     <div class="match-diff {{ 'positive' if m.kd_diff > 0 else 'negative' if m.kd_diff < 0 else '' }}">{{ '+' if m.kd_diff > 0 else '' }}{{ m.kd_diff }}</div>
-                </div>
+                </a>
                 {% endfor %}
             {% else %}<p class="empty-state">No recent matches found.</p>{% endif %}
         </div>
