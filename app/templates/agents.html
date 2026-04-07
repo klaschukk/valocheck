@@ -3,29 +3,50 @@
 {% block title %}{{ player.name }}#{{ player.tag }} Agent Stats | ValoCheck{% endblock %}
 
 {% block content %}
-<div class="container player-page">
-    <div class="page-back">
-        <a href="/player/{{ player.name }}/{{ player.tag }}/">&larr; {{ player.name }}#{{ player.tag }}</a>
-    </div>
-    <h1>Agent Stats</h1>
-    {% if player.agents %}
-    <div class="agents-table">
-        <div class="agents-table-header">
-            <span>Agent</span>
-            <span>Games</span>
-            <span>Win Rate</span>
-            <span>K/D</span>
-            <span>Kills</span>
-            <span>Deaths</span>
+<div class="player-banner">
+    {% if player.card and player.card.get('wide') %}
+    <div class="banner-bg" style="background-image:url('{{ player.card.wide }}')"></div>
+    {% else %}<div class="banner-bg banner-bg-default"></div>{% endif %}
+    <div class="banner-overlay"></div>
+    <div class="container banner-content">
+        <div class="banner-avatar">
+            {% if player.card and player.card.get('small') %}
+            <img src="{{ player.card.small }}" alt="{{ player.name }}" width="80" height="80">
+            {% else %}<div class="avatar-placeholder"></div>{% endif %}
         </div>
+        <div class="banner-info">
+            <h1 class="banner-name">{{ player.name }} <span class="banner-tag">#{{ player.tag }}</span></h1>
+            <div class="banner-meta"><span>Level {{ player.account_level }}</span><span>{{ player.region | upper }}</span></div>
+        </div>
+        <div class="hero-rank rank-{{ player.current_rank.split(' ')[0]|lower }}">
+            <div class="rank-name">{{ player.current_rank | upper }}</div>
+            <div class="rank-rr-val">{{ player.current_rr }} RR</div>
+        </div>
+    </div>
+</div>
+<div class="player-tabs-wrap">
+    <div class="container">
+        <nav class="player-tabs">
+            <a href="/player/{{ player.name }}/{{ player.tag }}/" class="player-tab">Overview</a>
+            <a href="/player/{{ player.name }}/{{ player.tag }}/matches/" class="player-tab">Matches</a>
+            <a href="/player/{{ player.name }}/{{ player.tag }}/agents/" class="player-tab active">Agents</a>
+        </nav>
+    </div>
+</div>
+<div class="container player-page">
+    {% if player.agents %}
+    <div class="section-card">
+        <div class="section-head"><h2>Agent Performance</h2><span class="stat-lbl" style="margin:0">{{ player.agents | length }} agents</span></div>
         {% for a in player.agents %}
-        <div class="agent-row">
-            <div class="agent-name">{{ a.name }}</div>
-            <div class="agent-games">{{ a.games }}</div>
-            <div class="agent-wr">{{ a.win_rate }}%</div>
-            <div class="agent-kd">{{ a.kd }}</div>
-            <div>{{ a.kills }}</div>
-            <div>{{ a.deaths }}</div>
+        <div class="agent-item">
+            <div class="agent-icon-sm"><img src="/static/img/agents/{{ a.name|lower|replace(' ', '-')|replace('/', '-') }}.png" alt="{{ a.name }}" onerror="this.style.display='none'"></div>
+            <div class="agent-item-info"><div class="agent-item-name">{{ a.name }}</div><div class="agent-item-games">{{ a.games }} game{{ 's' if a.games != 1 else '' }}</div></div>
+            <div class="agent-item-stats">
+                <div class="agent-stat-box"><div class="agent-stat-val">{{ a.win_rate }}%</div><div class="agent-stat-lbl">Win Rate</div></div>
+                <div class="agent-stat-box"><div class="agent-stat-val">{{ a.kd }}</div><div class="agent-stat-lbl">K/D</div></div>
+                <div class="agent-stat-box"><div class="agent-stat-val">{{ a.kills }}</div><div class="agent-stat-lbl">Kills</div></div>
+                <div class="agent-stat-box"><div class="agent-stat-val">{{ a.deaths }}</div><div class="agent-stat-lbl">Deaths</div></div>
+            </div>
         </div>
         {% endfor %}
     </div>

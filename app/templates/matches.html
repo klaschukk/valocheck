@@ -3,13 +3,40 @@
 {% block title %}{{ player.name }}#{{ player.tag }} Match History | ValoCheck{% endblock %}
 
 {% block content %}
-<div class="container player-page">
-    <div class="page-back">
-        <a href="/player/{{ player.name }}/{{ player.tag }}/">&larr; {{ player.name }}#{{ player.tag }}</a>
+<div class="player-banner">
+    {% if player.card and player.card.get('wide') %}
+    <div class="banner-bg" style="background-image:url('{{ player.card.wide }}')"></div>
+    {% else %}<div class="banner-bg banner-bg-default"></div>{% endif %}
+    <div class="banner-overlay"></div>
+    <div class="container banner-content">
+        <div class="banner-avatar">
+            {% if player.card and player.card.get('small') %}
+            <img src="{{ player.card.small }}" alt="{{ player.name }}" width="80" height="80">
+            {% else %}<div class="avatar-placeholder"></div>{% endif %}
+        </div>
+        <div class="banner-info">
+            <h1 class="banner-name">{{ player.name }} <span class="banner-tag">#{{ player.tag }}</span></h1>
+            <div class="banner-meta"><span>Level {{ player.account_level }}</span><span>{{ player.region | upper }}</span></div>
+        </div>
+        <div class="hero-rank rank-{{ player.current_rank.split(' ')[0]|lower }}">
+            <div class="rank-name">{{ player.current_rank | upper }}</div>
+            <div class="rank-rr-val">{{ player.current_rr }} RR</div>
+        </div>
     </div>
-    <h1>Match History</h1>
+</div>
+<div class="player-tabs-wrap">
+    <div class="container">
+        <nav class="player-tabs">
+            <a href="/player/{{ player.name }}/{{ player.tag }}/" class="player-tab">Overview</a>
+            <a href="/player/{{ player.name }}/{{ player.tag }}/matches/" class="player-tab active">Matches</a>
+            <a href="/player/{{ player.name }}/{{ player.tag }}/agents/" class="player-tab">Agents</a>
+        </nav>
+    </div>
+</div>
+<div class="container player-page">
     {% if player.matches %}
-    <div class="section-card" style="margin-top:16px;">
+    <div class="section-card">
+        <div class="section-head"><h2>Match History</h2><span class="stat-lbl" style="margin:0">{{ player.matches | length }} games</span></div>
         {% for m in player.matches %}
         <div class="match-row">
             <div class="match-result {{ 'win' if m.won else 'loss' }}">{{ "W" if m.won else "L" }}</div>
