@@ -92,24 +92,46 @@
             <div class="ext-stat"><span class="ext-val text-only">{{ player.top_agent }}</span><span class="ext-lbl">Top Agent</span></div>
         </div>
 
-        {# MMR History Graph #}
+        {# MMR History Area Chart (tracker.gg style) #}
         {% if player.mmr_history %}
-        <div class="section-card mmr-graph-card">
-            <div class="section-head"><h2>Rank Rating</h2></div>
-            <div class="mmr-graph">
-                {% set rr_vals = player.mmr_history | map(attribute='rr') | list %}
-                {% set rr_max = rr_vals | max %}
-                {% set rr_min = rr_vals | min %}
-                {% set rr_range = rr_max - rr_min if rr_max != rr_min else 1 %}
-                <svg viewBox="0 0 {{ (player.mmr_history | length - 1) * 30 + 20 }} 80" class="mmr-svg" preserveAspectRatio="none">
-                    <polyline fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" points="{% for h in player.mmr_history | reverse %}{{ loop.index0 * 30 + 10 }},{{ 70 - ((h.rr - rr_min) / rr_range * 60) }} {% endfor %}"/>
-                    {% for h in player.mmr_history | reverse %}
-                    <circle cx="{{ loop.index0 * 30 + 10 }}" cy="{{ 70 - ((h.rr - rr_min) / rr_range * 60) }}" r="3" fill="{% if h.change >= 0 %}var(--win){% else %}var(--loss){% endif %}" />
+        {% set history = player.mmr_history | reverse | list %}
+        {% set rr_vals = history | map(attribute='rr') | list %}
+        {% set rr_max = rr_vals | max %}
+        {% set rr_min = rr_vals | min %}
+        {% set rr_range = (rr_max - rr_min) if rr_max != rr_min else 1 %}
+        {% set w = 600 %}
+        {% set h = 120 %}
+        {% set pad_top = 15 %}
+        {% set pad_bot = 10 %}
+        {% set chart_h = h - pad_top - pad_bot %}
+        {% set n = history | length %}
+        {% set step = (w - 20) / (n - 1) if n > 1 else w %}
+        <div class="section-card mmr-chart-card">
+            <div class="section-head"><h2>Rank Rating History</h2><span class="stat-lbl" style="margin:0">Last {{ n }} games</span></div>
+            <div class="mmr-chart">
+                <svg viewBox="0 0 {{ w }} {{ h }}" class="mmr-area-svg" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="mmrGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.4"/>
+                            <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+                        </linearGradient>
+                        <filter id="lineShadow">
+                            <feDropShadow dx="0" dy="3" flood-color="rgba(0,0,0,0.4)" flood-opacity="1" stdDeviation="2"/>
+                        </filter>
+                    </defs>
+                    {# Area fill #}
+                    <path fill="url(#mmrGrad)" d="M 10,{{ h - pad_bot }} {% for pt in history %}L {{ 10 + loop.index0 * step }},{{ pad_top + chart_h - ((pt.rr - rr_min) / rr_range * chart_h) }} {% endfor %}L {{ 10 + (n - 1) * step }},{{ h - pad_bot }} Z"/>
+                    {# Line #}
+                    <polyline fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" filter="url(#lineShadow)" points="{% for pt in history %}{{ 10 + loop.index0 * step }},{{ pad_top + chart_h - ((pt.rr - rr_min) / rr_range * chart_h) }} {% endfor %}"/>
+                    {# Data points #}
+                    {% for pt in history %}
+                    <circle cx="{{ 10 + loop.index0 * step }}" cy="{{ pad_top + chart_h - ((pt.rr - rr_min) / rr_range * chart_h) }}" r="4" fill="{% if pt.change >= 0 %}var(--win){% else %}var(--loss){% endif %}" stroke="var(--bg)" stroke-width="2"/>
                     {% endfor %}
                 </svg>
-                <div class="mmr-range">
-                    <span>{{ rr_min }} RR</span>
-                    <span>{{ rr_max }} RR</span>
+                <div class="mmr-chart-labels">
+                    <span class="mmr-label-min">{{ rr_min }} RR</span>
+                    <span class="mmr-label-current">Current: {{ rr_vals[-1] }} RR {% if history[-1].change >= 0 %}<span class="mmr-up">+{{ history[-1].change }}</span>{% else %}<span class="mmr-down">{{ history[-1].change }}</span>{% endif %}</span>
+                    <span class="mmr-label-max">{{ rr_max }} RR</span>
                 </div>
             </div>
         </div>

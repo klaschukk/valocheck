@@ -211,7 +211,7 @@ main { flex: 1; padding: 24px 0 48px; }
 .winloss-labels .wl-l { color: var(--loss); }
 
 /* ══ EXTENDED STATS ROW ══ */
-.extended-row { display: grid; grid-template-columns: 140px 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.extended-row { display: grid; grid-template-columns: 140px 1fr; gap: 16px; margin-bottom: 24px; }
 
 .donut-card { display: flex; align-items: center; justify-content: center; padding: 20px; }
 .donut-wrap { position: relative; width: 100px; height: 100px; }
@@ -228,10 +228,13 @@ main { flex: 1; padding: 24px 0 48px; }
 .ext-val.text-only { font-family: 'Chakra Petch', sans-serif; font-size: 0.9375rem; font-weight: 600; color: var(--text); }
 .ext-lbl { font-size: 0.625rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
 
-.mmr-graph-card { overflow: hidden; }
-.mmr-graph { padding: 12px 20px 16px; }
-.mmr-svg { width: 100%; height: 70px; }
-.mmr-range { display: flex; justify-content: space-between; font-size: 0.6875rem; color: var(--text-dim); margin-top: 4px; }
+.mmr-chart-card { grid-column: span 2; overflow: hidden; }
+.mmr-chart { padding: 12px 20px 16px; }
+.mmr-area-svg { width: 100%; height: 120px; }
+.mmr-chart-labels { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-dim); margin-top: 6px; }
+.mmr-label-current { font-weight: 600; color: var(--text-muted); font-size: 0.8125rem; }
+.mmr-up { color: var(--win); font-weight: 700; }
+.mmr-down { color: var(--loss); font-weight: 700; }
 
 /* ══ HOMEPAGE SECTIONS ══ */
 .home-section { padding: 24px 0; }
