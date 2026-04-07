@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variant C — Bento Grid</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+<style>
+/* ═══ VARIANT C: BENTO GRID ═══
+   Apple-style bento grid layout.
+   Big rank card, stat cards of different sizes,
+   modular, visual, like a dashboard.
+   Everything is a card. */
+
+:root {
+    --bg: #08090d;
+    --bg-card: #12141c;
+    --bg-card-hover: #181b25;
+    --primary: #ff4655;
+    --accent: #00e5a0;
+    --accent-blue: #3b82f6;
+    --accent-purple: #a78bfa;
+    --text: #eef0f2;
+    --text-muted: #7d8590;
+    --text-dim: #484f58;
+    --win: #3fb950;
+    --loss: #f85149;
+    --border: rgba(255,255,255,0.05);
+    --rank-radiant: #fce97c;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Chakra Petch', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+.container { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+
+/* ── Header ── */
+.site-header {
+    background: rgba(8, 9, 13, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.logo { font-family: 'Russo One', sans-serif; font-size: 1.25rem; text-decoration: none; letter-spacing: 2px; }
+.logo-valo { color: var(--primary); }
+.logo-check { color: var(--text); }
+.main-nav { display: flex; gap: 24px; }
+.main-nav a { color: var(--text-muted); font-size: 0.8125rem; font-weight: 500; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: color 0.15s; }
+.main-nav a:hover { color: var(--text); }
+
+/* ── Card base ── */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* ── Bento Grid ── */
+.bento {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 12px;
+    margin: 24px 0;
+}
+
+/* ── Player Identity Card (spans 8 cols) ── */
+.card-identity {
+    grid-column: span 8;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+}
+.card-identity::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 70, 85, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+.id-avatar {
+    width: 88px; height: 88px;
+    border-radius: 14px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--border);
+}
+.id-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.id-text { flex: 1; position: relative; z-index: 1; }
+.id-name {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.75rem;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+.id-tag { color: var(--text-muted); font-weight: 400; font-family: 'Chakra Petch', sans-serif; font-size: 1.125rem; }
+.id-meta { display: flex; gap: 16px; margin-top: 8px; font-size: 0.8125rem; color: var(--text-dim); }
+
+.btn-share {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; margin-top: 10px;
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text-muted);
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 0.8125rem; cursor: pointer;
+    transition: all 0.15s;
+}
+.btn-share:hover { background: rgba(255,255,255,0.08); color: var(--text); }
+
+/* ── Rank Card (spans 4 cols, hero element) ── */
+.card-rank {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(252, 233, 124, 0.03) 0%, var(--bg-card) 100%);
+}
+.card-rank::after {
+    content: '';
+    position: absolute;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(252, 233, 124, 0.08) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+.rank-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 2rem;
+    color: var(--rank-radiant);
+    text-shadow: 0 0 30px rgba(252, 233, 124, 0.4), 0 0 60px rgba(252, 233, 124, 0.15);
+    letter-spacing: 3px;
+    position: relative;
+    z-index: 1;
+}
+.rank-rr-val {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 4px;
+    position: relative; z-index: 1;
+}
+.rank-rr-lbl {
+    font-size: 0.6875rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative; z-index: 1;
+}
+
+/* ── Stat Cards (2 cols each = 6 cards in a row) ── */
+.card-stat {
+    grid-column: span 2;
+    padding: 20px;
+    text-align: center;
+}
+.stat-v {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.75rem;
+    line-height: 1.2;
+}
+.stat-v.good { color: var(--win); }
+.stat-v.bad { color: var(--loss); }
+.stat-v.accent { color: var(--accent); }
+.stat-v.blue { color: var(--accent-blue); }
+.stat-v.purple { color: var(--accent-purple); }
+.stat-l {
+    font-size: 0.6875rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+}
+
+/* ── Matches Card (spans 7 cols) ── */
+.card-matches {
+    grid-column: span 7;
+}
+.card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+}
+.card-head h2 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.card-head a { color: var(--text-dim); font-size: 0.75rem; text-decoration: none; }
+.card-head a:hover { color: var(--accent); }
+
+.m-row {
+    display: grid;
+    grid-template-columns: 36px 1fr 1fr 56px 88px 44px;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+    transition: background 0.12s;
+    cursor: default;
+}
+.m-row:last-child { border-bottom: none; }
+.m-row:hover { background: var(--bg-card-hover); }
+
+.m-pip {
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px;
+    font-weight: 700; font-size: 0.75rem;
+}
+.m-pip.w { background: rgba(63, 185, 80, 0.12); color: var(--win); }
+.m-pip.l { background: rgba(248, 81, 73, 0.12); color: var(--loss); }
+
+.m-map { font-weight: 600; font-size: 0.875rem; }
+.m-agent { color: var(--text-muted); font-size: 0.8125rem; }
+.m-score { text-align: center; font-weight: 600; }
+.m-kda { text-align: center; color: var(--text-muted); font-size: 0.8125rem; }
+.m-diff { text-align: right; font-weight: 700; font-size: 0.8125rem; }
+.m-diff.p { color: var(--win); }
+.m-diff.n { color: var(--loss); }
+
+/* ── Agents Card (spans 5 cols) ── */
+.card-agents {
+    grid-column: span 5;
+}
+.a-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+    transition: background 0.12s;
+    cursor: default;
+}
+.a-row:last-child { border-bottom: none; }
+.a-row:hover { background: var(--bg-card-hover); }
+.a-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.75rem; color: var(--accent);
+    flex-shrink: 0;
+}
+.a-info { flex: 1; }
+.a-name { font-weight: 600; font-size: 0.875rem; }
+.a-games { color: var(--text-dim); font-size: 0.75rem; }
+.a-nums { display: flex; gap: 16px; }
+.a-num-v { font-weight: 700; font-size: 0.875rem; }
+.a-num-l { font-size: 0.5625rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ── Win Rate Card (spans 5 cols) ── */
+.card-winrate {
+    grid-column: span 5;
+    padding: 24px;
+}
+.wr-title { font-family: 'Russo One', sans-serif; font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.wr-bar { display: flex; height: 10px; border-radius: 5px; overflow: hidden; margin-bottom: 12px; gap: 3px; }
+.wr-seg-w { background: var(--win); border-radius: 5px; }
+.wr-seg-l { background: var(--loss); border-radius: 5px; }
+.wr-nums { display: flex; justify-content: space-between; font-size: 0.875rem; font-weight: 600; }
+.wr-nums .wn { color: var(--win); }
+.wr-nums .ln { color: var(--loss); }
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+    .bento { grid-template-columns: repeat(6, 1fr); }
+    .card-identity { grid-column: span 6; flex-wrap: wrap; padding: 20px; }
+    .card-rank { grid-column: span 6; }
+    .card-stat { grid-column: span 2; }
+    .card-matches { grid-column: span 6; }
+    .card-agents { grid-column: span 6; }
+    .card-winrate { grid-column: span 6; }
+    .id-name { font-size: 1.25rem; }
+    .m-row { grid-template-columns: 32px 1fr 50px 50px; }
+    .m-agent, .m-diff { display: none; }
+}
+@media (max-width: 480px) {
+    .bento { grid-template-columns: repeat(4, 1fr); }
+    .card-identity { grid-column: span 4; }
+    .card-rank { grid-column: span 4; }
+    .card-stat { grid-column: span 2; }
+    .card-matches { grid-column: span 4; }
+    .card-agents { grid-column: span 4; }
+    .card-winrate { grid-column: span 4; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+<div class="container header-inner">
+    <a href="#" class="logo"><span class="logo-valo">VALO</span><span class="logo-check">CHECK</span></a>
+    <nav class="main-nav">
+        <a href="#">Leaderboard</a>
+        <a href="#">Agents</a>
+        <a href="#">Maps</a>
+    </nav>
+</div>
+</header>
+
+<main class="container">
+    <div class="bento">
+        <!-- Identity (8 cols) -->
+        <div class="card card-identity">
+            <div class="id-avatar">
+                <img src="https://media.valorant-api.com/playercards/d3018fbe-45cd-786a-dd6c-bcaf429f7096/smallart.png" alt="TH ComeBack">
+            </div>
+            <div class="id-text">
+                <h1 class="id-name">TH ComeBack <span class="id-tag">#Aegon</span></h1>
+                <div class="id-meta">
+                    <span>Level 1004</span>
+                    <span>EU</span>
+                </div>
+                <button class="btn-share">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                    Share
+                </button>
+            </div>
+        </div>
+
+        <!-- Rank (4 cols, hero) -->
+        <div class="card card-rank">
+            <div class="rank-title">RADIANT</div>
+            <div class="rank-rr-val">807</div>
+            <div class="rank-rr-lbl">Rank Rating</div>
+        </div>
+
+        <!-- Stats (6 x 2cols) -->
+        <div class="card card-stat"><div class="stat-v good">1.64</div><div class="stat-l">K/D Ratio</div></div>
+        <div class="card card-stat"><div class="stat-v bad">40.0%</div><div class="stat-l">Win Rate</div></div>
+        <div class="card card-stat"><div class="stat-v accent">35.3%</div><div class="stat-l">Headshot %</div></div>
+        <div class="card card-stat"><div class="stat-v blue">307</div><div class="stat-l">Total Kills</div></div>
+        <div class="card card-stat"><div class="stat-v good">4</div><div class="stat-l">Wins</div></div>
+        <div class="card card-stat"><div class="stat-v bad">6</div><div class="stat-l">Losses</div></div>
+
+        <!-- Matches (7 cols) -->
+        <div class="card card-matches">
+            <div class="card-head"><h2>Recent Matches</h2><a href="#">View All</a></div>
+            <div class="m-row"><div class="m-pip l">L</div><div class="m-map">Split</div><div class="m-agent">Cypher</div><div class="m-score">0-0</div><div class="m-kda">40/17/6</div><div class="m-diff p">+23</div></div>
+            <div class="m-row"><div class="m-pip l">L</div><div class="m-map">Lotus</div><div class="m-agent">Harbor</div><div class="m-score">0-0</div><div class="m-kda">40/29/2</div><div class="m-diff p">+11</div></div>
+            <div class="m-row"><div class="m-pip w">W</div><div class="m-map">Breeze</div><div class="m-agent">Neon</div><div class="m-score">13-4</div><div class="m-kda">13/15/5</div><div class="m-diff n">-2</div></div>
+            <div class="m-row"><div class="m-pip w">W</div><div class="m-map">Haven</div><div class="m-agent">Jett</div><div class="m-score">13-2</div><div class="m-kda">20/8/4</div><div class="m-diff p">+12</div></div>
+            <div class="m-row"><div class="m-pip w">W</div><div class="m-map">Fracture</div><div class="m-agent">Neon</div><div class="m-score">13-6</div><div class="m-kda">16/17/3</div><div class="m-diff n">-1</div></div>
+            <div class="m-row"><div class="m-pip l">L</div><div class="m-map">Bind</div><div class="m-agent">Jett</div><div class="m-score">10-13</div><div class="m-kda">22/21/2</div><div class="m-diff p">+1</div></div>
+            <div class="m-row"><div class="m-pip l">L</div><div class="m-map">Fracture</div><div class="m-agent">Killjoy</div><div class="m-score">0-0</div><div class="m-kda">40/12/1</div><div class="m-diff p">+28</div></div>
+            <div class="m-row"><div class="m-pip l">L</div><div class="m-map">Lotus</div><div class="m-agent">Veto</div><div class="m-score">0-0</div><div class="m-kda">40/26/0</div><div class="m-diff p">+14</div></div>
+        </div>
+
+        <!-- Agents (5 cols) -->
+        <div class="card card-agents">
+            <div class="card-head"><h2>Top Agents</h2><a href="#">All</a></div>
+            <div class="a-row">
+                <div class="a-icon">N</div>
+                <div class="a-info"><div class="a-name">Neon</div><div class="a-games">3 games</div></div>
+                <div class="a-nums">
+                    <div><div class="a-num-v">66.7%</div><div class="a-num-l">WR</div></div>
+                    <div><div class="a-num-v">1.38</div><div class="a-num-l">K/D</div></div>
+                </div>
+            </div>
+            <div class="a-row">
+                <div class="a-icon">J</div>
+                <div class="a-info"><div class="a-name">Jett</div><div class="a-games">2 games</div></div>
+                <div class="a-nums">
+                    <div><div class="a-num-v">50.0%</div><div class="a-num-l">WR</div></div>
+                    <div><div class="a-num-v">1.45</div><div class="a-num-l">K/D</div></div>
+                </div>
+            </div>
+            <div class="a-row">
+                <div class="a-icon">C</div>
+                <div class="a-info"><div class="a-name">Cypher</div><div class="a-games">1 game</div></div>
+                <div class="a-nums">
+                    <div><div class="a-num-v">0.0%</div><div class="a-num-l">WR</div></div>
+                    <div><div class="a-num-v">2.35</div><div class="a-num-l">K/D</div></div>
+                </div>
+            </div>
+
+            <!-- Win Rate inline -->
+            <div class="card-winrate" style="border-top:1px solid var(--border);">
+                <div class="wr-title">Win / Loss</div>
+                <div class="wr-bar">
+                    <div class="wr-seg-w" style="width:40%"></div>
+                    <div class="wr-seg-l" style="width:60%"></div>
+                </div>
+                <div class="wr-nums">
+                    <span class="wn">4W (40%)</span>
+                    <span class="ln">6L (60%)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

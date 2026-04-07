@@ -9,113 +9,88 @@
 
 {% block content %}
 <div class="container player-page">
-    {# Player Header #}
-    <section class="player-header">
-        <div class="player-avatar">
-            {% if player.card and player.card.get('small') %}
-            <img src="{{ player.card.small }}" alt="{{ player.name }}" width="80" height="80">
-            {% else %}
-            <div class="avatar-placeholder"></div>
-            {% endif %}
-        </div>
-        <div class="player-info">
-            <h1 class="player-name">{{ player.name }}<span class="player-tag">#{{ player.tag }}</span></h1>
-            <div class="player-rank">
-                <span class="rank-badge-lg rank-{{ player.current_rank.split(' ')[0]|lower }}">
-                    {{ player.current_rank }}
-                </span>
-                <span class="rank-rr">{{ player.current_rr }} RR</span>
+    <section class="player-hero">
+        <div class="hero-content">
+            <div class="hero-avatar">
+                {% if player.card and player.card.get('small') %}
+                <img src="{{ player.card.small }}" alt="{{ player.name }}" width="100" height="100">
+                {% else %}<div class="avatar-placeholder"></div>{% endif %}
             </div>
-            {% if player.peak_rank and player.peak_rank != player.current_rank %}
-            <div class="player-peak">Peak: {{ player.peak_rank }}</div>
-            {% endif %}
-            <div class="player-level">Level {{ player.account_level }}</div>
-        </div>
-        <div class="player-actions">
-            <button class="btn-share" onclick="navigator.clipboard.writeText(window.location.href).then(function(){var b=document.querySelector('.btn-share');b.textContent='Copied!';setTimeout(function(){b.innerHTML='&lt;svg width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8&quot;/&gt;&lt;polyline points=&quot;16 6 12 2 8 6&quot;/&gt;&lt;line x1=&quot;12&quot; y1=&quot;2&quot; x2=&quot;12&quot; y2=&quot;15&quot;/&gt;&lt;/svg&gt; Share';},1500)})">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/>
-                </svg>
-                Share
-            </button>
-        </div>
-    </section>
-
-    {# Stats Overview #}
-    <section class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-value {{ 'stat-good' if player.kd >= 1.0 else 'stat-bad' }}">{{ player.kd }}</div>
-            <div class="stat-label">K/D</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value {{ 'stat-good' if player.win_pct >= 50 else 'stat-bad' }}">{{ player.win_pct }}%</div>
-            <div class="stat-label">Win Rate</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value">{{ player.hs_pct }}%</div>
-            <div class="stat-label">HS%</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value stat-text">{{ player.top_agent }}</div>
-            <div class="stat-label">Top Agent</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value">{{ player.total_kills }}</div>
-            <div class="stat-label">Total Kills</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value">{{ player.wins }}W {{ player.losses }}L</div>
-            <div class="stat-label">Record</div>
+            <div class="hero-info">
+                <h1 class="hero-name">{{ player.name }} <span class="hero-tag">#{{ player.tag }}</span></h1>
+                <div class="hero-meta">
+                    <span>Level {{ player.account_level }}</span>
+                    <span>{{ player.region | upper }}</span>
+                    {% if player.peak_rank and player.peak_rank != player.current_rank %}<span>Peak: {{ player.peak_rank }}</span>{% endif %}
+                </div>
+                <button class="btn-share" onclick="navigator.clipboard.writeText(window.location.href).then(function(){var b=document.querySelector('.btn-share');b.textContent='Copied!';setTimeout(function(){b.innerHTML='<svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;><path d=&quot;M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8&quot;/><polyline points=&quot;16 6 12 2 8 6&quot;/><line x1=&quot;12&quot; y1=&quot;2&quot; x2=&quot;12&quot; y2=&quot;15&quot;/></svg> Share Profile';},1500)})">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                    Share Profile
+                </button>
+            </div>
+            <div class="hero-rank rank-{{ player.current_rank.split(' ')[0]|lower }}">
+                <div class="rank-name">{{ player.current_rank | upper }}</div>
+                <div class="rank-rr-val">{{ player.current_rr }} RR</div>
+            </div>
         </div>
     </section>
 
-    {# Recent Matches (expanded to 10) #}
-    <section class="section">
-        <div class="section-header">
-            <h2>Recent Matches</h2>
-            <a href="/player/{{ player.name }}/{{ player.tag }}/matches/" class="link-more">View All</a>
+    <section class="stats-bar">
+        <div class="stat-item"><div class="stat-val {{ 'good' if player.kd >= 1.0 else 'bad' }}">{{ player.kd }}</div><div class="stat-lbl">K/D Ratio</div></div>
+        <div class="stat-item"><div class="stat-val {{ 'good' if player.win_pct >= 50 else 'bad' }}">{{ player.win_pct }}%</div><div class="stat-lbl">Win Rate</div></div>
+        <div class="stat-item"><div class="stat-val">{{ player.hs_pct }}%</div><div class="stat-lbl">Headshot %</div></div>
+        <div class="stat-item"><div class="stat-val text-only">{{ player.top_agent }}</div><div class="stat-lbl">Top Agent</div></div>
+        <div class="stat-item"><div class="stat-val">{{ player.total_kills }}</div><div class="stat-lbl">Kills</div></div>
+        <div class="stat-item"><div class="stat-val">{{ player.total_deaths }}</div><div class="stat-lbl">Deaths</div></div>
+    </section>
+
+    <div class="content-cols">
+        <div class="section-card">
+            <div class="section-head"><h2>Recent Matches</h2><a href="/player/{{ player.name }}/{{ player.tag }}/matches/">View All</a></div>
+            {% if player.matches %}
+                {% for m in player.matches[:10] %}
+                <div class="match-row">
+                    <div class="match-result {{ 'win' if m.won else 'loss' }}">{{ "W" if m.won else "L" }}</div>
+                    <div class="match-map">{{ m.map }}</div>
+                    <div class="match-agent">{{ m.agent }}</div>
+                    <div class="match-score">{{ m.rounds_won }}-{{ m.rounds_lost }}</div>
+                    <div class="match-kda">{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</div>
+                    <div class="match-diff {{ 'positive' if m.kd_diff > 0 else 'negative' if m.kd_diff < 0 else '' }}">{{ '+' if m.kd_diff > 0 else '' }}{{ m.kd_diff }}</div>
+                </div>
+                {% endfor %}
+            {% else %}<p class="empty-state">No recent matches found.</p>{% endif %}
         </div>
-        {% if player.matches %}
-        <div class="matches-list">
-            {% for m in player.matches[:10] %}
-            <div class="match-card {{ 'match-win' if m.won else 'match-loss' }}">
-                <div class="match-result">{{ "W" if m.won else "L" }}</div>
-                <div class="match-map">{{ m.map }}</div>
-                <div class="match-agent">{{ m.agent }}</div>
-                <div class="match-score">{{ m.rounds_won }}-{{ m.rounds_lost }}</div>
-                <div class="match-kda">{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</div>
-                <div class="match-kd-diff {{ 'positive' if m.kd_diff > 0 else 'negative' if m.kd_diff < 0 else '' }}">
-                    {{ '+' if m.kd_diff > 0 else '' }}{{ m.kd_diff }}
+
+        <div>
+            <div class="section-card">
+                <div class="section-head"><h2>Top Agents</h2><a href="/player/{{ player.name }}/{{ player.tag }}/agents/">View All</a></div>
+                {% if player.agents %}
+                    {% for a in player.agents[:4] %}
+                    <div class="agent-item">
+                        <div class="agent-icon-sm"><img src="/static/img/agents/{{ a.name|lower|replace(' ', '-')|replace('/', '-') }}.png" alt="{{ a.name }}" onerror="this.style.display='none'"></div>
+                        <div class="agent-item-info"><div class="agent-item-name">{{ a.name }}</div><div class="agent-item-games">{{ a.games }} game{{ 's' if a.games != 1 else '' }}</div></div>
+                        <div class="agent-item-stats">
+                            <div class="agent-stat-box"><div class="agent-stat-val">{{ a.win_rate }}%</div><div class="agent-stat-lbl">Win</div></div>
+                            <div class="agent-stat-box"><div class="agent-stat-val">{{ a.kd }}</div><div class="agent-stat-lbl">K/D</div></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}<p class="empty-state">No agent data.</p>{% endif %}
+            </div>
+
+            {% if player.wins or player.losses %}
+            {% set total = player.wins + player.losses %}
+            {% set wp = (player.wins / total * 100) if total > 0 else 0 %}
+            <div class="section-card">
+                <div class="section-head"><h2>Win / Loss</h2></div>
+                <div class="winloss-section">
+                    <div class="winloss-bar"><div class="winloss-w" style="width:{{ wp }}%"></div><div class="winloss-l" style="width:{{ 100 - wp }}%"></div></div>
+                    <div class="winloss-labels"><span class="wl-w">{{ player.wins }}W ({{ wp|round(0)|int }}%)</span><span class="wl-l">{{ player.losses }}L ({{ (100-wp)|round(0)|int }}%)</span></div>
                 </div>
             </div>
-            {% endfor %}
+            {% endif %}
         </div>
-        {% else %}
-        <p class="empty-state">No recent matches found.</p>
-        {% endif %}
-    </section>
-
-    {# Agent Stats #}
-    <section class="section">
-        <div class="section-header">
-            <h2>Agent Stats</h2>
-            <a href="/player/{{ player.name }}/{{ player.tag }}/agents/" class="link-more">View All</a>
-        </div>
-        {% if player.agents %}
-        <div class="agents-list">
-            {% for a in player.agents[:5] %}
-            <div class="agent-row">
-                <div class="agent-name">{{ a.name }}</div>
-                <div class="agent-games">{{ a.games }} games</div>
-                <div class="agent-wr">{{ a.win_rate }}% WR</div>
-                <div class="agent-kd">{{ a.kd }} K/D</div>
-            </div>
-            {% endfor %}
-        </div>
-        {% else %}
-        <p class="empty-state">No agent data available.</p>
-        {% endif %}
-    </section>
+    </div>
 </div>
 {% endblock %}
 
@@ -127,10 +102,7 @@
     "name": "{{ player.name }}#{{ player.tag }} Valorant Stats",
     "description": "{{ player.name }}#{{ player.tag }} — {{ player.current_rank }}, K/D {{ player.kd }}, {{ player.win_pct }}% win rate",
     "url": "{{ config.BASE_URL }}/player/{{ player.name }}/{{ player.tag }}/",
-    "mainEntity": {
-        "@type": "Person",
-        "name": "{{ player.name }}#{{ player.tag }}"
-    }
+    "mainEntity": { "@type": "Person", "name": "{{ player.name }}#{{ player.tag }}" }
 }
 </script>
 {% endblock %}

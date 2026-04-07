@@ -9,18 +9,15 @@
     </div>
     <h1>Match History</h1>
     {% if player.matches %}
-    <div class="matches-list">
+    <div class="section-card" style="margin-top:16px;">
         {% for m in player.matches %}
-        <div class="match-card {{ 'match-win' if m.won else 'match-loss' }}">
-            <div class="match-result">{{ "W" if m.won else "L" }}</div>
+        <div class="match-row">
+            <div class="match-result {{ 'win' if m.won else 'loss' }}">{{ "W" if m.won else "L" }}</div>
             <div class="match-map">{{ m.map }}</div>
             <div class="match-agent">{{ m.agent }}</div>
             <div class="match-score">{{ m.rounds_won }}-{{ m.rounds_lost }}</div>
             <div class="match-kda">{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</div>
-            <div class="match-kd-diff {{ 'positive' if m.kd_diff > 0 else 'negative' if m.kd_diff < 0 else '' }}">
-                {{ '+' if m.kd_diff > 0 else '' }}{{ m.kd_diff }}
-            </div>
-            <div class="match-date">{{ m.started_at }}</div>
+            <div class="match-diff {{ 'positive' if m.kd_diff > 0 else 'negative' if m.kd_diff < 0 else '' }}">{{ '+' if m.kd_diff > 0 else '' }}{{ m.kd_diff }}</div>
         </div>
         {% endfor %}
     </div>

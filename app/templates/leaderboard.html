@@ -12,7 +12,7 @@
     </div>
 
     {% if players %}
-    <div class="leaderboard-table">
+    <div class="lb-table">
         <div class="lb-header">
             <span>#</span>
             <span>Player</span>
@@ -27,9 +27,7 @@
                 {% set ptag = p.tag | default(p.tagLine | default('')) %}
                 {% if pname %}
                 <a href="/player/{{ pname }}/{{ ptag | default('NA') }}/">{{ pname }}#{{ ptag | default('NA') }}</a>
-                {% else %}
-                Secret Agent
-                {% endif %}
+                {% else %}Secret Agent{% endif %}
             </span>
             <span class="lb-rr">{{ p.rr | default(p.rankedRating | default(0)) }}</span>
             <span class="lb-wins">{{ p.wins | default(p.numberOfWins | default(0)) }}</span>
