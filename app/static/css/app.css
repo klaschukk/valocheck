@@ -841,6 +841,170 @@ main {
     color: var(--text-muted);
 }
 
+
+/* ── Rank Badge Large (Player Page) ──── */
+.rank-badge-lg {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: var(--radius);
+    font-size: 1.125rem;
+    font-weight: 700;
+    background: var(--bg-card);
+    letter-spacing: 0.5px;
+}
+
+.rank-badge-lg.rank-iron { color: var(--rank-iron); border: 2px solid var(--rank-iron); box-shadow: 0 0 12px rgba(94, 94, 94, 0.3); }
+.rank-badge-lg.rank-bronze { color: var(--rank-bronze); border: 2px solid var(--rank-bronze); box-shadow: 0 0 12px rgba(168, 115, 62, 0.3); }
+.rank-badge-lg.rank-silver { color: var(--rank-silver); border: 2px solid var(--rank-silver); box-shadow: 0 0 12px rgba(192, 192, 192, 0.3); }
+.rank-badge-lg.rank-gold { color: var(--rank-gold); border: 2px solid var(--rank-gold); box-shadow: 0 0 12px rgba(232, 200, 88, 0.3); }
+.rank-badge-lg.rank-platinum { color: var(--rank-platinum); border: 2px solid var(--rank-platinum); box-shadow: 0 0 16px rgba(62, 184, 176, 0.35); }
+.rank-badge-lg.rank-diamond { color: var(--rank-diamond); border: 2px solid var(--rank-diamond); box-shadow: 0 0 16px rgba(180, 137, 196, 0.35); }
+.rank-badge-lg.rank-ascendant { color: var(--rank-ascendant); border: 2px solid var(--rank-ascendant); box-shadow: 0 0 20px rgba(45, 190, 108, 0.4); }
+.rank-badge-lg.rank-immortal { color: var(--rank-immortal); border: 2px solid var(--rank-immortal); box-shadow: 0 0 20px rgba(255, 70, 85, 0.4); }
+.rank-badge-lg.rank-radiant { color: var(--rank-radiant); border: 2px solid var(--rank-radiant); box-shadow: 0 0 24px rgba(252, 233, 124, 0.5); }
+.rank-badge-lg.rank-unrated { color: var(--text-muted); border: 2px solid var(--text-dim); }
+
+/* ── Player Actions ──────────────────── */
+.player-actions {
+    margin-left: auto;
+}
+
+.btn-share {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.btn-share:hover {
+    background: var(--bg-hover);
+    color: var(--text);
+    border-color: var(--accent);
+}
+
+.player-level {
+    color: var(--text-dim);
+    font-size: 0.8125rem;
+    margin-top: 4px;
+}
+
+/* ── Stat colors ─────────────────────── */
+.stat-good {
+    color: var(--positive);
+}
+
+.stat-bad {
+    color: var(--negative);
+}
+
+.stat-text {
+    font-size: 1rem;
+}
+
+/* ── Enhanced hover effects ──────────── */
+.stat-card {
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.match-card {
+    transition: background 0.15s;
+}
+
+.match-card:hover {
+    background: var(--bg-hover);
+}
+
+.agent-row {
+    transition: background 0.15s;
+}
+
+.agent-row:hover {
+    background: var(--bg-hover);
+}
+
+.lb-row {
+    transition: background 0.15s;
+}
+
+.lb-row:hover {
+    background: var(--bg-hover);
+}
+
+.content-card {
+    transition: background 0.15s, transform 0.15s;
+}
+
+.content-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Error pages enhanced ────────────── */
+.error-code {
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 8px;
+    text-shadow: 0 0 40px rgba(255, 70, 85, 0.4);
+}
+
+.error-page h1 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.error-search {
+    margin: 24px auto;
+}
+
+/* ── Loading skeleton ────────────────── */
+@keyframes skeleton-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
+
+.skeleton {
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-text {
+    height: 14px;
+    margin-bottom: 8px;
+}
+
+.skeleton-title {
+    height: 24px;
+    width: 60%;
+    margin-bottom: 12px;
+}
+
+.skeleton-card {
+    height: 48px;
+    margin-bottom: 4px;
+}
+
+/* ── Focus visible ───────────────────── */
+a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 /* ── Responsive ───────────────────────── */
 @media (max-width: 640px) {
     .hero-title {
@@ -901,5 +1065,18 @@ main {
         flex-direction: column;
         align-items: center;
         text-align: center;
+    }
+
+    .player-actions {
+        margin-left: 0;
+        margin-top: 12px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .error-code {
+        font-size: 5rem;
     }
 }

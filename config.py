@@ -7,5 +7,5 @@ class Config:
     HENRIK_API_KEY = os.environ.get("HENRIK_API_KEY", "")
     HENRIK_API_BASE = "https://api.henrikdev.xyz"
     DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "cache.db")
-    BASE_URL = os.environ.get("BASE_URL", "http://127.0.0.1:5001")
+    BASE_URL = os.environ.get("BASE_URL", "https://valocheck.gg")
     CACHE_TTL = 300  # 5 minutes

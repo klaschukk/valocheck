@@ -109,7 +109,7 @@ def sitemap():
             try:
                 with open(fpath) as f:
                     players = json.load(f)
-                for p in players[:100]:
+                for p in players[:500]:
                     name = p.get("name") or p.get("gameName", "")
                     tag = p.get("tag") or p.get("tagLine", "")
                     if name and tag:

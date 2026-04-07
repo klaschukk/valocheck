@@ -1,11 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %}Not Found | ValoCheck{% endblock %}
+{% block title %}404 — Agent Not Found | ValoCheck{% endblock %}
 
 {% block content %}
 <div class="container error-page">
-    <h1>404</h1>
-    <p>Player not found or page doesn't exist.</p>
-    <a href="/" class="btn">Search Players</a>
+    <div class="error-code">404</div>
+    <h1>Agent Not Found</h1>
+    <p>This player went off the grid. Check the Riot ID and try again.</p>
+    <form class="search-form error-search" action="/search" method="get" autocomplete="off">
+        <div class="search-wrapper">
+            <input type="text" name="q" class="search-input" placeholder="Name#TAG" required aria-label="Search player">
+            <button type="submit" class="search-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                </svg>
+            </button>
+        </div>
+    </form>
+    <a href="/" class="btn">Back to Home</a>
 </div>
 {% endblock %}

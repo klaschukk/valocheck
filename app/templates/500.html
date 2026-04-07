@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Error | ValoCheck{% endblock %}
+{% block title %}500 — Server Error | ValoCheck{% endblock %}
 
 {% block content %}
 <div class="container error-page">
-    <h1>500</h1>
-    <p>Something went wrong. Please try again later.</p>
+    <div class="error-code">500</div>
+    <h1>Server Crashed</h1>
+    <p>Looks like the server took a hit. We are working on getting it back up.</p>
     <a href="/" class="btn">Go Home</a>
 </div>
 {% endblock %}

@@ -21,7 +21,7 @@
         <div class="player-info">
             <h1 class="player-name">{{ player.name }}<span class="player-tag">#{{ player.tag }}</span></h1>
             <div class="player-rank">
-                <span class="rank-badge rank-{{ player.current_rank.split(' ')[0]|lower }}">
+                <span class="rank-badge-lg rank-{{ player.current_rank.split(' ')[0]|lower }}">
                     {{ player.current_rank }}
                 </span>
                 <span class="rank-rr">{{ player.current_rr }} RR</span>
@@ -29,17 +29,26 @@
             {% if player.peak_rank and player.peak_rank != player.current_rank %}
             <div class="player-peak">Peak: {{ player.peak_rank }}</div>
             {% endif %}
+            <div class="player-level">Level {{ player.account_level }}</div>
+        </div>
+        <div class="player-actions">
+            <button class="btn-share" onclick="navigator.clipboard.writeText(window.location.href).then(function(){var b=document.querySelector('.btn-share');b.textContent='Copied!';setTimeout(function(){b.innerHTML='&lt;svg width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8&quot;/&gt;&lt;polyline points=&quot;16 6 12 2 8 6&quot;/&gt;&lt;line x1=&quot;12&quot; y1=&quot;2&quot; x2=&quot;12&quot; y2=&quot;15&quot;/&gt;&lt;/svg&gt; Share';},1500)})">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/>
+                </svg>
+                Share
+            </button>
         </div>
     </section>
 
     {# Stats Overview #}
     <section class="stats-grid">
         <div class="stat-card">
-            <div class="stat-value">{{ player.kd }}</div>
+            <div class="stat-value {{ 'stat-good' if player.kd >= 1.0 else 'stat-bad' }}">{{ player.kd }}</div>
             <div class="stat-label">K/D</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">{{ player.win_pct }}%</div>
+            <div class="stat-value {{ 'stat-good' if player.win_pct >= 50 else 'stat-bad' }}">{{ player.win_pct }}%</div>
             <div class="stat-label">Win Rate</div>
         </div>
         <div class="stat-card">
@@ -47,12 +56,20 @@
             <div class="stat-label">HS%</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">{{ player.top_agent }}</div>
+            <div class="stat-value stat-text">{{ player.top_agent }}</div>
             <div class="stat-label">Top Agent</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ player.total_kills }}</div>
+            <div class="stat-label">Total Kills</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ player.wins }}W {{ player.losses }}L</div>
+            <div class="stat-label">Record</div>
         </div>
     </section>
 
-    {# Recent Matches #}
+    {# Recent Matches (expanded to 10) #}
     <section class="section">
         <div class="section-header">
             <h2>Recent Matches</h2>
@@ -60,7 +77,7 @@
         </div>
         {% if player.matches %}
         <div class="matches-list">
-            {% for m in player.matches[:5] %}
+            {% for m in player.matches[:10] %}
             <div class="match-card {{ 'match-win' if m.won else 'match-loss' }}">
                 <div class="match-result">{{ "W" if m.won else "L" }}</div>
                 <div class="match-map">{{ m.map }}</div>
