@@ -188,6 +188,29 @@ main { flex: 1; padding: 24px 0 48px; }
 .winloss-labels .wl-w { color: var(--win); }
 .winloss-labels .wl-l { color: var(--loss); }
 
+/* ══ EXTENDED STATS ROW ══ */
+.extended-row { display: grid; grid-template-columns: 140px 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+
+.donut-card { display: flex; align-items: center; justify-content: center; padding: 20px; }
+.donut-wrap { position: relative; width: 100px; height: 100px; }
+.donut-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.donut-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+.donut-val { font-family: 'Russo One', sans-serif; font-size: 1.125rem; color: var(--win); }
+.donut-sub { font-size: 0.75rem; color: var(--loss); font-weight: 600; }
+
+.extended-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.ext-stat { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 8px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.ext-stat:nth-child(3n) { border-right: none; }
+.ext-stat:nth-child(n+4) { border-bottom: none; }
+.ext-val { font-family: 'Russo One', sans-serif; font-size: 1.25rem; color: var(--accent); }
+.ext-val.text-only { font-family: 'Chakra Petch', sans-serif; font-size: 0.9375rem; font-weight: 600; color: var(--text); }
+.ext-lbl { font-size: 0.625rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+.mmr-graph-card { overflow: hidden; }
+.mmr-graph { padding: 12px 20px 16px; }
+.mmr-svg { width: 100%; height: 70px; }
+.mmr-range { display: flex; justify-content: space-between; font-size: 0.6875rem; color: var(--text-dim); margin-top: 4px; }
+
 /* ══ HOMEPAGE SECTIONS ══ */
 .home-section { padding: 24px 0; }
 .home-section .section-head { margin-bottom: 16px; }
@@ -385,6 +408,8 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
     .hero-content { flex-wrap: wrap; }
     .hero-name { font-size: 1.5rem; }
     .stats-bar { grid-template-columns: repeat(3, 1fr); }
+    .extended-row { grid-template-columns: 1fr 1fr; }
+    .mmr-graph-card { grid-column: span 2; }
     .content-cols { grid-template-columns: 1fr; }
     .match-row { grid-template-columns: 32px 1fr 50px 50px; }
     .match-agent, .match-diff { display: none; }

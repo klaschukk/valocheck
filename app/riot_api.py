@@ -116,10 +116,24 @@ def get_player_profile(name: str, tag: str) -> dict[str, Any] | None:
 
     matches_raw = henrik_api.get_matches(name, tag, player_region) or []
 
+    # Fetch MMR history for rank graph
+    mmr_history_raw = henrik_api.get_mmr_history(name, tag, player_region) or []
+    mmr_history = []
+    for h in mmr_history_raw[:20]:
+        mmr_history.append({
+            "rank": h.get("currenttierpatched", ""),
+            "rr": h.get("ranking_in_tier", 0),
+            "change": h.get("mmr_change_to_last_game", 0),
+            "elo": h.get("elo", 0),
+            "date": h.get("date_raw", 0),
+        })
+
     # Process matches
     matches = []
     total_kills, total_deaths, total_assists = 0, 0, 0
     total_headshots, total_bodyshots, total_legshots = 0, 0, 0
+    total_score, total_rounds, total_damage = 0, 0, 0
+    total_first_bloods = 0
     wins, losses = 0, 0
     agent_stats: dict[str, dict] = {}
 
@@ -147,8 +161,11 @@ def get_player_profile(name: str, tag: str) -> dict[str, Any] | None:
         headshots = stats.get("headshots", 0)
         bodyshots = stats.get("bodyshots", 0)
         legshots = stats.get("legshots", 0)
+        score = stats.get("score", 0)
         agent_name = player_data.get("character", "Unknown")
         team = player_data.get("team", "").lower()
+        damage_made = player_data.get("damage_made", 0) or 0
+        damage_received = player_data.get("damage_received", 0) or 0
 
         total_kills += kills
         total_deaths += deaths
@@ -156,6 +173,8 @@ def get_player_profile(name: str, tag: str) -> dict[str, Any] | None:
         total_headshots += headshots
         total_bodyshots += bodyshots
         total_legshots += legshots
+        total_score += score
+        total_damage += damage_made
 
         # Determine win/loss
         teams_data = match.get("teams", {})
@@ -185,6 +204,10 @@ def get_player_profile(name: str, tag: str) -> dict[str, Any] | None:
             rounds_won = teams_data[team].get("rounds_won", 0)
             rounds_lost = teams_data[team].get("rounds_lost", 0)
 
+        match_rounds = rounds_won + rounds_lost
+        total_rounds += match_rounds
+        match_acs = round(score / max(match_rounds, 1))
+
         matches.append({
             "map": metadata.get("map", "Unknown"),
             "mode": metadata.get("mode", ""),
@@ -196,6 +219,8 @@ def get_player_profile(name: str, tag: str) -> dict[str, Any] | None:
             "won": won,
             "rounds_won": rounds_won,
             "rounds_lost": rounds_lost,
+            "acs": match_acs,
+            "damage": damage_made,
             "started_at": metadata.get("game_start_patched", ""),
             "match_id": metadata.get("matchid", ""),
         })
@@ -203,9 +228,13 @@ def get_player_profile(name: str, tag: str) -> dict[str, Any] | None:
     # Calculate aggregates
     total_games = wins + losses
     kd = round(total_kills / max(total_deaths, 1), 2)
+    kad = round((total_kills + total_assists) / max(total_deaths, 1), 2)
     total_shots = total_headshots + total_bodyshots + total_legshots
     hs_pct = round(total_headshots / max(total_shots, 1) * 100, 1)
     win_pct = round(wins / max(total_games, 1) * 100, 1)
+    acs = round(total_score / max(total_rounds, 1))
+    dmg_per_round = round(total_damage / max(total_rounds, 1), 1)
+    kills_per_round = round(total_kills / max(total_rounds, 1), 1)
 
     # Top agent
     top_agent = max(agent_stats, key=lambda a: agent_stats[a]["games"]) if agent_stats else "Unknown"
@@ -248,8 +277,13 @@ def get_player_profile(name: str, tag: str) -> dict[str, Any] | None:
         "rank_tier": rank_tier,
         "peak_rank": peak_rank,
         "kd": kd,
+        "kad": kad,
         "win_pct": win_pct,
         "hs_pct": hs_pct,
+        "acs": acs,
+        "dmg_per_round": dmg_per_round,
+        "kills_per_round": kills_per_round,
+        "total_rounds": total_rounds,
         "top_agent": top_agent,
         "total_kills": total_kills,
         "total_deaths": total_deaths,
@@ -258,4 +292,5 @@ def get_player_profile(name: str, tag: str) -> dict[str, Any] | None:
         "losses": losses,
         "matches": matches,
         "agents": agents_display,
+        "mmr_history": mmr_history,
     }

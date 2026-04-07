@@ -35,14 +35,67 @@
         </div>
     </section>
 
+    {# ── Primary Stats Bar ── #}
     <section class="stats-bar">
         <div class="stat-item"><div class="stat-val {{ 'good' if player.kd >= 1.0 else 'bad' }}">{{ player.kd }}</div><div class="stat-lbl">K/D Ratio</div></div>
         <div class="stat-item"><div class="stat-val {{ 'good' if player.win_pct >= 50 else 'bad' }}">{{ player.win_pct }}%</div><div class="stat-lbl">Win Rate</div></div>
         <div class="stat-item"><div class="stat-val">{{ player.hs_pct }}%</div><div class="stat-lbl">Headshot %</div></div>
-        <div class="stat-item"><div class="stat-val text-only">{{ player.top_agent }}</div><div class="stat-lbl">Top Agent</div></div>
-        <div class="stat-item"><div class="stat-val">{{ player.total_kills }}</div><div class="stat-lbl">Kills</div></div>
-        <div class="stat-item"><div class="stat-val">{{ player.total_deaths }}</div><div class="stat-lbl">Deaths</div></div>
+        <div class="stat-item"><div class="stat-val">{{ player.acs }}</div><div class="stat-lbl">ACS</div></div>
+        <div class="stat-item"><div class="stat-val">{{ player.dmg_per_round }}</div><div class="stat-lbl">DMG/Round</div></div>
+        <div class="stat-item"><div class="stat-val">{{ player.kills_per_round }}</div><div class="stat-lbl">K/Round</div></div>
     </section>
+
+    {# ── Extended Stats + MMR Graph Row ── #}
+    <div class="extended-row">
+        {# Win/Loss Donut #}
+        {% set total_g = player.wins + player.losses %}
+        {% set wp = (player.wins / total_g * 100) if total_g > 0 else 0 %}
+        <div class="section-card donut-card">
+            <div class="donut-wrap">
+                <svg viewBox="0 0 36 36" class="donut-svg">
+                    <path class="donut-bg" d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3" stroke="rgba(255,70,85,0.3)"/>
+                    <path class="donut-fg" d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3" stroke="var(--win)" stroke-dasharray="{{ wp }}, 100" stroke-linecap="round"/>
+                </svg>
+                <div class="donut-center">
+                    <div class="donut-val">{{ player.wins }}W</div>
+                    <div class="donut-sub">{{ player.losses }}L</div>
+                </div>
+            </div>
+        </div>
+
+        {# Secondary Stats #}
+        <div class="section-card extended-stats">
+            <div class="ext-stat"><span class="ext-val">{{ player.total_kills }}</span><span class="ext-lbl">Kills</span></div>
+            <div class="ext-stat"><span class="ext-val">{{ player.total_deaths }}</span><span class="ext-lbl">Deaths</span></div>
+            <div class="ext-stat"><span class="ext-val">{{ player.total_assists }}</span><span class="ext-lbl">Assists</span></div>
+            <div class="ext-stat"><span class="ext-val">{{ player.kad }}</span><span class="ext-lbl">KAD</span></div>
+            <div class="ext-stat"><span class="ext-val">{{ player.total_rounds }}</span><span class="ext-lbl">Rounds</span></div>
+            <div class="ext-stat"><span class="ext-val text-only">{{ player.top_agent }}</span><span class="ext-lbl">Top Agent</span></div>
+        </div>
+
+        {# MMR History Graph #}
+        {% if player.mmr_history %}
+        <div class="section-card mmr-graph-card">
+            <div class="section-head"><h2>Rank Rating</h2></div>
+            <div class="mmr-graph">
+                {% set rr_vals = player.mmr_history | map(attribute='rr') | list %}
+                {% set rr_max = rr_vals | max %}
+                {% set rr_min = rr_vals | min %}
+                {% set rr_range = rr_max - rr_min if rr_max != rr_min else 1 %}
+                <svg viewBox="0 0 {{ (player.mmr_history | length - 1) * 30 + 20 }} 80" class="mmr-svg" preserveAspectRatio="none">
+                    <polyline fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" points="{% for h in player.mmr_history | reverse %}{{ loop.index0 * 30 + 10 }},{{ 70 - ((h.rr - rr_min) / rr_range * 60) }} {% endfor %}"/>
+                    {% for h in player.mmr_history | reverse %}
+                    <circle cx="{{ loop.index0 * 30 + 10 }}" cy="{{ 70 - ((h.rr - rr_min) / rr_range * 60) }}" r="3" fill="{% if h.change >= 0 %}var(--win){% else %}var(--loss){% endif %}" />
+                    {% endfor %}
+                </svg>
+                <div class="mmr-range">
+                    <span>{{ rr_min }} RR</span>
+                    <span>{{ rr_max }} RR</span>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
 
     <div class="content-cols">
         <div class="section-card">
