@@ -4,8 +4,6 @@
    Russo One + Chakra Petch, tactical dark theme
    ═══════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Russo+One&display=swap');
-
 :root {
     --bg: #0a0e17;
     --bg-surface: #111827;
