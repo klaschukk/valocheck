@@ -37,7 +37,22 @@ def _load_maps() -> list[dict]:
 
 @main_bp.route("/")
 def index():
-    return render_template("index.html")
+    agents = _load_agents()[:8]
+    maps = _load_maps()[:6]
+
+    # Load top 10 from each region for homepage preview
+    top_players: dict[str, list] = {}
+    lb_dir = os.path.join(os.path.dirname(current_app.root_path), "data", "leaderboard")
+    for region in ["eu", "na", "ap", "kr"]:
+        fpath = os.path.join(lb_dir, f"{region}.json")
+        if os.path.exists(fpath):
+            try:
+                with open(fpath) as f:
+                    top_players[region] = json.load(f)[:10]
+            except (json.JSONDecodeError, OSError):
+                top_players[region] = []
+
+    return render_template("index.html", agents=agents, maps=maps, top_players=top_players)
 
 
 @main_bp.route("/search")
