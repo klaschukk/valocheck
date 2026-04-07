@@ -48,11 +48,17 @@ def fetch_region(region: str) -> list[dict]:
                 break
             resp.raise_for_status()
             data = resp.json()
-            page = data.get("data", data) if isinstance(data, dict) else data
+            # v2 returns {"players": [...]} or {"data": [...]}
+            if isinstance(data, dict):
+                page = data.get("players") or data.get("data") or []
+            else:
+                page = data
             if not page or not isinstance(page, list):
                 break
 
             for p in page:
+                if len(players) >= MAX_PLAYERS:
+                    break
                 players.append({
                     "name": p.get("gameName", ""),
                     "tag": p.get("tagLine", ""),
@@ -61,7 +67,7 @@ def fetch_region(region: str) -> list[dict]:
                     "wins": p.get("numberOfWins", 0),
                 })
 
-            logger.info("  %s: fetched %d-%d (%d players)", region, start, start + len(page), len(players))
+            logger.info("  %s: fetched %d players", region, len(players))
 
             if len(page) < PAGE_SIZE:
                 break
