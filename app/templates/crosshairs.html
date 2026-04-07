@@ -92,38 +92,16 @@
     {# Pro Crosshairs #}
     <section class="section" style="margin-top:40px;">
         <h2>Pro Player Crosshairs</h2>
-        <p class="section-desc">Popular crosshairs used by professional Valorant players.</p>
+        <p class="section-desc">{{ pro_crosshairs | length }} crosshairs from professional Valorant players. Click to load.</p>
         <div class="pro-xhairs-grid">
-            <div class="pro-xhair-card" onclick="loadPreset(5,2,3,1,false,false,'#00FFFF')">
-                <div class="pro-xhair-name">TenZ</div>
-                <div class="pro-xhair-team">Sentinels</div>
-                <div class="pro-xhair-code">0;P;c;5;h;0;0l;5;0o;3;0a;1;0f;0;1b;0</div>
+            {% for xh in pro_crosshairs %}
+            <div class="pro-xhair-card" onclick="document.getElementById('xhairCode').value='{{ xh.code }}';document.getElementById('xhairCode').select()">
+                <div class="pro-xhair-name">{{ xh.player }}</div>
+                <div class="pro-xhair-team">{{ xh.team }} &middot; {{ xh.region }}</div>
+                <div class="pro-xhair-style">{{ xh.style }} &middot; {{ xh.color }}</div>
+                <div class="pro-xhair-code">{{ xh.code }}</div>
             </div>
-            <div class="pro-xhair-card" onclick="loadPreset(4,2,2,1,false,false,'#00FF00')">
-                <div class="pro-xhair-name">Aspas</div>
-                <div class="pro-xhair-team">LOUD</div>
-                <div class="pro-xhair-code">0;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0</div>
-            </div>
-            <div class="pro-xhair-card" onclick="loadPreset(3,2,2,1,true,false,'#FFFFFF')">
-                <div class="pro-xhair-name">yay</div>
-                <div class="pro-xhair-team">Cloud9</div>
-                <div class="pro-xhair-code">0;P;c;5;h;0;d;1;0l;3;0o;2;0a;1;0f;0;1b;0</div>
-            </div>
-            <div class="pro-xhair-card" onclick="loadPreset(4,2,2,1,false,false,'#FF0000')">
-                <div class="pro-xhair-name">Chronicle</div>
-                <div class="pro-xhair-team">FUT</div>
-                <div class="pro-xhair-code">0;P;c;4;h;0;0l;4;0o;2;0a;1;0f;0;1b;0</div>
-            </div>
-            <div class="pro-xhair-card" onclick="loadPreset(6,2,3,0,true,false,'#00FF00')">
-                <div class="pro-xhair-name">Derke</div>
-                <div class="pro-xhair-team">Fnatic</div>
-                <div class="pro-xhair-code">0;P;c;1;h;0;d;1;0l;6;0o;3;0a;1;0f;0;1b;0</div>
-            </div>
-            <div class="pro-xhair-card" onclick="loadPreset(4,2,2,1,false,false,'#FFFF00')">
-                <div class="pro-xhair-name">Demon1</div>
-                <div class="pro-xhair-team">Evil Geniuses</div>
-                <div class="pro-xhair-code">0;P;c;3;h;0;0l;4;0o;2;0a;1;0f;0;1b;0</div>
-            </div>
+            {% endfor %}
         </div>
     </section>
 </div>

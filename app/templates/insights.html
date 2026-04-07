@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block title %}Agent Insights — Valorant Meta | ValoCheck{% endblock %}
-{% block description %}Valorant agent meta insights. Pick rates, win rates, and kill percentages for all agents.{% endblock %}
+{% block description %}Valorant agent meta insights. Pick rates, win rates, and K/D ratios for all agents based on competitive play.{% endblock %}
 
 {% block content %}
 <div class="container">
     <h1>Agent Insights</h1>
-    <p class="section-desc">Agent meta overview based on competitive play data. Pick rates, win rates, and performance stats.</p>
+    <p class="section-desc">Agent meta overview based on top-ranked competitive matches. Data from Radiant/Immortal players.</p>
 
     {# Role Filter #}
     <div class="insight-filters">
@@ -17,14 +17,40 @@
         <button class="insight-filter" onclick="filterRole('Sentinel', this)">Sentinels</button>
     </div>
 
-    {# Agent Table #}
+    {% if agent_meta %}
+    {# Real data from scraper #}
     <div class="insights-table">
         <div class="insights-header">
             <span class="ins-agent-col">Agent</span>
             <span>Role</span>
-            <span>Pick Rate</span>
-            <span>Win Rate</span>
-            <span>K/D Avg</span>
+            <span>Pick %</span>
+            <span>Win %</span>
+            <span>K/D</span>
+            <span>ACS</span>
+        </div>
+        {% for m in agent_meta %}
+        <div class="insights-row" data-role="{{ m.role }}">
+            <div class="ins-agent-col">
+                {% if m.icon %}<img src="{{ m.icon }}" alt="{{ m.agent }}" width="36" height="36">{% endif %}
+                <a href="/agents/{{ m.slug }}/">{{ m.agent }}</a>
+            </div>
+            <span class="ins-role">{{ m.role }}</span>
+            <span class="ins-pick">{{ m.pick_rate }}%</span>
+            <span class="ins-wr {{ 'ins-good' if m.win_rate >= 50 else 'ins-bad' }}">{{ m.win_rate }}%</span>
+            <span class="ins-kd {{ 'ins-good' if m.kd >= 1.0 else 'ins-bad' }}">{{ m.kd }}</span>
+            <span class="ins-acs">{{ m.acs }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    {# Fallback: show agents without meta data #}
+    <div class="insights-table">
+        <div class="insights-header">
+            <span class="ins-agent-col">Agent</span>
+            <span>Role</span>
+            <span>Pick %</span>
+            <span>Win %</span>
+            <span>K/D</span>
         </div>
         {% for agent in agents %}
         <div class="insights-row" data-role="{{ agent.role }}">
@@ -33,12 +59,14 @@
                 <a href="/agents/{{ agent.slug }}/">{{ agent.name }}</a>
             </div>
             <span class="ins-role">{{ agent.role }}</span>
-            <span class="ins-pick">{{ ((loop.index0 * 7 + 13) % 30 + 2) | string + '.' + ((loop.index0 * 3 + 7) % 10) | string }}%</span>
-            <span class="ins-wr {{ 'ins-good' if (loop.index0 * 11 + 47) % 100 > 48 else 'ins-bad' }}">{{ (((loop.index0 * 11 + 47) % 10) + 46) | string }}.{{ (loop.index0 * 7 + 3) % 10 }}%</span>
-            <span class="ins-kd">{{ ((loop.index0 * 3 + 8) % 10 + 5) | string }}.{{ (loop.index0 * 7 + 2) % 10 }}%</span>
+            <span class="ins-pick">--</span>
+            <span class="ins-wr">--</span>
+            <span class="ins-kd">--</span>
         </div>
         {% endfor %}
     </div>
+    <p class="empty-state">Run the agent meta scraper to populate real data.</p>
+    {% endif %}
 </div>
 
 <script>

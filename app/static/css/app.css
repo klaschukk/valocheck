@@ -363,7 +363,10 @@ main { flex: 1; padding: 24px 0 48px; }
 .pro-xhair-card:hover { background: var(--bg-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
 .pro-xhair-name { font-family: 'Russo One', sans-serif; font-size: 1rem; }
 .pro-xhair-team { color: var(--text-muted); font-size: 0.75rem; margin-top: 2px; }
-.pro-xhair-code { color: var(--accent); font-size: 0.6875rem; font-family: monospace; margin-top: 8px; word-break: break-all; }
+.pro-xhair-style { color: var(--text-dim); font-size: 0.6875rem; margin-top: 4px; }
+.pro-xhair-code { color: var(--accent); font-size: 0.6875rem; font-family: monospace; margin-top: 6px; word-break: break-all; }
+
+.ins-acs { font-weight: 600; color: var(--accent); }
 
 /* ══ INSIGHTS ══ */
 .insight-filters { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
@@ -372,8 +375,8 @@ main { flex: 1; padding: 24px 0 48px; }
 .insight-filter.active { background: var(--primary); border-color: var(--primary); color: #fff; }
 
 .insights-table { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-.insights-header { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 8px; padding: 12px 20px; background: var(--bg-surface); border-bottom: 1px solid var(--border); font-size: 0.6875rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
-.insights-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 8px; align-items: center; padding: 12px 20px; background: var(--bg-surface); border-bottom: 1px solid rgba(30,45,61,0.3); font-size: 0.875rem; transition: background 0.12s; }
+.insights-header { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr; gap: 8px; padding: 12px 20px; background: var(--bg-surface); border-bottom: 1px solid var(--border); font-size: 0.6875rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+.insights-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr; gap: 8px; align-items: center; padding: 12px 20px; background: var(--bg-surface); border-bottom: 1px solid rgba(30,45,61,0.3); font-size: 0.875rem; transition: background 0.12s; }
 .insights-row:hover { background: var(--bg-hover); }
 .ins-agent-col { display: flex; align-items: center; gap: 10px; }
 .ins-agent-col img { width: 36px; height: 36px; border-radius: var(--radius-sm); object-fit: cover; }
