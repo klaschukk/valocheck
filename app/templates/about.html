@@ -1,13 +1,67 @@
 {% extends "base.html" %}
 
 {% block title %}About | ValoCheck{% endblock %}
+{% block description %}About ValoCheck — fast, lightweight Valorant stats tracker. Player profiles, leaderboards, agent insights, crosshair builder.{% endblock %}
 
 {% block content %}
 <div class="container">
     <h1>About ValoCheck</h1>
-    <div class="about-content">
-        <p>ValoCheck is a fast, lightweight Valorant stats tracker. Look up any player's rank, K/D ratio, win rate, match history, and agent performance.</p>
-        <p>Data is sourced from unofficial community APIs. ValoCheck is not endorsed by Riot Games.</p>
+
+    <div class="about-grid">
+        <div class="about-main">
+            <div class="section-card" style="padding:28px;">
+                <h2>What is ValoCheck?</h2>
+                <p>ValoCheck is a fast, lightweight Valorant stats tracker built for players who want instant access to their performance data without the bloat.</p>
+                <p>Look up any player by Riot ID, check K/D ratio, win rate, headshot percentage, agent performance, match history, and more.</p>
+
+                <h2 style="margin-top:24px;">Features</h2>
+                <ul class="about-features">
+                    <li>Player profiles with detailed competitive stats</li>
+                    <li>MMR history tracking with visual rank progression</li>
+                    <li>Regional leaderboards (EU, NA, AP, KR) updated every 6 hours</li>
+                    <li>Agent meta insights with pick/win rates from top-ranked play</li>
+                    <li>Crosshair builder with code export and pro player presets</li>
+                    <li>Player comparison tool for side-by-side analysis</li>
+                    <li>Game tips and guides for every rank level</li>
+                </ul>
+
+                <h2 style="margin-top:24px;">Data Sources</h2>
+                <p>Player data is sourced from the Henrik Dev API (unofficial Valorant API). Agent and map assets are from valorant-api.com.</p>
+                <p>ValoCheck is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Valorant.</p>
+            </div>
+        </div>
+
+        <div class="about-sidebar">
+            <div class="section-card" style="padding:20px;">
+                <h3>Stats</h3>
+                <div class="about-stat">
+                    <span class="about-stat-val">2000+</span>
+                    <span class="about-stat-lbl">Player profiles indexed</span>
+                </div>
+                <div class="about-stat">
+                    <span class="about-stat-val">29</span>
+                    <span class="about-stat-lbl">Agents tracked</span>
+                </div>
+                <div class="about-stat">
+                    <span class="about-stat-val">21</span>
+                    <span class="about-stat-lbl">Maps catalogued</span>
+                </div>
+                <div class="about-stat">
+                    <span class="about-stat-val">4</span>
+                    <span class="about-stat-lbl">Regions covered</span>
+                </div>
+            </div>
+
+            <div class="section-card" style="padding:20px;margin-top:16px;">
+                <h3>Tech Stack</h3>
+                <div class="about-tech">
+                    <span>Python / Flask</span>
+                    <span>SQLite</span>
+                    <span>Gunicorn + nginx</span>
+                    <span>Cloudflare</span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

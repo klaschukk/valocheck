@@ -65,11 +65,11 @@ def main():
             continue
         with open(fpath) as f:
             lb = json.load(f)
-        # Take top 12 from each region with valid names
+        # Take top 25 from each region with valid names
         count = 0
         for p in lb:
             name, tag = p.get("name", ""), p.get("tag", "")
-            if name and tag and count < 12:
+            if name and tag and count < 25:
                 players_to_check.append((name, tag, region))
                 count += 1
 
@@ -86,7 +86,7 @@ def main():
         logger.info("[%d/%d] Fetching matches for %s#%s (%s)",
                     i + 1, len(players_to_check), name, tag, region)
 
-        matches = api_get(f"/valorant/v3/matches/{region}/{name}/{tag}?filter=competitive&size=5")
+        matches = api_get(f"/valorant/v3/matches/{region}/{name}/{tag}?filter=competitive&size=10")
         if not matches or not isinstance(matches, list):
             continue
 

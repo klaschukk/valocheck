@@ -69,3 +69,89 @@ Saved 20 pro crosshairs to /home/klaschuk/valocheck/app/static/data/pro_crosshai
 2026-04-07 20:06:50,646 INFO Saved 21 maps
 2026-04-07 20:06:50,646 INFO Done!
 === Tue Apr  7 08:06:51 PM CEST 2026 All done ===
+=== Wed Apr  8 02:45:22 AM CEST 2026 Night ===
+2026-04-08 02:45:23,074 INFO Fetching leaderboard: eu
+2026-04-08 02:45:23,754 INFO   eu: fetched 500 players
+2026-04-08 02:45:26,385 INFO   eu: fetched 500 players
+2026-04-08 02:45:29,008 INFO   eu: fetched 500 players
+2026-04-08 02:45:31,617 INFO   eu: fetched 500 players
+2026-04-08 02:45:34,239 INFO   eu: fetched 500 players
+2026-04-08 02:45:36,251 INFO Saved 500 players to /home/klaschuk/valocheck/data/leaderboard/eu.json
+2026-04-08 02:45:38,251 INFO Fetching leaderboard: na
+2026-04-08 02:45:38,928 INFO   na: fetched 500 players
+2026-04-08 02:45:41,466 INFO   na: fetched 500 players
+2026-04-08 02:45:44,197 INFO   na: fetched 500 players
+2026-04-08 02:45:46,763 INFO   na: fetched 500 players
+2026-04-08 02:45:49,423 INFO   na: fetched 500 players
+2026-04-08 02:45:51,434 INFO Saved 500 players to /home/klaschuk/valocheck/data/leaderboard/na.json
+2026-04-08 02:45:53,434 INFO Fetching leaderboard: ap
+2026-04-08 02:45:54,023 INFO   ap: fetched 500 players
+2026-04-08 02:45:56,631 INFO   ap: fetched 500 players
+2026-04-08 02:45:59,295 INFO   ap: fetched 500 players
+2026-04-08 02:46:02,007 INFO   ap: fetched 500 players
+2026-04-08 02:46:04,604 INFO   ap: fetched 500 players
+2026-04-08 02:46:06,616 INFO Saved 500 players to /home/klaschuk/valocheck/data/leaderboard/ap.json
+2026-04-08 02:46:08,616 INFO Fetching leaderboard: kr
+2026-04-08 02:46:09,075 INFO   kr: fetched 500 players
+2026-04-08 02:46:11,790 INFO   kr: fetched 500 players
+2026-04-08 02:46:14,210 INFO   kr: fetched 500 players
+2026-04-08 02:46:16,613 INFO   kr: fetched 500 players
+2026-04-08 02:46:19,033 INFO   kr: fetched 500 players
+2026-04-08 02:46:21,049 INFO Saved 500 players to /home/klaschuk/valocheck/data/leaderboard/kr.json
+2026-04-08 02:46:23,050 INFO Done. Total: 2000 players across 4 regions
+2026-04-08 02:46:23,329 INFO Checking 48 players across 4 regions
+2026-04-08 02:46:23,329 INFO [1/48] Fetching matches for TH ComeBack#Aegon (eu)
+2026-04-08 02:46:24,263 INFO [2/48] Fetching matches for fractioned#5522 (eu)
+2026-04-08 02:46:27,354 INFO [3/48] Fetching matches for MercureFPS#GRIND (eu)
+2026-04-08 02:46:28,321 INFO [4/48] Fetching matches for FOKUS Pa1ze#TTV (eu)
+2026-04-08 02:46:30,866 INFO [5/48] Fetching matches for BJK ARCHFIEND#007 (eu)
+2026-04-08 02:46:32,691 INFO [6/48] Fetching matches for GS VenTT#miru (eu)
+2026-04-08 02:46:34,250 INFO [7/48] Fetching matches for Filu#KING (eu)
+2026-04-08 02:46:35,971 INFO [8/48] Fetching matches for LFT Overland#BANG (eu)
+2026-04-08 02:46:38,060 INFO [9/48] Fetching matches for Sweatyツ#2009 (eu)
+2026-04-08 02:46:40,161 INFO [10/48] Fetching matches for RAFHA Razziss#starr (eu)
+2026-04-08 02:46:42,259 INFO [11/48] Fetching matches for EP MAGNUM#rawr (eu)
+2026-04-08 02:46:44,360 INFO [12/48] Fetching matches for MegaKnight#KKR (eu)
+2026-04-08 02:46:46,461 INFO [13/48] Fetching matches for envy ion#469 (na)
+2026-04-08 02:46:48,561 INFO [14/48] Fetching matches for QOR Notexxd#amru (na)
+2026-04-08 02:46:50,660 INFO [15/48] Fetching matches for LEV spikezin#ayra (na)
+2026-04-08 02:46:52,863 INFO [16/48] Fetching matches for I SEE U BABY BOI#LVgod (na)
+2026-04-08 02:46:54,909 INFO [17/48] Fetching matches for twitch zeeraval#BRON (na)
+2026-04-08 02:46:56,964 INFO [18/48] Fetching matches for SR exa#VIC (na)
+2026-04-08 02:46:59,063 INFO [19/48] Fetching matches for heartless#css (na)
+2026-04-08 02:47:01,359 INFO [20/48] Fetching matches for Dasnerth#KING (na)
+2026-04-08 02:47:03,266 INFO [21/48] Fetching matches for SR Smoke#jamon (na)
+2026-04-08 02:47:05,365 INFO [22/48] Fetching matches for ENVY Eggsterr#NJLTC (na)
+2026-04-08 02:47:07,461 INFO [23/48] Fetching matches for Neonn#NA2 (na)
+2026-04-08 02:47:09,689 INFO [24/48] Fetching matches for etc#16yr (na)
+2026-04-08 02:47:11,666 INFO [25/48] Fetching matches for 再化降水驻守#0817 (ap)
+2026-04-08 02:47:13,767 INFO [26/48] Fetching matches for み や#tarou (ap)
+2026-04-08 02:47:15,863 INFO [27/48] Fetching matches for SacrificE#0917 (ap)
+2026-04-08 02:47:18,081 INFO [28/48] Fetching matches for cortiskorea#enist (ap)
+2026-04-08 02:47:20,074 INFO [29/48] Fetching matches for Hard Worker#grind (ap)
+2026-04-08 02:47:22,169 INFO [30/48] Fetching matches for FS Kassielsy#zxiag (ap)
+2026-04-08 02:47:27,086 INFO [31/48] Fetching matches for zxcvbnm123456789#191 (ap)
+2026-04-08 02:47:31,947 INFO [32/48] Fetching matches for Pr0digyy#taduy (ap)
+2026-04-08 02:47:33,122 INFO [33/48] Fetching matches for FANCY Nia#mchi (ap)
+2026-04-08 02:47:36,550 INFO [34/48] Fetching matches for T1A PeGasus#0912 (ap)
+2026-04-08 02:47:38,612 INFO [35/48] Fetching matches for COACH X#MEGGG (ap)
+2026-04-08 02:47:41,477 INFO [36/48] Fetching matches for Илья Петров#isagi (ap)
+2026-04-08 02:47:41,513 INFO [37/48] Fetching matches for 아카츠키는위대하다#BERH (kr)
+2026-04-08 02:47:43,609 INFO [38/48] Fetching matches for kr로디#긍정킹 (kr)
+2026-04-08 02:47:45,709 INFO [39/48] Fetching matches for 의문의네온고수#이찬혁 (kr)
+2026-04-08 02:47:47,877 INFO [40/48] Fetching matches for HelloSupRmE#슈프림 (kr)
+2026-04-08 02:47:49,912 INFO [41/48] Fetching matches for 강의해줄게팔로우해라xkxxnz#1111 (kr)
+2026-04-08 02:47:52,012 INFO [42/48] Fetching matches for 정나나를위한레디언트계정#물리치료 (kr)
+2026-04-08 02:47:54,114 INFO [43/48] Fetching matches for 신은존재하고4월3일에돌아왔다#0403 (kr)
+2026-04-08 02:47:56,213 INFO [44/48] Fetching matches for 리자넷#lo00 (kr)
+2026-04-08 02:47:58,321 INFO [45/48] Fetching matches for 2026가장기대되는유망주서태형#12년생 (kr)
+2026-04-08 02:48:00,413 INFO [46/48] Fetching matches for nouvelle vague#9999 (kr)
+2026-04-08 02:48:02,524 INFO [47/48] Fetching matches for 내 마음의 위험한 녀석#안나짱스키 (kr)
+2026-04-08 02:48:04,657 INFO [48/48] Fetching matches for SPARE#바네사강 (kr)
+2026-04-08 02:48:06,717 INFO Done! 29 agents from 60 matches. Saved to /home/klaschuk/valocheck/app/static/data/agent_meta.json
+2026-04-08 02:48:07,003 INFO Fetching agents...
+2026-04-08 02:48:07,156 INFO Saved 29 agents
+2026-04-08 02:48:08,156 INFO Fetching maps...
+2026-04-08 02:48:08,176 INFO Saved 21 maps
+2026-04-08 02:48:08,176 INFO Done!
+=== Wed Apr  8 02:48:08 AM CEST 2026 Done ===
