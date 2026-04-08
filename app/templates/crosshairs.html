@@ -125,10 +125,10 @@ document.getElementById('cPicker').onclick=function(e){
 };
 
 document.getElementById('xhCopy').onclick=function(){
-    var self=this;navigator.clipboard.writeText(document.getElementById('xhCode').value).then(function(){
-        self.textContent='Copied!';self.style.background='var(--win)';
-        setTimeout(function(){self.textContent='Copy';self.style.background='';},1500);
-    });
+    var self=this,inp=document.getElementById('xhCode');
+    function done(){self.textContent='Copied!';self.style.background='var(--win)';setTimeout(function(){self.textContent='Copy';self.style.background='';},1500);}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(inp.value).then(done);}
+    else{inp.select();inp.setSelectionRange(0,99999);document.execCommand('copy');done();}
 };
 
 // Pro presets

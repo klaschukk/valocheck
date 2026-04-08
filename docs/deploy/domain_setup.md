@@ -8,7 +8,7 @@ Register `valocheck.gg` (or alternative) at any registrar.
 ### 2. Cloudflare DNS
 - Add site to Cloudflare
 - Change nameservers at registrar to Cloudflare's
-- Add A record: `valocheck.gg` -> `81.28.248.71` (proxied)
+- Add A record: `valocheck.gg` -> `YOUR_SERVER_IP` (proxied)
 - Add CNAME: `www` -> `valocheck.gg` (proxied)
 - SSL: Full mode
 
