@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 API_URL = "https://api.henrikdev.xyz"
 API_KEY = os.environ.get("HENRIK_API_KEY", "")
-RATE_LIMIT = 2.1  # seconds between requests
+RATE_LIMIT = 3.0  # seconds between requests (30 req/min limit)
 
 session = requests.Session()
 if API_KEY:
@@ -44,7 +44,14 @@ def api_get(path: str) -> dict | list | None:
 
     try:
         resp = session.get(f"{API_URL}{path}", timeout=15)
-        if resp.status_code in (404, 429):
+        if resp.status_code == 429:
+            logger.warning("Rate limited, waiting 10s...")
+            time.sleep(10)
+            resp = session.get(f"{API_URL}{path}", timeout=15)
+            if resp.status_code == 429:
+                logger.warning("Still rate limited, skipping")
+                return None
+        if resp.status_code == 404:
             return None
         resp.raise_for_status()
         data = resp.json()

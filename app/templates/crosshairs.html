@@ -1,88 +1,101 @@
 {% extends "base.html" %}
 
 {% block title %}Crosshair Generator — Valorant | ValoCheck{% endblock %}
-{% block description %}Create custom Valorant crosshairs. Adjust color, size, outline, and export the code to use in-game.{% endblock %}
+{% block description %}Create custom Valorant crosshairs. Preview in real-time, export code for in-game use. 20+ pro player presets.{% endblock %}
 
 {% block content %}
 <div class="container">
     <h1>Crosshair Generator</h1>
-    <p class="section-desc">Build your perfect crosshair and copy the code to paste in Valorant settings.</p>
+    <p class="section-desc">Build your perfect crosshair, preview it in real-time, and export the code. Click pro presets to try their crosshairs.</p>
 
-    <div class="xhair-layout">
-        {# Preview #}
-        <div class="xhair-preview-wrap">
-            <div class="xhair-preview" id="xhairPreview">
-                <canvas id="xhairCanvas" width="300" height="300"></canvas>
+    <div class="xhair-builder">
+        {# Preview Panel — big, centered, game-like background #}
+        <div class="xhair-preview-panel">
+            <div class="xhair-canvas-wrap">
+                <canvas id="xhairCanvas" width="400" height="280"></canvas>
+                <div class="xhair-bg-label">Preview</div>
             </div>
-            <div class="xhair-code-box">
-                <label>Crosshair Code</label>
-                <div class="xhair-code-row">
+            <div class="xhair-export">
+                <div class="xhair-export-label">Crosshair Code — paste in Valorant Settings</div>
+                <div class="xhair-export-row">
                     <input type="text" id="xhairCode" readonly value="0;P;c;5;h;0;0l;4;0o;2;0a;1;0f;0;1b;0">
-                    <button class="btn" onclick="navigator.clipboard.writeText(document.getElementById('xhairCode').value).then(function(){event.target.textContent='Copied!';setTimeout(function(){event.target.textContent='Copy'},1000)})">Copy</button>
+                    <button class="btn xhair-copy-btn" id="copyBtn">Copy Code</button>
                 </div>
             </div>
         </div>
 
-        {# Controls #}
-        <div class="xhair-controls">
-            <div class="xhair-group">
-                <h3>Color</h3>
+        {# Controls Panel #}
+        <div class="xhair-controls-panel">
+            {# Color #}
+            <div class="xhair-section">
+                <div class="xhair-section-title">Color</div>
                 <div class="xhair-colors" id="colorPicker">
-                    <button class="xhair-color-btn active" data-color="#FFFFFF" style="background:#FFFFFF"></button>
-                    <button class="xhair-color-btn" data-color="#00FF00" style="background:#00FF00"></button>
-                    <button class="xhair-color-btn" data-color="#00FFFF" style="background:#00FFFF"></button>
-                    <button class="xhair-color-btn" data-color="#FF0000" style="background:#FF0000"></button>
-                    <button class="xhair-color-btn" data-color="#FF00FF" style="background:#FF00FF"></button>
-                    <button class="xhair-color-btn" data-color="#FFFF00" style="background:#FFFF00"></button>
-                    <button class="xhair-color-btn" data-color="#FF4655" style="background:#FF4655"></button>
-                    <button class="xhair-color-btn" data-color="#00FFC2" style="background:#00FFC2"></button>
+                    <button class="xhair-color active" data-color="#FFFFFF" style="background:#FFFFFF" title="White"></button>
+                    <button class="xhair-color" data-color="#00FF00" style="background:#00FF00" title="Green"></button>
+                    <button class="xhair-color" data-color="#00FFFF" style="background:#00FFFF" title="Cyan"></button>
+                    <button class="xhair-color" data-color="#FF0000" style="background:#FF0000" title="Red"></button>
+                    <button class="xhair-color" data-color="#FF00FF" style="background:#FF00FF" title="Pink"></button>
+                    <button class="xhair-color" data-color="#FFFF00" style="background:#FFFF00" title="Yellow"></button>
+                    <button class="xhair-color" data-color="#FF4655" style="background:#FF4655" title="Valorant Red"></button>
+                    <button class="xhair-color" data-color="#00FFC2" style="background:#00FFC2" title="Teal"></button>
                 </div>
             </div>
 
-            <div class="xhair-group">
-                <h3>Crosshair</h3>
-                <div class="xhair-slider">
-                    <label>Inner Line Length <span id="valLen">4</span></label>
+            {# Inner Lines #}
+            <div class="xhair-section">
+                <div class="xhair-section-title">Inner Lines</div>
+                <div class="xhair-ctrl">
+                    <span class="xhair-ctrl-label">Length</span>
                     <input type="range" id="lineLen" min="1" max="20" value="4">
+                    <span class="xhair-ctrl-val" id="valLen">4</span>
                 </div>
-                <div class="xhair-slider">
-                    <label>Inner Line Thickness <span id="valThick">2</span></label>
+                <div class="xhair-ctrl">
+                    <span class="xhair-ctrl-label">Thickness</span>
                     <input type="range" id="lineThick" min="1" max="10" value="2">
+                    <span class="xhair-ctrl-val" id="valThick">2</span>
                 </div>
-                <div class="xhair-slider">
-                    <label>Inner Line Offset <span id="valOff">2</span></label>
+                <div class="xhair-ctrl">
+                    <span class="xhair-ctrl-label">Offset</span>
                     <input type="range" id="lineOff" min="0" max="20" value="2">
+                    <span class="xhair-ctrl-val" id="valOff">2</span>
                 </div>
-                <div class="xhair-slider">
-                    <label>Outline Thickness <span id="valOut">1</span></label>
+                <div class="xhair-ctrl">
+                    <span class="xhair-ctrl-label">Outline</span>
                     <input type="range" id="outlineThick" min="0" max="4" value="1">
-                </div>
-                <div class="xhair-toggle">
-                    <label><input type="checkbox" id="centerDot"> Center Dot</label>
-                </div>
-                <div class="xhair-slider" id="dotSizeWrap" style="display:none">
-                    <label>Dot Size <span id="valDot">2</span></label>
-                    <input type="range" id="dotSize" min="1" max="8" value="2">
+                    <span class="xhair-ctrl-val" id="valOut">1</span>
                 </div>
             </div>
 
-            <div class="xhair-group">
-                <h3>Outer Lines</h3>
-                <div class="xhair-toggle">
-                    <label><input type="checkbox" id="outerOn"> Show Outer Lines</label>
+            {# Center Dot #}
+            <div class="xhair-section">
+                <div class="xhair-section-title">Center Dot</div>
+                <label class="xhair-check"><input type="checkbox" id="centerDot"> <span>Enable Center Dot</span></label>
+                <div class="xhair-ctrl" id="dotSizeWrap" style="display:none">
+                    <span class="xhair-ctrl-label">Dot Size</span>
+                    <input type="range" id="dotSize" min="1" max="8" value="2">
+                    <span class="xhair-ctrl-val" id="valDot">2</span>
                 </div>
+            </div>
+
+            {# Outer Lines #}
+            <div class="xhair-section">
+                <div class="xhair-section-title">Outer Lines</div>
+                <label class="xhair-check"><input type="checkbox" id="outerOn"> <span>Enable Outer Lines</span></label>
                 <div id="outerControls" style="display:none">
-                    <div class="xhair-slider">
-                        <label>Outer Length <span id="valOLen">2</span></label>
+                    <div class="xhair-ctrl">
+                        <span class="xhair-ctrl-label">Length</span>
                         <input type="range" id="outerLen" min="1" max="10" value="2">
+                        <span class="xhair-ctrl-val" id="valOLen">2</span>
                     </div>
-                    <div class="xhair-slider">
-                        <label>Outer Offset <span id="valOOff">6</span></label>
+                    <div class="xhair-ctrl">
+                        <span class="xhair-ctrl-label">Offset</span>
                         <input type="range" id="outerOff" min="2" max="30" value="6">
+                        <span class="xhair-ctrl-val" id="valOOff">6</span>
                     </div>
-                    <div class="xhair-slider">
-                        <label>Outer Thickness <span id="valOThick">2</span></label>
+                    <div class="xhair-ctrl">
+                        <span class="xhair-ctrl-label">Thickness</span>
                         <input type="range" id="outerThick" min="1" max="6" value="2">
+                        <span class="xhair-ctrl-val" id="valOThick">2</span>
                     </div>
                 </div>
             </div>
@@ -90,16 +103,24 @@
     </div>
 
     {# Pro Crosshairs #}
-    <section class="section" style="margin-top:40px;">
-        <h2>Pro Player Crosshairs</h2>
-        <p class="section-desc">{{ pro_crosshairs | length }} crosshairs from professional Valorant players. Click to load.</p>
-        <div class="pro-xhairs-grid">
+    <section style="margin-top:40px;">
+        <div class="section-head" style="border:none;padding:0;">
+            <h2>Pro Player Crosshairs</h2>
+            <span class="stat-lbl" style="margin:0">{{ pro_crosshairs | length }} presets</span>
+        </div>
+        <p class="section-desc">Click any card to load the crosshair code. Copy and paste in Valorant settings.</p>
+        <div class="pro-grid">
             {% for xh in pro_crosshairs %}
-            <div class="pro-xhair-card" onclick="document.getElementById('xhairCode').value='{{ xh.code }}';document.getElementById('xhairCode').select()">
-                <div class="pro-xhair-name">{{ xh.player }}</div>
-                <div class="pro-xhair-team">{{ xh.team }} &middot; {{ xh.region }}</div>
-                <div class="pro-xhair-style">{{ xh.style }} &middot; {{ xh.color }}</div>
-                <div class="pro-xhair-code">{{ xh.code }}</div>
+            <div class="pro-card" onclick="loadProCode('{{ xh.code }}', this)">
+                <canvas class="pro-mini-canvas" width="60" height="60" data-code="{{ xh.code }}"></canvas>
+                <div class="pro-card-info">
+                    <div class="pro-card-name">{{ xh.player }}</div>
+                    <div class="pro-card-team">{{ xh.team }}</div>
+                </div>
+                <div class="pro-card-meta">
+                    <span class="pro-card-region">{{ xh.region }}</span>
+                    <span class="pro-card-style">{{ xh.style }}</span>
+                </div>
             </div>
             {% endfor %}
         </div>
@@ -110,131 +131,139 @@
 (function() {
     var canvas = document.getElementById('xhairCanvas');
     var ctx = canvas.getContext('2d');
-    var state = { color: '#FFFFFF', len: 4, thick: 2, off: 2, outline: 1, dot: false, dotSize: 2, outer: false, outerLen: 2, outerOff: 6, outerThick: 2 };
+    var S = { color: '#FFFFFF', len: 4, thick: 2, off: 2, outline: 1, dot: false, dotSize: 2, outer: false, outerLen: 2, outerOff: 6, outerThick: 2 };
+    var cMap = {'#FFFFFF':'5','#00FF00':'1','#00FFFF':'5','#FF0000':'4','#FF00FF':'6','#FFFF00':'3','#FF4655':'4','#00FFC2':'5'};
 
-    var colorMap = {'#FFFFFF':'5','#00FF00':'1','#00FFFF':'5','#FF0000':'4','#FF00FF':'6','#FFFF00':'3','#FF4655':'4','#00FFC2':'5'};
+    function drawXhair(ctx, w, h, s, scale) {
+        var cx = w/2, cy = h/2;
+        var len = s.len*scale, th = s.thick*scale, off = s.off*scale, out = s.outline*scale;
+
+        if (out > 0) {
+            ctx.fillStyle = 'rgba(0,0,0,0.8)';
+            drawLines(ctx, cx, cy, len+out, th+out*2, Math.max(0, off-out));
+            if (s.outer) drawLines(ctx, cx, cy, s.outerLen*scale+out, s.outerThick*scale+out*2, Math.max(0, s.outerOff*scale-out));
+        }
+        ctx.fillStyle = s.color;
+        drawLines(ctx, cx, cy, len, th, off);
+        if (s.outer) drawLines(ctx, cx, cy, s.outerLen*scale, s.outerThick*scale, s.outerOff*scale);
+        if (s.dot) { var ds = s.dotSize*scale; ctx.fillRect(cx-ds/2, cy-ds/2, ds, ds); }
+    }
+
+    function drawLines(ctx, cx, cy, len, th, off) {
+        ctx.fillRect(cx+off, cy-th/2, len, th);
+        ctx.fillRect(cx-off-len, cy-th/2, len, th);
+        ctx.fillRect(cx-th/2, cy-off-len, th, len);
+        ctx.fillRect(cx-th/2, cy+off, th, len);
+    }
 
     function draw() {
-        var w = canvas.width, h = canvas.height, cx = w/2, cy = h/2;
+        var w = canvas.width, h = canvas.height;
         ctx.clearRect(0, 0, w, h);
-        ctx.fillStyle = '#1a2332';
+
+        // Game-like background gradient
+        var bg = ctx.createRadialGradient(w/2, h/2, 0, w/2, h/2, w*0.6);
+        bg.addColorStop(0, '#1f2d3f');
+        bg.addColorStop(1, '#0f1620');
+        ctx.fillStyle = bg;
         ctx.fillRect(0, 0, w, h);
 
-        // Grid dots
-        ctx.fillStyle = 'rgba(255,255,255,0.03)';
-        for (var x = 0; x < w; x += 20) for (var y = 0; y < h; y += 20) ctx.fillRect(x, y, 1, 1);
+        // Subtle grid
+        ctx.strokeStyle = 'rgba(255,255,255,0.03)';
+        ctx.lineWidth = 1;
+        for (var x = 0; x < w; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+        for (var y = 0; y < h; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
 
-        var s = 3; // scale
-        var len = state.len * s, thick = state.thick * s, off = state.off * s, out = state.outline * s;
+        // Faint center circle
+        ctx.beginPath(); ctx.arc(w/2, h/2, 50, 0, Math.PI*2); ctx.strokeStyle = 'rgba(255,255,255,0.04)'; ctx.stroke();
+        ctx.beginPath(); ctx.arc(w/2, h/2, 100, 0, Math.PI*2); ctx.stroke();
 
-        // Outline
-        if (out > 0) {
-            ctx.fillStyle = '#000000';
-            drawCross(ctx, cx, cy, len + out, thick + out * 2, off - out, out);
-            if (state.outer) drawCross(ctx, cx, cy, state.outerLen * s + out, state.outerThick * s + out * 2, state.outerOff * s - out, out);
-        }
-
-        // Inner lines
-        ctx.fillStyle = state.color;
-        drawCross(ctx, cx, cy, len, thick, off, 0);
-
-        // Outer lines
-        if (state.outer) {
-            ctx.fillStyle = state.color;
-            drawCross(ctx, cx, cy, state.outerLen * s, state.outerThick * s, state.outerOff * s, 0);
-        }
-
-        // Center dot
-        if (state.dot) {
-            var ds = state.dotSize * s;
-            ctx.fillStyle = state.color;
-            ctx.fillRect(cx - ds/2, cy - ds/2, ds, ds);
-        }
-
+        drawXhair(ctx, w, h, S, 3.5);
         updateCode();
     }
 
-    function drawCross(ctx, cx, cy, len, thick, off, pad) {
-        ctx.fillRect(cx + off, cy - thick/2, len, thick); // right
-        ctx.fillRect(cx - off - len, cy - thick/2, len, thick); // left
-        ctx.fillRect(cx - thick/2, cy - off - len, thick, len); // top
-        ctx.fillRect(cx - thick/2, cy + off, thick, len); // bottom
-    }
-
     function updateCode() {
-        var c = colorMap[state.color] || '5';
+        var c = cMap[S.color] || '5';
         var code = '0;P;c;' + c + ';h;0';
-        if (state.dot) code += ';d;1;sz;' + state.dotSize;
-        code += ';0l;' + state.len + ';0o;' + state.off + ';0a;1;0f;0;0t;' + state.thick;
-        if (state.outer) code += ';1b;1;1l;' + state.outerLen + ';1o;' + state.outerOff + ';1t;' + state.outerThick;
+        if (S.dot) code += ';d;1;sz;' + S.dotSize;
+        code += ';0l;' + S.len + ';0o;' + S.off + ';0a;1;0f;0;0t;' + S.thick;
+        if (S.outer) code += ';1b;1;1l;' + S.outerLen + ';1o;' + S.outerOff + ';1t;' + S.outerThick;
         else code += ';1b;0';
-        if (state.outline > 0) code += ';S;o;' + (state.outline / 2);
+        if (S.outline > 0) code += ';S;o;' + (S.outline / 2);
         document.getElementById('xhairCode').value = code;
     }
 
-    // Bind sliders
     function bind(id, key, valId) {
-        var el = document.getElementById(id);
-        el.addEventListener('input', function() {
-            state[key] = parseInt(this.value);
+        document.getElementById(id).addEventListener('input', function() {
+            S[key] = parseInt(this.value);
             document.getElementById(valId).textContent = this.value;
             draw();
         });
     }
-    bind('lineLen', 'len', 'valLen');
-    bind('lineThick', 'thick', 'valThick');
-    bind('lineOff', 'off', 'valOff');
-    bind('outlineThick', 'outline', 'valOut');
-    bind('dotSize', 'dotSize', 'valDot');
-    bind('outerLen', 'outerLen', 'valOLen');
-    bind('outerOff', 'outerOff', 'valOOff');
-    bind('outerThick', 'outerThick', 'valOThick');
+    bind('lineLen','len','valLen'); bind('lineThick','thick','valThick');
+    bind('lineOff','off','valOff'); bind('outlineThick','outline','valOut');
+    bind('dotSize','dotSize','valDot'); bind('outerLen','outerLen','valOLen');
+    bind('outerOff','outerOff','valOOff'); bind('outerThick','outerThick','valOThick');
 
     document.getElementById('centerDot').addEventListener('change', function() {
-        state.dot = this.checked;
+        S.dot = this.checked;
         document.getElementById('dotSizeWrap').style.display = this.checked ? '' : 'none';
         draw();
     });
-
     document.getElementById('outerOn').addEventListener('change', function() {
-        state.outer = this.checked;
+        S.outer = this.checked;
         document.getElementById('outerControls').style.display = this.checked ? '' : 'none';
         draw();
     });
-
-    // Color picker
     document.getElementById('colorPicker').addEventListener('click', function(e) {
-        var btn = e.target.closest('.xhair-color-btn');
+        var btn = e.target.closest('.xhair-color');
         if (!btn) return;
-        document.querySelectorAll('.xhair-color-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.querySelectorAll('.xhair-color').forEach(function(b) { b.classList.remove('active'); });
         btn.classList.add('active');
-        state.color = btn.dataset.color;
+        S.color = btn.dataset.color;
         draw();
     });
 
-    // Pro presets
-    window.loadPreset = function(len, thick, off, outline, dot, outer, color) {
-        state.len = len; state.thick = thick; state.off = off; state.outline = outline;
-        state.dot = dot; state.outer = outer; state.color = color;
-        document.getElementById('lineLen').value = len;
-        document.getElementById('lineThick').value = thick;
-        document.getElementById('lineOff').value = off;
-        document.getElementById('outlineThick').value = outline;
-        document.getElementById('centerDot').checked = dot;
-        document.getElementById('outerOn').checked = outer;
-        document.getElementById('dotSizeWrap').style.display = dot ? '' : 'none';
-        document.getElementById('outerControls').style.display = outer ? '' : 'none';
-        document.getElementById('valLen').textContent = len;
-        document.getElementById('valThick').textContent = thick;
-        document.getElementById('valOff').textContent = off;
-        document.getElementById('valOut').textContent = outline;
-        document.querySelectorAll('.xhair-color-btn').forEach(function(b) {
-            b.classList.toggle('active', b.dataset.color === color);
+    // Copy button
+    document.getElementById('copyBtn').addEventListener('click', function() {
+        var self = this;
+        navigator.clipboard.writeText(document.getElementById('xhairCode').value).then(function() {
+            self.textContent = 'Copied!'; self.classList.add('copied');
+            setTimeout(function() { self.textContent = 'Copy Code'; self.classList.remove('copied'); }, 1500);
         });
-        draw();
+    });
+
+    // Load pro code
+    window.loadProCode = function(code, el) {
+        document.getElementById('xhairCode').value = code;
+        document.querySelectorAll('.pro-card').forEach(function(c) { c.classList.remove('pro-card-active'); });
+        el.classList.add('pro-card-active');
+        // Scroll to preview
+        document.querySelector('.xhair-preview-panel').scrollIntoView({ behavior: 'smooth', block: 'center' });
     };
 
+    // Draw mini previews for pro cards
+    function drawMini(canvas, code) {
+        var c = canvas.getContext('2d');
+        var w = canvas.width, h = canvas.height;
+        c.fillStyle = '#111827'; c.fillRect(0, 0, w, h);
+
+        // Parse simple color from code
+        var color = '#FFFFFF';
+        var cm = code.match(/c;(\d)/);
+        if (cm) { var colors = {'1':'#00FF00','3':'#FFFF00','4':'#FF0000','5':'#FFFFFF','6':'#FF00FF'}; color = colors[cm[1]] || '#FFFFFF'; }
+
+        // Parse line length
+        var ll = 4; var lm = code.match(/0l;(\d+)/); if (lm) ll = parseInt(lm[1]);
+        var lo = 2; var om = code.match(/0o;(\d+)/); if (om) lo = parseInt(om[1]);
+        var hasDot = code.indexOf('d;1') !== -1;
+
+        var s = { color: color, len: ll, thick: 2, off: lo, outline: 0.5, dot: hasDot, dotSize: 2, outer: false, outerLen: 2, outerOff: 6, outerThick: 2 };
+        drawXhair(c, w, h, s, 2);
+    }
+
+    // Init
     draw();
+    document.querySelectorAll('.pro-mini-canvas').forEach(function(c) { drawMini(c, c.dataset.code); });
 })();
 </script>
 {% endblock %}
