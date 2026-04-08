@@ -80,6 +80,27 @@ def tips():
     return render_template("tips.html")
 
 
+@content_bp.route("/guides/best-agents/")
+def guide_best_agents():
+    agents = _get_agents()
+    return render_template("guides/best_agents.html", agents=agents)
+
+
+@content_bp.route("/guides/rank-distribution/")
+def guide_rank_distribution():
+    return render_template("guides/rank_distribution.html")
+
+
+@content_bp.route("/guides/crosshair-settings/")
+def guide_crosshair_settings():
+    return render_template("guides/crosshair_settings.html")
+
+
+@content_bp.route("/guides/how-to-rank-up/")
+def guide_rank_up():
+    return render_template("guides/how_to_rank_up.html")
+
+
 @content_bp.route("/agents/")
 def agents_index():
     agents = _get_agents()

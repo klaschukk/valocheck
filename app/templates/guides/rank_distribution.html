@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Valorant Rank Distribution 2026 — All Ranks Explained | ValoCheck{% endblock %}
+{% block description %}Valorant rank distribution in 2026. See what percentage of players are in each rank from Iron to Radiant. Understand the ranking system.{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-back"><a href="/tips/">&larr; Tips & Guides</a></div>
+    <h1>Valorant Rank Distribution 2026</h1>
+    <p class="section-desc">Approximate distribution of players across all competitive ranks.</p>
+
+    <div class="guide-content">
+        <div class="rank-dist-chart">
+            {% set ranks = [
+                ("Iron", 4.0, "var(--rank-iron)"),
+                ("Bronze", 10.0, "var(--rank-bronze)"),
+                ("Silver", 16.0, "var(--rank-silver)"),
+                ("Gold", 20.0, "var(--rank-gold)"),
+                ("Platinum", 18.0, "var(--rank-platinum)"),
+                ("Diamond", 14.0, "var(--rank-diamond)"),
+                ("Ascendant", 10.0, "var(--rank-ascendant)"),
+                ("Immortal", 6.0, "var(--rank-immortal)"),
+                ("Radiant", 0.4, "var(--rank-radiant)")
+            ] %}
+            {% for name, pct, color in ranks %}
+            <div class="rank-dist-row">
+                <span class="rank-dist-name" style="color:{{ color }}">{{ name }}</span>
+                <div class="rank-dist-bar-wrap">
+                    <div class="rank-dist-bar" style="width:{{ (pct / 20 * 100) }}%;background:{{ color }}"></div>
+                </div>
+                <span class="rank-dist-pct">{{ pct }}%</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <h2>What Each Rank Means</h2>
+
+        <div class="section-card" style="padding:20px;margin-top:16px;">
+            <h3 style="color:var(--rank-iron)">Iron (4%)</h3>
+            <p>New players or those still learning basic mechanics. Focus on crosshair placement, learning agent abilities, and understanding map callouts. Don't worry about losing — everyone starts here.</p>
+        </div>
+
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <h3 style="color:var(--rank-bronze)">Bronze (10%)</h3>
+            <p>You understand the basics but need to improve aim consistency and game sense. Practice counter-strafing and learn 2-3 agents well instead of playing everything.</p>
+        </div>
+
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <h3 style="color:var(--rank-silver)">Silver (16%)</h3>
+            <p>Average player. You know how to play but need to refine fundamentals. Focus on: crosshair placement, economy management, using utility before peeking, and checking corners.</p>
+        </div>
+
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <h3 style="color:var(--rank-gold)">Gold (20%)</h3>
+            <p>The most populated rank. You have decent mechanics but need better game sense. Work on: reading the minimap, rotating faster, playing for trades, and post-plant positions.</p>
+        </div>
+
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <h3 style="color:var(--rank-platinum)">Platinum (18%)</h3>
+            <p>Above average. You understand most concepts but need consistency. Focus on: aim training (15 min daily), learning lineups, understanding team compositions, and VOD reviewing your losses.</p>
+        </div>
+
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <h3 style="color:var(--rank-diamond)">Diamond (14%)</h3>
+            <p>High level player. Mechanics are good, game sense is developing. To push further: master utility usage, learn opponent tendencies, improve communication, and play with a consistent team.</p>
+        </div>
+
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <h3 style="color:var(--rank-ascendant)">Ascendant (10%)</h3>
+            <p>Top tier. You need to play near-perfectly. Focus on: team coordination, anti-strats, understanding round timings, and maintaining mental composure during long sessions.</p>
+        </div>
+
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <h3 style="color:var(--rank-immortal)">Immortal (6%)</h3>
+            <p>Elite players. Every mistake costs rounds. At this level, it's about consistency, adaptation, and minimizing deaths. Many pro players sit in Immortal when not scrimming.</p>
+        </div>
+
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <h3 style="color:var(--rank-radiant)">Radiant (0.4%)</h3>
+            <p>Top 500 per region. The absolute best. These are pro players, streamers, and aspiring pros. Only ~500 players in each region hold Radiant at any time.</p>
+            <p><a href="/leaderboard/eu/">View the Radiant leaderboard</a></p>
+        </div>
+
+        <h2>How to Check Your Rank</h2>
+        <p>Search your Riot ID on ValoCheck to see your current rank, RR, and how you compare to other players.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Valorant Rank Distribution 2026",
+    "description": "Valorant rank distribution in 2026. What percentage of players are in each rank from Iron to Radiant.",
+    "url": "{{ config.BASE_URL }}/guides/rank-distribution/",
+    "datePublished": "2026-04-08",
+    "author": {"@type": "Organization", "name": "ValoCheck"}
+}
+</script>
+{% endblock %}

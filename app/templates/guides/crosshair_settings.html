@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Best Valorant Crosshair Settings 2026 — Pro Settings Guide | ValoCheck{% endblock %}
+{% block description %}Best Valorant crosshair settings for 2026. Pro player crosshair codes, optimal settings for accuracy, and how to import crosshairs in-game.{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-back"><a href="/tips/">&larr; Tips & Guides</a></div>
+    <h1>Best Crosshair Settings 2026</h1>
+    <p class="section-desc">Pro player crosshair settings and how to find your perfect crosshair for Valorant.</p>
+
+    <div class="guide-content">
+        <h2>What Makes a Good Crosshair?</h2>
+        <p>A good crosshair should be:</p>
+        <ul class="about-features">
+            <li><strong>Visible</strong> — you need to see it on all backgrounds (light and dark maps)</li>
+            <li><strong>Small</strong> — large crosshairs obscure enemies at range</li>
+            <li><strong>Non-distracting</strong> — avoid movement error and firing error indicators (turn them off)</li>
+            <li><strong>Consistent</strong> — don't change it every week, let your muscle memory adapt</li>
+        </ul>
+
+        <h2>Recommended Settings</h2>
+
+        <div class="section-card" style="padding:20px;margin-top:16px;">
+            <h3>Beginner-Friendly Crosshair</h3>
+            <p>Color: Cyan or Green (high visibility). Inner lines: Length 4, Thickness 2, Offset 2. Outline: On (1). No center dot.</p>
+            <p>Code: <code style="color:var(--accent)">0;P;c;5;h;0;0l;4;0o;2;0a;1;0f;0;1b;0</code></p>
+            <p>This is what most pros use with minor variations. Simple, clean, works everywhere.</p>
+        </div>
+
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <h3>Dot-Only Crosshair</h3>
+            <p>Some players prefer just a center dot. Good for AWP/Operator players. Color: White. Dot size: 2-3.</p>
+            <p>Code: <code style="color:var(--accent)">0;P;c;5;h;0;d;1;sz;2;0l;0;0a;0;1b;0</code></p>
+        </div>
+
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <h3>What to Turn OFF</h3>
+            <ul class="about-features">
+                <li><strong>Movement Error</strong> — shows inaccuracy when moving. Distracting.</li>
+                <li><strong>Firing Error</strong> — crosshair expands when shooting. Distracting.</li>
+                <li><strong>Show Spectated Player's Crosshair</strong> — turn off to keep consistency.</li>
+            </ul>
+        </div>
+
+        <h2>How to Import a Crosshair Code</h2>
+        <ol class="about-features">
+            <li>Open Valorant Settings</li>
+            <li>Go to Crosshair tab</li>
+            <li>Click "Import Profile Code" (top right)</li>
+            <li>Paste the code and click Import</li>
+        </ol>
+
+        <div class="guide-cta">
+            <p>Build your own crosshair with our <a href="/crosshairs/">Crosshair Generator</a> or browse <a href="/crosshairs/">20+ pro player presets</a>.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Best Valorant Crosshair Settings 2026",
+    "description": "How to set up the best crosshair in Valorant. Pro player settings and import guide.",
+    "url": "{{ config.BASE_URL }}/guides/crosshair-settings/",
+    "step": [
+        {"@type": "HowToStep", "text": "Open Valorant Settings"},
+        {"@type": "HowToStep", "text": "Go to Crosshair tab"},
+        {"@type": "HowToStep", "text": "Click Import Profile Code"},
+        {"@type": "HowToStep", "text": "Paste the code and click Import"}
+    ]
+}
+</script>
+{% endblock %}

@@ -90,6 +90,14 @@ def sitemap():
         ("/agents/", "weekly", "0.8"),
         ("/maps/", "weekly", "0.8"),
         ("/leaderboard/", "daily", "0.9"),
+        ("/insights/", "weekly", "0.7"),
+        ("/crosshairs/", "monthly", "0.7"),
+        ("/tips/", "monthly", "0.7"),
+        ("/compare/", "monthly", "0.5"),
+        ("/guides/best-agents/", "monthly", "0.8"),
+        ("/guides/rank-distribution/", "monthly", "0.8"),
+        ("/guides/crosshair-settings/", "monthly", "0.8"),
+        ("/guides/how-to-rank-up/", "monthly", "0.8"),
         ("/about/", "monthly", "0.3"),
     ]
     for path, freq, priority in static_pages:

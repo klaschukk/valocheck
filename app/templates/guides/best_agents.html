@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Best Valorant Agents 2026 — Tier List & Guide | ValoCheck{% endblock %}
+{% block description %}Best Valorant agents ranked by tier for 2026. Complete tier list with pick rates, win rates, and recommendations for every role and rank.{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-back"><a href="/tips/">&larr; Tips & Guides</a></div>
+    <h1>Best Valorant Agents 2026</h1>
+    <p class="section-desc">Updated agent tier list based on competitive pick rates and win rates from Radiant/Immortal ranked play.</p>
+
+    <div class="guide-content">
+        <h2>S-Tier Agents</h2>
+        <p>These agents dominate the current meta and are strong picks in almost every team composition.</p>
+        <div class="guide-agents-grid">
+            {% for agent in agents[:6] %}
+            <a href="/agents/{{ agent.slug }}/" class="guide-agent-card">
+                <img src="{{ agent.icon }}" alt="{{ agent.name }}" width="48" height="48" loading="lazy">
+                <div>
+                    <div class="guide-agent-name">{{ agent.name }}</div>
+                    <div class="guide-agent-role">{{ agent.role }}</div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <h2>Best Agent by Role</h2>
+
+        <h3>Best Duelist</h3>
+        <p>Jett remains the top duelist in 2026. Her mobility with Tailwind, Updraft combos, and Blade Storm ultimate make her the best entry fragger. Raze is a close second with explosive utility and Showstopper.</p>
+        <p><strong>Recommendation:</strong> Jett for AWP players, Raze for aggressive entry, Reyna for solo queue.</p>
+
+        <h3>Best Controller</h3>
+        <p>Omen offers the most versatile controller kit. His smokes regenerate, Paranoia blinds through walls, and From the Shadows enables creative plays. Astra is better for coordinated teams.</p>
+        <p><strong>Recommendation:</strong> Omen for solo queue, Astra for 5-stacks, Viper for specific maps (Breeze, Icebox).</p>
+
+        <h3>Best Initiator</h3>
+        <p>Sova provides unmatched information gathering with Recon Bolt, Owl Drone, and Hunter's Fury. Fade is the alternative with Haunt and Prowlers for aggressive info plays.</p>
+        <p><strong>Recommendation:</strong> Sova for most maps, Fade for smaller maps, Gekko for all-around flexibility.</p>
+
+        <h3>Best Sentinel</h3>
+        <p>Cypher's camera and trapwires give permanent site control. Killjoy is equally strong with Turret and Lockdown. Chamber was nerfed but still viable for AWP setups.</p>
+        <p><strong>Recommendation:</strong> Cypher for intel, Killjoy for site lockdown, Sage for healing comps.</p>
+
+        <h2>Agent Tier List by Rank</h2>
+
+        <div class="section-card" style="padding:20px;margin-top:16px;">
+            <h3>Iron - Silver</h3>
+            <p>Play Reyna (easy kills, self-heal), Sage (healing is always useful), Phoenix (self-sufficient). Avoid complex agents like Astra or Viper until you learn map basics.</p>
+        </div>
+
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <h3>Gold - Platinum</h3>
+            <p>Start learning Omen (smokes), Sova (info), Killjoy (site hold). These agents reward game sense which you should be developing at this rank.</p>
+        </div>
+
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <h3>Diamond+</h3>
+            <p>Master Jett/Raze (entry), Astra/Omen (smokes), Fade/Sova (info), Cypher (intel). Team composition matters more here — fill what's needed.</p>
+        </div>
+    </div>
+
+    <div class="guide-cta">
+        <p>Check real-time agent stats on our <a href="/insights/">Agent Insights</a> page.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best Valorant Agents 2026 — Tier List & Guide",
+    "description": "Best Valorant agents ranked by tier for 2026. Complete tier list with recommendations for every role and rank.",
+    "url": "{{ config.BASE_URL }}/guides/best-agents/",
+    "datePublished": "2026-04-08",
+    "author": {"@type": "Organization", "name": "ValoCheck"}
+}
+</script>
+{% endblock %}
