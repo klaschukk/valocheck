@@ -6,17 +6,19 @@
 {% block content %}
 <div class="container">
     <h1>Maps</h1>
+    <p class="section-desc">All Valorant maps with previews and callouts. Click to view details.</p>
     {% if maps %}
-    <div class="content-grid maps-grid">
+    <div class="maps-grid-v2">
         {% for map in maps %}
-        <a href="/maps/{{ map.slug }}/" class="content-card map-card">
-            <div class="map-card-img">
+        <a href="/maps/{{ map.slug }}/" class="map-card-v2">
+            <div class="map-card-v2-img">
                 <img src="{{ map.splash }}" alt="{{ map.name }}" loading="lazy">
+                <div class="map-card-v2-overlay"></div>
             </div>
-            <div class="content-card-info">
-                <div class="content-card-name">{{ map.name }}</div>
-                {% if map.coordinates %}
-                <div class="content-card-meta">{{ map.coordinates }}</div>
+            <div class="map-card-v2-info">
+                <span class="map-card-v2-name">{{ map.name }}</span>
+                {% if map.callouts %}
+                <span class="map-card-v2-callouts">{{ map.callouts | length }} callouts</span>
                 {% endif %}
             </div>
         </a>

@@ -25,37 +25,63 @@ def search():
 
 @api_bp.route("/autocomplete")
 def autocomplete():
-    """Search leaderboard data for player name autocomplete."""
+    """Search players DB + leaderboard for autocomplete."""
+    from app.db import search_players
+
     q = request.args.get("q", "").strip().lower()
     if len(q) < 2:
         return jsonify([])
 
     results: list[dict] = []
-    lb_dir = os.path.join(os.path.dirname(current_app.root_path), "data", "leaderboard")
-    if not os.path.isdir(lb_dir):
-        return jsonify([])
+    seen: set[str] = set()
 
-    for fname in os.listdir(lb_dir):
-        if not fname.endswith(".json"):
-            continue
-        region = fname.replace(".json", "")
-        try:
-            with open(os.path.join(lb_dir, fname)) as f:
-                players = json.load(f)
-            for p in players:
-                name = p.get("name", "")
-                tag = p.get("tag", "")
-                if name and q in name.lower():
-                    results.append({
-                        "name": name,
-                        "tag": tag,
-                        "rank": p.get("rank", 0),
-                        "rr": p.get("rr", 0),
-                        "region": region.upper(),
-                    })
-                    if len(results) >= 8:
-                        return jsonify(results)
-        except (json.JSONDecodeError, OSError):
-            continue
+    # 1. Search our players DB first (includes anyone ever looked up)
+    try:
+        db_results = search_players(q, limit=8)
+        for p in db_results:
+            key = f"{p['name']}#{p['tag']}".lower()
+            if key not in seen:
+                seen.add(key)
+                results.append({
+                    "name": p["name"],
+                    "tag": p["tag"],
+                    "rank": p.get("rank", ""),
+                    "rr": "",
+                    "region": (p.get("region") or "").upper(),
+                })
+    except Exception:
+        pass
+
+    if len(results) >= 8:
+        return jsonify(results[:8])
+
+    # 2. Search leaderboard JSON files
+    lb_dir = os.path.join(os.path.dirname(current_app.root_path), "data", "leaderboard")
+    if os.path.isdir(lb_dir):
+        for fname in os.listdir(lb_dir):
+            if not fname.endswith(".json"):
+                continue
+            region = fname.replace(".json", "")
+            try:
+                with open(os.path.join(lb_dir, fname)) as f:
+                    players = json.load(f)
+                for p in players:
+                    name = p.get("name", "")
+                    tag = p.get("tag", "")
+                    if name and q in name.lower():
+                        key = f"{name}#{tag}".lower()
+                        if key not in seen:
+                            seen.add(key)
+                            results.append({
+                                "name": name,
+                                "tag": tag,
+                                "rank": f"#{p.get('rank', 0)}",
+                                "rr": f"{p.get('rr', 0)} RR",
+                                "region": region.upper(),
+                            })
+                            if len(results) >= 8:
+                                return jsonify(results)
+            except (json.JSONDecodeError, OSError):
+                continue
 
     return jsonify(results)

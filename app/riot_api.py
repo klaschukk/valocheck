@@ -5,7 +5,7 @@ from typing import Any
 import requests
 from flask import current_app
 
-from app.db import cache_get, cache_set
+from app.db import cache_get, cache_set, save_player
 
 logger = logging.getLogger(__name__)
 
@@ -270,6 +270,12 @@ def get_player_profile(name: str, tag: str) -> dict[str, Any] | None:
         rank_tier = current_data.get("currenttier", 0) or 0
         highest = mmr.get("highest_rank", {})
         peak_rank = highest.get("patched_tier", current_rank) or current_rank
+
+    # Save to players DB for autocomplete
+    try:
+        save_player(account.get("name", name), account.get("tag", tag), player_region, current_rank)
+    except Exception:
+        pass  # Don't fail profile load if DB write fails
 
     return {
         "name": account.get("name", name),

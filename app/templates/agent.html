@@ -3,39 +3,80 @@
 {% block title %}{{ agent.name }} — Valorant Agent | ValoCheck{% endblock %}
 {% block description %}{{ agent.name }} ({{ agent.role }}) — {{ agent.description[:150] }}{% endblock %}
 {% block og_title %}{{ agent.name }} — Valorant Agent Guide | ValoCheck{% endblock %}
-{% block og_description %}{{ agent.name }} ({{ agent.role }}) abilities, role, and tips.{% endblock %}
 
 {% block content %}
-<div class="container agent-page">
-    <div class="page-back"><a href="/agents/">All Agents</a></div>
+<div class="container">
+    <div class="page-back"><a href="/agents/">&larr; All Agents</a></div>
 
-    <section class="agent-header">
-        <div class="agent-icon-large">
-            <img src="{{ agent.icon }}" alt="{{ agent.name }}" width="120" height="120">
-        </div>
-        <div class="agent-header-info">
-            <h1>{{ agent.name }}</h1>
-            <div class="agent-role-badge">{{ agent.role }}</div>
-            <p class="agent-desc">{{ agent.description }}</p>
-        </div>
-    </section>
-
-    {% if agent.abilities %}
-    <section class="section">
-        <h2>Abilities</h2>
-        <div class="abilities-list">
-            {% for ab in agent.abilities %}
-            <div class="ability-card">
-                <div class="ability-header">
-                    <span class="ability-slot">{{ ab.slot }}</span>
-                    <span class="ability-name">{{ ab.name }}</span>
+    <div class="agent-detail-layout">
+        {# Left: Info + Abilities #}
+        <div class="agent-detail-main">
+            <div class="section-card agent-hero-card">
+                <div class="agent-hero-inner">
+                    <div class="agent-hero-icon">
+                        <img src="{{ agent.icon }}" alt="{{ agent.name }}" width="100" height="100">
+                    </div>
+                    <div class="agent-hero-info">
+                        <h1>{{ agent.name }}</h1>
+                        <div class="agent-role-badge">{{ agent.role }}</div>
+                    </div>
                 </div>
-                <p class="ability-desc">{{ ab.description }}</p>
+                <p class="agent-hero-desc">{{ agent.description }}</p>
             </div>
-            {% endfor %}
+
+            {% if agent.abilities %}
+            <h2 style="margin: 24px 0 12px;">Abilities</h2>
+            <div class="abilities-grid">
+                {% for ab in agent.abilities %}
+                <div class="ability-card-v2">
+                    <div class="ability-v2-header">
+                        <span class="ability-v2-slot">{{ ab.slot }}</span>
+                        <div>
+                            <div class="ability-v2-name">{{ ab.name }}</div>
+                            <div class="ability-v2-type">
+                                {% if ab.slot == 'Passive' %}Passive
+                                {% elif ab.slot == 'Ability1' or ab.slot == 'Ability 1' %}Ability (C)
+                                {% elif ab.slot == 'Ability2' or ab.slot == 'Ability 2' %}Ability (Q)
+                                {% elif ab.slot == 'Grenade' %}Signature (E)
+                                {% elif ab.slot == 'Ultimate' %}Ultimate (X)
+                                {% else %}{{ ab.slot }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <p class="ability-v2-desc">{{ ab.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
-    </section>
-    {% endif %}
+
+        {# Right: Quick facts sidebar #}
+        <div class="agent-detail-sidebar">
+            <div class="section-card" style="padding:20px;">
+                <h3>Quick Facts</h3>
+                <div class="agent-fact">
+                    <span class="agent-fact-lbl">Role</span>
+                    <span class="agent-fact-val">{{ agent.role }}</span>
+                </div>
+                <div class="agent-fact">
+                    <span class="agent-fact-lbl">Abilities</span>
+                    <span class="agent-fact-val">{{ agent.abilities | length }}</span>
+                </div>
+                <div class="agent-fact">
+                    <span class="agent-fact-lbl">Type</span>
+                    <span class="agent-fact-val">
+                        {% if agent.role == 'Duelist' %}Entry Fragger
+                        {% elif agent.role == 'Controller' %}Smoke / Area Denial
+                        {% elif agent.role == 'Initiator' %}Intel / Flash
+                        {% elif agent.role == 'Sentinel' %}Defense / Anchor
+                        {% else %}{{ agent.role }}
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
