@@ -4,3 +4,5 @@ data/leaderboard/
 __pycache__/
 *.pyc
 .env
+.claude/skills/
+design-system/
