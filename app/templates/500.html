@@ -1,12 +1,30 @@
 {% extends "base.html" %}
 
-{% block title %}500 — Server Error | ValoCheck{% endblock %}
+{% block title %}500 — Server Down | ValoCheck{% endblock %}
 
 {% block content %}
 <div class="container error-page">
+    <div class="error-scene">
+        <div class="error-skull">
+            <svg viewBox="0 0 100 100" width="80" height="80">
+                <circle cx="50" cy="45" r="30" fill="none" stroke="var(--primary)" stroke-width="2.5" opacity="0.8"/>
+                <circle cx="38" cy="40" r="6" fill="var(--primary)" opacity="0.6"/>
+                <circle cx="62" cy="40" r="6" fill="var(--primary)" opacity="0.6"/>
+                <path d="M38 58 Q50 65 62 58" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+                <line x1="44" y1="55" x2="44" y2="62" stroke="var(--primary)" stroke-width="1.5" opacity="0.4"/>
+                <line x1="50" y1="56" x2="50" y2="64" stroke="var(--primary)" stroke-width="1.5" opacity="0.4"/>
+                <line x1="56" y1="55" x2="56" y2="62" stroke="var(--primary)" stroke-width="1.5" opacity="0.4"/>
+            </svg>
+        </div>
+    </div>
     <div class="error-code">500</div>
-    <h1>Server Crashed</h1>
-    <p>Looks like the server took a hit. We are working on getting it back up.</p>
-    <a href="/" class="btn">Go Home</a>
+    <h1>Server Eliminated</h1>
+    <p>The server took a Vandal headshot. Our team is on the retake.</p>
+    <div class="error-vandal" style="margin:16px 0;">
+        {% with width=200, height=75 %}
+        {% include '_partials/_vandal.html' %}
+        {% endwith %}
+    </div>
+    <a href="/" class="btn">Respawn</a>
 </div>
 {% endblock %}

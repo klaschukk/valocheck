@@ -1,32 +1,53 @@
-{# Mini Chibi Vandal SVG — Valorant style #}
-<svg class="vandal-svg {{ class | default('') }}" viewBox="0 0 200 80" width="{{ width | default(160) }}" height="{{ height | default(64) }}" xmlns="http://www.w3.org/2000/svg">
-    {# Stock #}
-    <rect x="8" y="30" width="40" height="16" rx="3" fill="#2a3a4a"/>
-    <rect x="12" y="33" width="12" height="10" rx="2" fill="#1e2d3d"/>
-    {# Body/Receiver #}
-    <rect x="44" y="26" width="70" height="20" rx="2" fill="#3d4f5f"/>
-    <rect x="48" y="30" width="62" height="12" rx="1" fill="#2a3a4a"/>
-    {# Magazine #}
-    <rect x="72" y="46" width="12" height="24" rx="2" fill="#2a3a4a" transform="rotate(-8 78 58)"/>
-    {# Barrel #}
-    <rect x="114" y="30" width="60" height="8" rx="1" fill="#4a5c6e"/>
-    <rect x="114" y="32" width="60" height="4" rx="1" fill="#3d4f5f"/>
-    {# Muzzle #}
-    <rect x="170" y="28" width="22" height="12" rx="2" fill="#4a5c6e"/>
-    <rect x="174" y="30" width="4" height="8" rx="1" fill="#2a3a4a"/>
-    <rect x="180" y="30" width="4" height="8" rx="1" fill="#2a3a4a"/>
-    <rect x="186" y="30" width="4" height="8" rx="1" fill="#2a3a4a"/>
-    {# Scope rail #}
-    <rect x="54" y="22" width="50" height="4" rx="1" fill="#4a5c6e"/>
+{# Valorant Vandal SVG — futuristic AK style #}
+<svg class="vandal-svg {{ class | default('') }}" viewBox="0 0 320 120" width="{{ width | default(240) }}" height="{{ height | default(90) }}" xmlns="http://www.w3.org/2000/svg">
+    {# Stock — angular, Valorant style #}
+    <polygon points="10,58 40,48 52,48 52,68 40,72 18,70 10,66" fill="#2d3748" stroke="#4a5568" stroke-width="0.8"/>
+    <polygon points="14,60 36,52 44,52 44,66 36,68 18,67" fill="#1a202c"/>
+
+    {# Receiver body #}
+    <polygon points="50,42 160,38 165,42 165,62 160,66 90,68 80,72 52,72 50,62" fill="#2d3748" stroke="#4a5568" stroke-width="0.8"/>
+    <polygon points="54,46 156,42 160,46 160,58 156,62 88,64 82,68 54,68" fill="#1a202c"/>
+
+    {# Top rail / scope mount #}
+    <polygon points="56,42 150,38 152,40 152,42 56,46" fill="#4a5568"/>
+    <rect x="70" y="38" width="4" height="4" rx="0.5" fill="#2d3748"/>
+    <rect x="80" y="37.5" width="4" height="4" rx="0.5" fill="#2d3748"/>
+    <rect x="90" y="37" width="4" height="4" rx="0.5" fill="#2d3748"/>
+
+    {# Magazine — curved, AK-style #}
+    <path d="M95,68 L100,68 L104,98 Q105,104 100,104 L90,104 Q86,104 87,98 Z" fill="#2d3748" stroke="#4a5568" stroke-width="0.8"/>
+    <path d="M96,70 L99,70 L102,96 Q103,100 99,100 L92,100 Q89,100 90,96 Z" fill="#1a202c"/>
+
     {# Trigger guard #}
-    <path d="M62 46 Q62 56 70 56 L76 56 Q84 56 84 46" fill="none" stroke="#3d4f5f" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M78,68 Q78,82 88,82 L96,82 Q104,82 104,68" fill="none" stroke="#4a5568" stroke-width="1.5" stroke-linecap="round"/>
     {# Trigger #}
-    <rect x="72" y="47" width="3" height="7" rx="1" fill="var(--primary)"/>
-    {# Accent line #}
-    <line x1="48" y1="28" x2="110" y2="28" stroke="var(--primary)" stroke-width="1.5" opacity="0.6"/>
-    {# Muzzle flash (hidden by default, shown on animation) #}
+    <rect x="90" y="70" width="3" height="9" rx="1" fill="var(--primary)"/>
+
+    {# Barrel #}
+    <polygon points="160,44 260,42 262,44 262,52 260,54 160,58" fill="#4a5568"/>
+    <polygon points="164,46 256,44 258,46 258,50 256,52 164,54" fill="#2d3748"/>
+
+    {# Gas tube (top) #}
+    <rect x="160" y="38" width="80" height="4" rx="1" fill="#4a5568"/>
+    <rect x="162" y="39" width="76" height="2" rx="0.5" fill="#2d3748"/>
+
+    {# Front sight #}
+    <polygon points="240,32 244,32 244,38 242,40 240,38" fill="#4a5568"/>
+
+    {# Muzzle brake #}
+    <polygon points="258,40 280,38 282,40 282,56 280,58 258,56" fill="#4a5568" stroke="#2d3748" stroke-width="0.5"/>
+    <rect x="264" y="42" width="2.5" height="12" rx="0.5" fill="#1a202c"/>
+    <rect x="270" y="42" width="2.5" height="12" rx="0.5" fill="#1a202c"/>
+    <rect x="276" y="42" width="2.5" height="12" rx="0.5" fill="#1a202c"/>
+
+    {# Accent stripe — Valorant red #}
+    <line x1="56" y1="46" x2="155" y2="42" stroke="var(--primary)" stroke-width="1.2" opacity="0.7"/>
+    <line x1="164" y1="46" x2="255" y2="44" stroke="var(--primary)" stroke-width="0.8" opacity="0.4"/>
+
+    {# Muzzle flash — hidden, shown on click/hover #}
     <g class="vandal-flash" opacity="0">
-        <polygon points="192,34 210,28 205,34 215,34 205,40 210,40" fill="var(--rank-radiant)" opacity="0.9"/>
-        <polygon points="192,34 218,30 212,34 224,34 212,38 218,38" fill="var(--primary)" opacity="0.5"/>
+        <polygon points="282,47 300,36 295,46 312,42 298,50 306,50 298,54 312,56 295,52 300,62 282,51" fill="var(--rank-radiant)" opacity="0.9"/>
+        <polygon points="282,48 308,38 302,47 320,46 302,52 308,60 282,50" fill="var(--primary)" opacity="0.4"/>
+        <circle cx="286" cy="48" r="6" fill="white" opacity="0.3"/>
     </g>
 </svg>
