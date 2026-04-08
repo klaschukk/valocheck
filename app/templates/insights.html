@@ -31,7 +31,7 @@
         {% for m in agent_meta %}
         <div class="insights-row" data-role="{{ m.role }}">
             <div class="ins-agent-col">
-                {% if m.icon %}<img src="{{ m.icon }}" alt="{{ m.agent }}" width="36" height="36">{% endif %}
+                {% if m.icon %}<img src="{{ m.icon }}" alt="{{ m.agent }}" loading="lazy" width="36" height="36">{% endif %}
                 <a href="/agents/{{ m.slug }}/">{{ m.agent }}</a>
             </div>
             <span class="ins-role">{{ m.role }}</span>
@@ -55,7 +55,7 @@
         {% for agent in agents %}
         <div class="insights-row" data-role="{{ agent.role }}">
             <div class="ins-agent-col">
-                <img src="{{ agent.icon }}" alt="{{ agent.name }}" width="36" height="36">
+                <img src="{{ agent.icon }}" alt="{{ agent.name }}" loading="lazy" width="36" height="36">
                 <a href="/agents/{{ agent.slug }}/">{{ agent.name }}</a>
             </div>
             <span class="ins-role">{{ agent.role }}</span>

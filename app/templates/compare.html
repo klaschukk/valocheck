@@ -39,7 +39,7 @@
         <div class="compare-header">
             <a href="/player/{{ player1.name }}/{{ player1.tag }}/" class="compare-player">
                 {% if player1.card and player1.card.get('small') %}
-                <img src="{{ player1.card.small }}" alt="{{ player1.name }}" width="48" height="48">
+                <img src="{{ player1.card.small }}" alt="{{ player1.name }}" loading="lazy" width="48" height="48">
                 {% endif %}
                 <div>
                     <div class="compare-name">{{ player1.name }}</div>
@@ -53,7 +53,7 @@
                     <div class="compare-rank">{{ player2.current_rank }}</div>
                 </div>
                 {% if player2.card and player2.card.get('small') %}
-                <img src="{{ player2.card.small }}" alt="{{ player2.name }}" width="48" height="48">
+                <img src="{{ player2.card.small }}" alt="{{ player2.name }}" loading="lazy" width="48" height="48">
                 {% endif %}
             </a>
         </div>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0e17">
     <title>{% block title %}ValoCheck — Valorant Stats Tracker{% endblock %}</title>
     <meta name="description" content="{% block description %}Fast Valorant stats tracker. Check any player's rank, K/D, win rate, and match history.{% endblock %}">
     <link rel="canonical" href="{% block canonical %}{{ config.BASE_URL }}{{ request.path }}{% endblock %}">
@@ -25,7 +26,7 @@
     <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}?v=18">
     {% block head %}{% endblock %}
 </head>

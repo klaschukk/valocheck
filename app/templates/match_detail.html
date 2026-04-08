@@ -60,7 +60,7 @@
             {% set acs = (s.score / rounds) | round(0) | int if rounds > 0 else 0 %}
             <div class="sb-row">
                 <span class="sb-agent-col">
-                    <img src="/static/img/agents/{{ p.character | lower | replace(' ', '-') | replace('/', '-') }}.png" alt="{{ p.character }}" width="32" height="32" onerror="this.style.display='none'">
+                    <img src="/static/img/agents/{{ p.character | lower | replace(' ', '-') | replace('/', '-') }}.png" alt="{{ p.character }}" loading="lazy" width="32" height="32" onerror="this.style.display='none'">
                 </span>
                 <span class="sb-player-col">
                     <a href="/player/{{ p.name }}/{{ p.tag }}/">{{ p.name }}<span class="sb-tag">#{{ p.tag }}</span></a>
