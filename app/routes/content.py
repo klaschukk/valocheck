@@ -80,6 +80,22 @@ def tips():
     return render_template("tips.html")
 
 
+@content_bp.route("/seasons/")
+def seasons():
+    seasons_path = os.path.join(current_app.root_path, "static", "data", "seasons.json")
+    seasons_data = []
+    if os.path.exists(seasons_path):
+        try:
+            with open(seasons_path) as f:
+                seasons_data = json.load(f)
+        except (json.JSONDecodeError, OSError):
+            pass
+    # Group: episodes (no parent) and acts (have parent)
+    episodes = [s for s in seasons_data if not s.get("parent") and s.get("start")]
+    acts = [s for s in seasons_data if s.get("parent") and s.get("start")]
+    return render_template("seasons.html", episodes=episodes, acts=acts)
+
+
 @content_bp.route("/guides/best-agents/")
 def guide_best_agents():
     agents = _get_agents()

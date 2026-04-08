@@ -98,6 +98,7 @@ def sitemap():
         ("/guides/rank-distribution/", "monthly", "0.8"),
         ("/guides/crosshair-settings/", "monthly", "0.8"),
         ("/guides/how-to-rank-up/", "monthly", "0.8"),
+        ("/seasons/", "weekly", "0.7"),
         ("/about/", "monthly", "0.3"),
     ]
     for path, freq, priority in static_pages:

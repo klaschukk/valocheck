@@ -1,0 +1,426 @@
+[
+  {
+    "uuid": "0df5adb9-4dcb-6899-1306-3e9860661dd3",
+    "name": "Closed Beta",
+    "type": null,
+    "start": "2020-04-06T16:00:00Z",
+    "end": "2020-05-29T06:59:00Z",
+    "parent": null
+  },
+  {
+    "uuid": "3f61c772-4560-cd3f-5d3f-a7ab5abda6b3",
+    "name": "ACT I",
+    "type": "EAresSeasonType::Act",
+    "start": "2020-06-01T07:00:00Z",
+    "end": "2020-08-04T00:00:00Z",
+    "parent": "fcf2c8f4-4324-e50b-2e23-718e4a3ab046"
+  },
+  {
+    "uuid": "0530b9c4-4980-f2ee-df5d-09864cd00542",
+    "name": "ACT II",
+    "type": "EAresSeasonType::Act",
+    "start": "2020-08-04T00:00:00Z",
+    "end": "2020-10-13T00:00:00Z",
+    "parent": "fcf2c8f4-4324-e50b-2e23-718e4a3ab046"
+  },
+  {
+    "uuid": "46ea6166-4573-1128-9cea-60a15640059b",
+    "name": "ACT III",
+    "type": "EAresSeasonType::Act",
+    "start": "2020-10-13T00:00:00Z",
+    "end": "2021-01-12T00:00:00Z",
+    "parent": "fcf2c8f4-4324-e50b-2e23-718e4a3ab046"
+  },
+  {
+    "uuid": "fcf2c8f4-4324-e50b-2e23-718e4a3ab046",
+    "name": "EPISODE 1",
+    "type": null,
+    "start": "2020-06-01T07:00:00Z",
+    "end": "2021-01-12T00:00:00Z",
+    "parent": null
+  },
+  {
+    "uuid": "97b6e739-44cc-ffa7-49ad-398ba502ceb0",
+    "name": "ACT I",
+    "type": "EAresSeasonType::Act",
+    "start": "2021-01-12T00:00:00Z",
+    "end": "2021-03-02T00:00:00Z",
+    "parent": "71c81c67-4fae-ceb1-844c-aab2bb8710fa"
+  },
+  {
+    "uuid": "ab57ef51-4e59-da91-cc8d-51a5a2b9b8ff",
+    "name": "ACT II",
+    "type": "EAresSeasonType::Act",
+    "start": "2021-03-02T00:00:00Z",
+    "end": "2021-04-27T00:00:00Z",
+    "parent": "71c81c67-4fae-ceb1-844c-aab2bb8710fa"
+  },
+  {
+    "uuid": "52e9749a-429b-7060-99fe-4595426a0cf7",
+    "name": "ACT III",
+    "type": "EAresSeasonType::Act",
+    "start": "2021-04-27T00:00:00Z",
+    "end": "2021-06-22T00:00:00Z",
+    "parent": "71c81c67-4fae-ceb1-844c-aab2bb8710fa"
+  },
+  {
+    "uuid": "71c81c67-4fae-ceb1-844c-aab2bb8710fa",
+    "name": "EPISODE 2",
+    "type": null,
+    "start": "2021-01-12T00:00:00Z",
+    "end": "2021-06-22T00:00:00Z",
+    "parent": null
+  },
+  {
+    "uuid": "2a27e5d2-4d30-c9e2-b15a-93b8909a442c",
+    "name": "ACT I",
+    "type": "EAresSeasonType::Act",
+    "start": "2021-06-22T00:00:00Z",
+    "end": "2021-09-08T00:00:00Z",
+    "parent": "97b39124-46ce-8b55-8fd1-7cbf7ffe173f"
+  },
+  {
+    "uuid": "4cb622e1-4244-6da3-7276-8daaf1c01be2",
+    "name": "ACT II",
+    "type": "EAresSeasonType::Act",
+    "start": "2021-09-08T00:00:00Z",
+    "end": "2021-11-02T00:00:00Z",
+    "parent": "97b39124-46ce-8b55-8fd1-7cbf7ffe173f"
+  },
+  {
+    "uuid": "a16955a5-4ad0-f761-5e9e-389df1c892fb",
+    "name": "ACT III",
+    "type": "EAresSeasonType::Act",
+    "start": "2021-11-02T00:00:00Z",
+    "end": "2022-01-11T00:00:00Z",
+    "parent": "97b39124-46ce-8b55-8fd1-7cbf7ffe173f"
+  },
+  {
+    "uuid": "97b39124-46ce-8b55-8fd1-7cbf7ffe173f",
+    "name": "EPISODE 3",
+    "type": null,
+    "start": "2021-06-22T00:00:00Z",
+    "end": "2022-01-11T00:00:00Z",
+    "parent": null
+  },
+  {
+    "uuid": "573f53ac-41a5-3a7d-d9ce-d6a6298e5704",
+    "name": "ACT I",
+    "type": "EAresSeasonType::Act",
+    "start": "2022-01-11T00:00:00Z",
+    "end": "2022-03-01T00:00:00Z",
+    "parent": "808202d6-4f2b-a8ff-1feb-b3a0590ad79f"
+  },
+  {
+    "uuid": "d929bc38-4ab6-7da4-94f0-ee84f8ac141e",
+    "name": "ACT II",
+    "type": "EAresSeasonType::Act",
+    "start": "2022-03-01T00:00:00Z",
+    "end": "2022-04-26T00:00:00Z",
+    "parent": "808202d6-4f2b-a8ff-1feb-b3a0590ad79f"
+  },
+  {
+    "uuid": "3e47230a-463c-a301-eb7d-67bb60357d4f",
+    "name": "ACT III",
+    "type": "EAresSeasonType::Act",
+    "start": "2022-04-26T00:00:00Z",
+    "end": "2022-06-21T00:00:00Z",
+    "parent": "808202d6-4f2b-a8ff-1feb-b3a0590ad79f"
+  },
+  {
+    "uuid": "808202d6-4f2b-a8ff-1feb-b3a0590ad79f",
+    "name": "EPISODE 4",
+    "type": null,
+    "start": "2022-01-11T00:00:00Z",
+    "end": "2022-06-21T00:00:00Z",
+    "parent": null
+  },
+  {
+    "uuid": "67e373c7-48f7-b422-641b-079ace30b427",
+    "name": "ACT I",
+    "type": "EAresSeasonType::Act",
+    "start": "2022-06-21T00:00:00Z",
+    "end": "2022-08-23T00:00:00Z",
+    "parent": "79f9d00f-433a-85d6-dfc3-60aef115e699"
+  },
+  {
+    "uuid": "7a85de9a-4032-61a9-61d8-f4aa2b4a84b6",
+    "name": "ACT II",
+    "type": "EAresSeasonType::Act",
+    "start": "2022-08-23T00:00:00Z",
+    "end": "2022-10-18T00:00:00Z",
+    "parent": "79f9d00f-433a-85d6-dfc3-60aef115e699"
+  },
+  {
+    "uuid": "aca29595-40e4-01f5-3f35-b1b3d304c96e",
+    "name": "ACT III",
+    "type": "EAresSeasonType::Act",
+    "start": "2022-10-18T00:00:00Z",
+    "end": "2023-01-10T00:00:00Z",
+    "parent": "79f9d00f-433a-85d6-dfc3-60aef115e699"
+  },
+  {
+    "uuid": "79f9d00f-433a-85d6-dfc3-60aef115e699",
+    "name": "EPISODE 5",
+    "type": null,
+    "start": "2022-06-21T00:00:00Z",
+    "end": "2023-01-10T00:00:00Z",
+    "parent": null
+  },
+  {
+    "uuid": "9c91a445-4f78-1baa-a3ea-8f8aadf4914d",
+    "name": "ACT I",
+    "type": "EAresSeasonType::Act",
+    "start": "2023-01-10T00:00:00Z",
+    "end": "2023-03-07T00:00:00Z",
+    "parent": "3ec8084a-4e45-4d22-d801-f8a63e5a208b"
+  },
+  {
+    "uuid": "34093c29-4306-43de-452f-3f944bde22be",
+    "name": "ACT II",
+    "type": "EAresSeasonType::Act",
+    "start": "2023-03-07T00:00:00Z",
+    "end": "2023-04-25T00:00:00Z",
+    "parent": "3ec8084a-4e45-4d22-d801-f8a63e5a208b"
+  },
+  {
+    "uuid": "2de5423b-4aad-02ad-8d9b-c0a931958861",
+    "name": "ACT III",
+    "type": "EAresSeasonType::Act",
+    "start": "2023-04-25T00:00:00Z",
+    "end": "2023-06-27T00:00:00Z",
+    "parent": "3ec8084a-4e45-4d22-d801-f8a63e5a208b"
+  },
+  {
+    "uuid": "3ec8084a-4e45-4d22-d801-f8a63e5a208b",
+    "name": "EPISODE 6",
+    "type": null,
+    "start": "2023-01-10T00:00:00Z",
+    "end": "2023-06-27T00:00:00Z",
+    "parent": null
+  },
+  {
+    "uuid": "0981a882-4e7d-371a-70c4-c3b4f46c504a",
+    "name": "ACT I",
+    "type": "EAresSeasonType::Act",
+    "start": "2023-06-27T00:00:00Z",
+    "end": "2023-08-29T00:00:00Z",
+    "parent": "1a2fc1de-4f58-4a89-49d0-f28b720ff76f"
+  },
+  {
+    "uuid": "03dfd004-45d4-ebfd-ab0a-948ce780dac4",
+    "name": "ACT II",
+    "type": "EAresSeasonType::Act",
+    "start": "2023-08-29T00:00:00Z",
+    "end": "2023-10-31T00:00:00Z",
+    "parent": "1a2fc1de-4f58-4a89-49d0-f28b720ff76f"
+  },
+  {
+    "uuid": "4401f9fd-4170-2e4c-4bc3-f3b4d7d150d1",
+    "name": "ACT III",
+    "type": "EAresSeasonType::Act",
+    "start": "2023-10-31T00:00:00Z",
+    "end": "2024-01-09T00:00:00Z",
+    "parent": "1a2fc1de-4f58-4a89-49d0-f28b720ff76f"
+  },
+  {
+    "uuid": "1a2fc1de-4f58-4a89-49d0-f28b720ff76f",
+    "name": "EPISODE 7",
+    "type": null,
+    "start": "2023-06-27T00:00:00Z",
+    "end": "2024-01-09T00:00:00Z",
+    "parent": null
+  },
+  {
+    "uuid": "ec876e6c-43e8-fa63-ffc1-2e8d4db25525",
+    "name": "ACT I",
+    "type": "EAresSeasonType::Act",
+    "start": "2024-01-09T00:00:00Z",
+    "end": "2024-03-05T00:00:00Z",
+    "parent": "843cc465-4f0a-7466-ccda-19a427f8e478"
+  },
+  {
+    "uuid": "22d10d66-4d2a-a340-6c54-408c7bd53807",
+    "name": "ACT II",
+    "type": "EAresSeasonType::Act",
+    "start": "2024-03-05T00:00:00Z",
+    "end": "2024-04-30T00:00:00Z",
+    "parent": "843cc465-4f0a-7466-ccda-19a427f8e478"
+  },
+  {
+    "uuid": "4539cac3-47ae-90e5-3d01-b3812ca3274e",
+    "name": "ACT III",
+    "type": "EAresSeasonType::Act",
+    "start": "2024-04-30T00:00:00Z",
+    "end": "2024-06-26T00:00:00Z",
+    "parent": "843cc465-4f0a-7466-ccda-19a427f8e478"
+  },
+  {
+    "uuid": "843cc465-4f0a-7466-ccda-19a427f8e478",
+    "name": "EPISODE 8",
+    "type": null,
+    "start": "2024-01-09T00:00:00Z",
+    "end": "2024-06-26T00:00:00Z",
+    "parent": null
+  },
+  {
+    "uuid": "52ca6698-41c1-e7de-4008-8994d2221209",
+    "name": "ACT I",
+    "type": "EAresSeasonType::Act",
+    "start": "2024-06-26T00:00:00Z",
+    "end": "2024-08-28T00:00:00Z",
+    "parent": "d1ad9e7a-4e3f-e8c6-eb1b-148162a5acf7"
+  },
+  {
+    "uuid": "292f58db-4c17-89a7-b1c0-ba988f0e9d98",
+    "name": "ACT II",
+    "type": "EAresSeasonType::Act",
+    "start": "2024-08-28T00:00:00Z",
+    "end": "2024-10-23T00:00:00Z",
+    "parent": "d1ad9e7a-4e3f-e8c6-eb1b-148162a5acf7"
+  },
+  {
+    "uuid": "dcde7346-4085-de4f-c463-2489ed47983b",
+    "name": "ACT III",
+    "type": "EAresSeasonType::Act",
+    "start": "2024-10-23T00:00:00Z",
+    "end": "2025-01-08T00:00:00Z",
+    "parent": "d1ad9e7a-4e3f-e8c6-eb1b-148162a5acf7"
+  },
+  {
+    "uuid": "d1ad9e7a-4e3f-e8c6-eb1b-148162a5acf7",
+    "name": "EPISODE 9",
+    "type": null,
+    "start": "2024-06-26T00:00:00Z",
+    "end": "2025-01-08T00:00:00Z",
+    "parent": null
+  },
+  {
+    "uuid": "476b0893-4c2e-abd6-c5fe-708facff0772",
+    "name": "ACT I",
+    "type": "EAresSeasonType::Act",
+    "start": "2025-01-08T00:00:00Z",
+    "end": "2025-03-05T00:00:00Z",
+    "parent": "439dd42d-4a59-9e41-b50b-1ebb6810f22c"
+  },
+  {
+    "uuid": "16118998-4705-5813-86dd-0292a2439d90",
+    "name": "ACT II",
+    "type": "EAresSeasonType::Act",
+    "start": "2025-03-05T00:00:00Z",
+    "end": "2025-04-30T00:00:00Z",
+    "parent": "439dd42d-4a59-9e41-b50b-1ebb6810f22c"
+  },
+  {
+    "uuid": "aef237a0-494d-3a14-a1c8-ec8de84e309c",
+    "name": "ACT III",
+    "type": "EAresSeasonType::Act",
+    "start": "2025-04-30T00:00:00Z",
+    "end": "2025-06-25T00:00:00Z",
+    "parent": "439dd42d-4a59-9e41-b50b-1ebb6810f22c"
+  },
+  {
+    "uuid": "439dd42d-4a59-9e41-b50b-1ebb6810f22c",
+    "name": "V25",
+    "type": null,
+    "start": "2025-01-08T00:00:00Z",
+    "end": "2025-06-25T00:00:00Z",
+    "parent": null
+  },
+  {
+    "uuid": "ac12e9b3-47e6-9599-8fa1-0bb473e5efc7",
+    "name": "ACT IV",
+    "type": "EAresSeasonType::Act",
+    "start": "2025-06-25T00:00:00Z",
+    "end": "2025-08-20T00:00:00Z",
+    "parent": "c470d964-4bf4-1261-87aa-c484252f2d66"
+  },
+  {
+    "uuid": "5adc33fa-4f30-2899-f131-6fba64c5dd3a",
+    "name": "ACT V",
+    "type": "EAresSeasonType::Act",
+    "start": "2025-08-20T00:00:00Z",
+    "end": "2025-10-15T00:00:00Z",
+    "parent": "c470d964-4bf4-1261-87aa-c484252f2d66"
+  },
+  {
+    "uuid": "4c4b8cff-43eb-13d3-8f14-96b783c90cd2",
+    "name": "ACT VI",
+    "type": "EAresSeasonType::Act",
+    "start": "2025-10-15T00:00:00Z",
+    "end": "2026-01-07T00:00:00Z",
+    "parent": "c470d964-4bf4-1261-87aa-c484252f2d66"
+  },
+  {
+    "uuid": "c470d964-4bf4-1261-87aa-c484252f2d66",
+    "name": "V25",
+    "type": null,
+    "start": "2025-06-25T00:00:00Z",
+    "end": "2026-01-07T00:00:00Z",
+    "parent": null
+  },
+  {
+    "uuid": "3ea2b318-423b-cf86-25da-7cbb0eefbe2d",
+    "name": "ACT I",
+    "type": "EAresSeasonType::Act",
+    "start": "2026-01-07T00:00:00Z",
+    "end": "2026-03-18T00:00:00Z",
+    "parent": "15a01c8a-4637-7b7b-de7b-9f906719c020"
+  },
+  {
+    "uuid": "9d85c932-4820-c060-09c3-668636d4df1b",
+    "name": "ACT II",
+    "type": "EAresSeasonType::Act",
+    "start": "2026-03-18T00:00:00Z",
+    "end": "2026-04-29T00:00:00Z",
+    "parent": "15a01c8a-4637-7b7b-de7b-9f906719c020"
+  },
+  {
+    "uuid": "ce2783e8-44fc-dd48-3da3-33b5ba6c4a22",
+    "name": "ACT III",
+    "type": "EAresSeasonType::Act",
+    "start": "2026-04-29T00:00:00Z",
+    "end": "2026-06-24T00:00:00Z",
+    "parent": "15a01c8a-4637-7b7b-de7b-9f906719c020"
+  },
+  {
+    "uuid": "15a01c8a-4637-7b7b-de7b-9f906719c020",
+    "name": "V26",
+    "type": null,
+    "start": "2026-01-07T00:00:00Z",
+    "end": "2026-06-24T00:00:00Z",
+    "parent": null
+  },
+  {
+    "uuid": "4f0864e2-40af-28a4-de2c-0e9e64e75f23",
+    "name": "ACT IV",
+    "type": "EAresSeasonType::Act",
+    "start": "2026-06-24T00:00:00Z",
+    "end": "2026-08-19T00:00:00Z",
+    "parent": "3737c391-497a-6e82-aeb5-cc9f701f72e2"
+  },
+  {
+    "uuid": "8102cd81-43a0-d0d7-bd59-47b8fe9bed1b",
+    "name": "ACT V",
+    "type": "EAresSeasonType::Act",
+    "start": "2026-08-19T00:00:00Z",
+    "end": "2026-10-14T00:00:00Z",
+    "parent": "3737c391-497a-6e82-aeb5-cc9f701f72e2"
+  },
+  {
+    "uuid": "d816f426-48ea-f052-117f-9697a155b319",
+    "name": "ACT VI",
+    "type": "EAresSeasonType::Act",
+    "start": "2026-10-14T00:00:00Z",
+    "end": "2027-01-06T00:00:00Z",
+    "parent": "3737c391-497a-6e82-aeb5-cc9f701f72e2"
+  },
+  {
+    "uuid": "3737c391-497a-6e82-aeb5-cc9f701f72e2",
+    "name": "V26",
+    "type": null,
+    "start": "2026-06-24T00:00:00Z",
+    "end": "2027-01-06T00:00:00Z",
+    "parent": null
+  }
+]

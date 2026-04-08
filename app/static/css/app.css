@@ -668,6 +668,27 @@ a.match-row-link:hover { text-decoration: none; }
 .rank-dist-bar { height: 100%; border-radius: 4px; transition: width 0.5s ease; min-width: 4px; }
 .rank-dist-pct { font-size: 0.8125rem; color: var(--text-muted); font-weight: 600; text-align: right; }
 
+/* ══ SEASONS ══ */
+.season-current { background: linear-gradient(135deg, rgba(255,70,85,0.06) 0%, var(--bg-surface) 100%); border: 1px solid rgba(255,70,85,0.2); border-radius: var(--radius-xl); padding: 28px; margin-top: 20px; }
+.season-current-badge { display: inline-block; padding: 4px 12px; background: var(--primary); border-radius: var(--radius-sm); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #fff; margin-bottom: 10px; }
+.season-current h2 { font-size: 1.5rem; margin-bottom: 8px; }
+.season-dates { display: flex; gap: 20px; font-size: 0.8125rem; color: var(--text-muted); }
+
+.acts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 12px; }
+.act-card { padding: 16px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); position: relative; }
+.act-current { border-color: var(--accent); }
+.act-name { font-family: 'Russo One', sans-serif; font-size: 0.9375rem; margin-bottom: 4px; }
+.act-dates { font-size: 0.75rem; color: var(--text-muted); }
+.act-badge { position: absolute; top: 10px; right: 12px; padding: 2px 8px; background: rgba(0,255,194,0.1); border: 1px solid rgba(0,255,194,0.3); border-radius: var(--radius-sm); font-size: 0.625rem; font-weight: 600; color: var(--accent); text-transform: uppercase; }
+
+.seasons-timeline { margin-top: 12px; }
+.season-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; align-items: center; padding: 12px 20px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 6px; transition: background 0.12s; }
+.season-row:hover { background: var(--bg-card); }
+.season-row-active { border-color: var(--primary); }
+.season-row-name { font-weight: 600; }
+.season-row-dates { font-size: 0.8125rem; color: var(--text-muted); }
+.season-row-acts { font-size: 0.75rem; color: var(--text-dim); text-align: right; }
+
 /* ══ ABOUT PAGE ══ */
 .about-grid { display: grid; grid-template-columns: 1fr 280px; gap: 20px; margin-top: 20px; }
 .about-main h2 { font-size: 1rem; margin-bottom: 10px; }

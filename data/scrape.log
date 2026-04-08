@@ -155,3 +155,65 @@ Saved 20 pro crosshairs to /home/klaschuk/valocheck/app/static/data/pro_crosshai
 2026-04-08 02:48:08,176 INFO Saved 21 maps
 2026-04-08 02:48:08,176 INFO Done!
 === Wed Apr  8 02:48:08 AM CEST 2026 Done ===
+=== Wed Apr  8 06:21:57 PM CEST 2026 ===
+2026-04-08 18:21:57,896 INFO Fetching leaderboard: eu
+2026-04-08 18:21:58,558 INFO   eu: fetched 500 players
+2026-04-08 18:22:01,266 INFO   eu: fetched 500 players
+2026-04-08 18:22:03,901 INFO   eu: fetched 500 players
+2026-04-08 18:22:06,644 INFO   eu: fetched 500 players
+2026-04-08 18:22:09,367 INFO   eu: fetched 500 players
+2026-04-08 18:22:11,379 INFO Saved 500 players to /home/klaschuk/valocheck/data/leaderboard/eu.json
+2026-04-08 18:22:13,379 INFO Fetching leaderboard: na
+2026-04-08 18:22:13,968 INFO   na: fetched 500 players
+2026-04-08 18:22:16,618 INFO   na: fetched 500 players
+2026-04-08 18:22:19,205 INFO   na: fetched 500 players
+2026-04-08 18:22:21,811 INFO   na: fetched 500 players
+2026-04-08 18:22:24,439 INFO   na: fetched 500 players
+2026-04-08 18:22:26,449 INFO Saved 500 players to /home/klaschuk/valocheck/data/leaderboard/na.json
+2026-04-08 18:22:28,450 INFO Fetching leaderboard: ap
+2026-04-08 18:22:29,081 INFO   ap: fetched 500 players
+2026-04-08 18:22:31,717 INFO   ap: fetched 500 players
+2026-04-08 18:22:34,345 INFO   ap: fetched 500 players
+2026-04-08 18:22:37,044 INFO   ap: fetched 500 players
+2026-04-08 18:22:39,716 INFO   ap: fetched 500 players
+2026-04-08 18:22:41,728 INFO Saved 500 players to /home/klaschuk/valocheck/data/leaderboard/ap.json
+2026-04-08 18:22:43,729 INFO Fetching leaderboard: kr
+2026-04-08 18:22:44,131 INFO   kr: fetched 500 players
+2026-04-08 18:22:46,594 INFO   kr: fetched 500 players
+2026-04-08 18:22:49,074 INFO   kr: fetched 500 players
+2026-04-08 18:22:51,516 INFO   kr: fetched 500 players
+2026-04-08 18:22:54,118 INFO   kr: fetched 500 players
+2026-04-08 18:22:56,135 INFO Saved 500 players to /home/klaschuk/valocheck/data/leaderboard/kr.json
+2026-04-08 18:22:58,135 INFO Done. Total: 2000 players across 4 regions
+2026-04-08 18:22:58,410 INFO Checking 100 players across 4 regions
+2026-04-08 18:22:58,410 INFO [1/100] Fetching matches for TH ComeBack#Aegon (eu)
+2026-04-08 18:22:59,800 INFO [2/100] Fetching matches for GS VenTT#miru (eu)
+2026-04-08 18:23:02,125 INFO [3/100] Fetching matches for MercureFPS#GRIND (eu)
+2026-04-08 18:23:05,367 INFO [4/100] Fetching matches for FOKUS Pa1ze#TTV (eu)
+2026-04-08 18:23:08,844 INFO [5/100] Fetching matches for BJK ARCHFIEND#007 (eu)
+2026-04-08 18:23:10,456 WARNING Rate limited, waiting 10s...
+2026-04-08 18:23:20,492 WARNING Still rate limited, skipping
+2026-04-08 18:23:20,521 INFO [6/100] Fetching matches for RAF Razziss#starr (eu)
+2026-04-08 18:23:20,554 WARNING Rate limited, waiting 10s...
+2026-04-08 18:23:30,625 WARNING Still rate limited, skipping
+2026-04-08 18:23:30,625 INFO [7/100] Fetching matches for Filu#KING (eu)
+2026-04-08 18:23:30,659 WARNING Rate limited, waiting 10s...
+2026-04-08 18:23:40,850 WARNING Still rate limited, skipping
+2026-04-08 18:23:40,850 INFO [8/100] Fetching matches for fractioned#5522 (eu)
+2026-04-08 18:23:40,885 WARNING Rate limited, waiting 10s...
+2026-04-08 18:23:50,921 WARNING Still rate limited, skipping
+2026-04-08 18:23:50,922 INFO [9/100] Fetching matches for Sweatyツ#2009 (eu)
+2026-04-08 18:23:50,957 WARNING Rate limited, waiting 10s...
+Traceback (most recent call last):
+  File "/home/klaschuk/valocheck/scripts/scrape_agent_meta.py", line 173, in <module>
+    main()
+  File "/home/klaschuk/valocheck/scripts/scrape_agent_meta.py", line 101, in main
+    all_players = match.get("players", {}).get("all_players", [])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2026-04-08 18:24:03,266 INFO Fetching agents...
+2026-04-08 18:24:03,375 INFO Saved 29 agents
+2026-04-08 18:24:04,376 INFO Fetching maps...
+2026-04-08 18:24:04,399 INFO Saved 21 maps
+2026-04-08 18:24:04,400 INFO Done!
+=== Wed Apr  8 06:24:04 PM CEST 2026 Done ===

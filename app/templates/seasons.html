@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Valorant Seasons & Acts — Timeline | ValoCheck{% endblock %}
+{% block description %}Complete Valorant seasons and acts timeline. Current season info, act dates, and competitive season history.{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Seasons & Acts</h1>
+    <p class="section-desc">Complete timeline of all Valorant competitive seasons and acts.</p>
+
+    {% if episodes %}
+    {# Current Season highlight #}
+    {% set current = episodes[-1] %}
+    <div class="season-current">
+        <div class="season-current-badge">Current Season</div>
+        <h2>{{ current.name }}</h2>
+        <div class="season-dates">
+            <span>Started: {{ current.start[:10] }}</span>
+            <span>Ends: {{ current.end[:10] }}</span>
+        </div>
+    </div>
+
+    {# Current Acts #}
+    {% set current_acts = [] %}
+    {% for act in acts %}
+        {% if act.parent == current.uuid %}
+            {% set _ = current_acts.append(act) %}
+        {% endif %}
+    {% endfor %}
+
+    {% if current_acts %}
+    <h2 style="margin-top:28px;">Acts in {{ current.name }}</h2>
+    <div class="acts-grid">
+        {% for act in current_acts %}
+        <div class="act-card {{ 'act-current' if loop.last else '' }}">
+            <div class="act-name">{{ act.name }}</div>
+            <div class="act-dates">{{ act.start[:10] }} &mdash; {{ act.end[:10] }}</div>
+            {% if loop.last %}
+            <div class="act-badge">Active</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {# Season History #}
+    <h2 style="margin-top:36px;">Season History</h2>
+    <div class="seasons-timeline">
+        {% for ep in episodes | reverse %}
+        <div class="season-row {{ 'season-row-active' if loop.first else '' }}">
+            <div class="season-row-name">{{ ep.name }}</div>
+            <div class="season-row-dates">{{ ep.start[:10] }} &mdash; {{ ep.end[:10] }}</div>
+            <div class="season-row-acts">
+                {% set ep_acts = [] %}
+                {% for act in acts %}{% if act.parent == ep.uuid %}{% set _ = ep_acts.append(act) %}{% endif %}{% endfor %}
+                {{ ep_acts | length }} acts
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="guide-cta" style="margin-top:32px;">
+        <p>Check the <a href="/leaderboard/eu/">current leaderboard</a> to see who's on top this act. Track your own progress by <a href="/">searching your Riot ID</a>.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Valorant Seasons & Acts Timeline",
+    "description": "Complete timeline of all Valorant competitive seasons and acts.",
+    "url": "{{ config.BASE_URL }}/seasons/",
+    "datePublished": "2026-04-08",
+    "author": {"@type": "Organization", "name": "ValoCheck"}
+}
+</script>
+{% endblock %}
