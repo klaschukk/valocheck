@@ -84,10 +84,10 @@
 
         {# Secondary Stats #}
         <div class="section-card extended-stats">
-            <div class="ext-stat"><span class="ext-val">{{ player.total_kills }}</span><span class="ext-lbl">Kills</span></div>
-            <div class="ext-stat"><span class="ext-val">{{ player.total_deaths }}</span><span class="ext-lbl">Deaths</span></div>
-            <div class="ext-stat"><span class="ext-val">{{ player.total_assists }}</span><span class="ext-lbl">Assists</span></div>
-            <div class="ext-stat"><span class="ext-val">{{ player.kad }}</span><span class="ext-lbl">KAD</span></div>
+            <div class="ext-stat"><span class="ext-val ext-val-kills">{{ player.total_kills }}</span><span class="ext-lbl">Kills</span></div>
+            <div class="ext-stat"><span class="ext-val ext-val-deaths">{{ player.total_deaths }}</span><span class="ext-lbl">Deaths</span></div>
+            <div class="ext-stat"><span class="ext-val ext-val-assists">{{ player.total_assists }}</span><span class="ext-lbl">Assists</span></div>
+            <div class="ext-stat"><span class="ext-val {{ 'ext-val-kills' if player.kad >= 1.0 else 'ext-val-deaths' }}">{{ player.kad }}</span><span class="ext-lbl">KAD Ratio</span></div>
             <div class="ext-stat"><span class="ext-val">{{ player.total_rounds }}</span><span class="ext-lbl">Rounds</span></div>
             <div class="ext-stat"><span class="ext-val text-only">{{ player.top_agent }}</span><span class="ext-lbl">Top Agent</span></div>
         </div>
