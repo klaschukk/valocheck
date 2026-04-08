@@ -90,4 +90,15 @@
     "url": "{{ config.BASE_URL }}/agents/{{ agent.slug }}/"
 }
 </script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ config.BASE_URL }}/"},
+        {"@type": "ListItem", "position": 2, "name": "Agents", "item": "{{ config.BASE_URL }}/agents/"},
+        {"@type": "ListItem", "position": 3, "name": "{{ agent.name }}"}
+    ]
+}
+</script>
 {% endblock %}

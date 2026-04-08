@@ -68,3 +68,29 @@
     {% endif %}
 </div>
 {% endblock %}
+
+{% block json_ld %}
+{% if region %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "{{ regions[region] }} Valorant Leaderboard",
+    "description": "Top ranked Valorant players in {{ regions[region] }}",
+    "url": "{{ config.BASE_URL }}/leaderboard/{{ region }}/",
+    "numberOfItems": {{ players | length }},
+    "itemListElement": [
+        {% for p in players[:10] %}
+        {% set pname = p.name | default(p.gameName | default('')) %}
+        {
+            "@type": "ListItem",
+            "position": {{ loop.index }},
+            "name": "{{ pname }}",
+            "url": "{{ config.BASE_URL }}/player/{{ pname }}/{{ p.tag | default(p.tagLine | default('')) }}/"
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+</script>
+{% endif %}
+{% endblock %}

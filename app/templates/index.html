@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block description %}ValoCheck — free Valorant stats tracker. Look up any player's rank, K/D, win rate, match history, and agent performance. Leaderboards, crosshair builder, agent insights.{% endblock %}
 
 {% block content %}
 {# ── Hero ── #}
@@ -172,5 +173,23 @@ function switchLb(region, btn) {
         if (!e.target.closest('.search-form')) results.innerHTML = '';
     });
 })();
+</script>
+
+{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ValoCheck",
+    "url": "{{ config.BASE_URL }}/",
+    "description": "Fast Valorant stats tracker. Player profiles, leaderboards, agent insights.",
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ config.BASE_URL }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+    }
+}
 </script>
 {% endblock %}

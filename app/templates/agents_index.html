@@ -25,3 +25,26 @@
     {% endif %}
 </div>
 {% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "All Valorant Agents",
+    "description": "Complete list of Valorant agents with abilities and roles",
+    "url": "{{ config.BASE_URL }}/agents/",
+    "numberOfItems": {{ agents | length }},
+    "itemListElement": [
+        {% for agent in agents %}
+        {
+            "@type": "ListItem",
+            "position": {{ loop.index }},
+            "name": "{{ agent.name }}",
+            "url": "{{ config.BASE_URL }}/agents/{{ agent.slug }}/"
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+</script>
+{% endblock %}
