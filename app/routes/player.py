@@ -1,4 +1,4 @@
-from flask import Blueprint, abort, render_template
+from flask import Blueprint, abort, render_template, request
 
 from app.riot_api import get_player_profile, henrik_api
 
@@ -27,6 +27,26 @@ def agents(name: str, tag: str):
     if not player:
         abort(404)
     return render_template("agents.html", player=player)
+
+
+@player_bp.route("/compare/")
+def compare():
+    """Compare two players side by side."""
+    p1_name = request.args.get("p1", "").strip()
+    p1_tag = request.args.get("t1", "").strip()
+    p2_name = request.args.get("p2", "").strip()
+    p2_tag = request.args.get("t2", "").strip()
+
+    player1 = None
+    player2 = None
+
+    if p1_name and p1_tag:
+        player1 = get_player_profile(p1_name, p1_tag)
+    if p2_name and p2_tag:
+        player2 = get_player_profile(p2_name, p2_tag)
+
+    return render_template("compare.html", player1=player1, player2=player2,
+                         p1_name=p1_name, p1_tag=p1_tag, p2_name=p2_name, p2_tag=p2_tag)
 
 
 @player_bp.route("/match/<match_id>/")

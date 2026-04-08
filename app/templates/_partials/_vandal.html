@@ -1,0 +1,32 @@
+{# Mini Chibi Vandal SVG — Valorant style #}
+<svg class="vandal-svg {{ class | default('') }}" viewBox="0 0 200 80" width="{{ width | default(160) }}" height="{{ height | default(64) }}" xmlns="http://www.w3.org/2000/svg">
+    {# Stock #}
+    <rect x="8" y="30" width="40" height="16" rx="3" fill="#2a3a4a"/>
+    <rect x="12" y="33" width="12" height="10" rx="2" fill="#1e2d3d"/>
+    {# Body/Receiver #}
+    <rect x="44" y="26" width="70" height="20" rx="2" fill="#3d4f5f"/>
+    <rect x="48" y="30" width="62" height="12" rx="1" fill="#2a3a4a"/>
+    {# Magazine #}
+    <rect x="72" y="46" width="12" height="24" rx="2" fill="#2a3a4a" transform="rotate(-8 78 58)"/>
+    {# Barrel #}
+    <rect x="114" y="30" width="60" height="8" rx="1" fill="#4a5c6e"/>
+    <rect x="114" y="32" width="60" height="4" rx="1" fill="#3d4f5f"/>
+    {# Muzzle #}
+    <rect x="170" y="28" width="22" height="12" rx="2" fill="#4a5c6e"/>
+    <rect x="174" y="30" width="4" height="8" rx="1" fill="#2a3a4a"/>
+    <rect x="180" y="30" width="4" height="8" rx="1" fill="#2a3a4a"/>
+    <rect x="186" y="30" width="4" height="8" rx="1" fill="#2a3a4a"/>
+    {# Scope rail #}
+    <rect x="54" y="22" width="50" height="4" rx="1" fill="#4a5c6e"/>
+    {# Trigger guard #}
+    <path d="M62 46 Q62 56 70 56 L76 56 Q84 56 84 46" fill="none" stroke="#3d4f5f" stroke-width="2.5" stroke-linecap="round"/>
+    {# Trigger #}
+    <rect x="72" y="47" width="3" height="7" rx="1" fill="var(--primary)"/>
+    {# Accent line #}
+    <line x1="48" y1="28" x2="110" y2="28" stroke="var(--primary)" stroke-width="1.5" opacity="0.6"/>
+    {# Muzzle flash (hidden by default, shown on animation) #}
+    <g class="vandal-flash" opacity="0">
+        <polygon points="192,34 210,28 205,34 215,34 205,40 210,40" fill="var(--rank-radiant)" opacity="0.9"/>
+        <polygon points="192,34 218,30 212,34 224,34 212,38 218,38" fill="var(--primary)" opacity="0.5"/>
+    </g>
+</svg>

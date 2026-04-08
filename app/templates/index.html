@@ -22,6 +22,11 @@
             <p class="search-error">{{ error }}</p>
             {% endif %}
         </form>
+        <div class="hero-vandal">
+            {% with class="vandal-hero", width=180, height=72 %}
+            {% include '_partials/_vandal.html' %}
+            {% endwith %}
+        </div>
         <div class="hero-examples">
             <span>Try:</span>
             <a href="/player/TenZ/0505/">TenZ#0505</a>

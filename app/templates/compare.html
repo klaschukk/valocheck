@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Player Comparison | ValoCheck{% endblock %}
+{% block description %}Compare two Valorant players side by side. K/D, win rate, ACS, headshot %, and more.{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Compare Players</h1>
+    <p class="section-desc">Enter two Riot IDs to compare stats side by side.</p>
+
+    {# Search Form #}
+    <form class="compare-form" method="get" action="/compare/">
+        <div class="compare-inputs">
+            <div class="compare-input-group">
+                <label>Player 1</label>
+                <div class="compare-fields">
+                    <input type="text" name="p1" placeholder="Name" value="{{ p1_name }}" required>
+                    <span class="compare-hash">#</span>
+                    <input type="text" name="t1" placeholder="TAG" value="{{ p1_tag }}" required>
+                </div>
+            </div>
+            <div class="compare-vs">VS</div>
+            <div class="compare-input-group">
+                <label>Player 2</label>
+                <div class="compare-fields">
+                    <input type="text" name="p2" placeholder="Name" value="{{ p2_name }}" required>
+                    <span class="compare-hash">#</span>
+                    <input type="text" name="t2" placeholder="TAG" value="{{ p2_tag }}" required>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn" style="margin-top:16px;">Compare</button>
+    </form>
+
+    {% if player1 and player2 %}
+    {# Comparison Results #}
+    <div class="compare-results">
+        {# Headers #}
+        <div class="compare-header">
+            <a href="/player/{{ player1.name }}/{{ player1.tag }}/" class="compare-player">
+                {% if player1.card and player1.card.get('small') %}
+                <img src="{{ player1.card.small }}" alt="{{ player1.name }}" width="48" height="48">
+                {% endif %}
+                <div>
+                    <div class="compare-name">{{ player1.name }}</div>
+                    <div class="compare-rank">{{ player1.current_rank }}</div>
+                </div>
+            </a>
+            <div class="compare-vs-badge">VS</div>
+            <a href="/player/{{ player2.name }}/{{ player2.tag }}/" class="compare-player compare-player-right">
+                <div>
+                    <div class="compare-name">{{ player2.name }}</div>
+                    <div class="compare-rank">{{ player2.current_rank }}</div>
+                </div>
+                {% if player2.card and player2.card.get('small') %}
+                <img src="{{ player2.card.small }}" alt="{{ player2.name }}" width="48" height="48">
+                {% endif %}
+            </a>
+        </div>
+
+        {# Stats Comparison Bars #}
+        {% set stats = [
+            ("K/D Ratio", player1.kd, player2.kd, true),
+            ("Win Rate", player1.win_pct, player2.win_pct, true),
+            ("Headshot %", player1.hs_pct, player2.hs_pct, true),
+            ("ACS", player1.acs, player2.acs, true),
+            ("DMG/Round", player1.dmg_per_round, player2.dmg_per_round, true),
+            ("K/Round", player1.kills_per_round, player2.kills_per_round, true),
+            ("KAD", player1.kad, player2.kad, true),
+            ("Total Kills", player1.total_kills, player2.total_kills, true),
+            ("Total Deaths", player1.total_deaths, player2.total_deaths, false),
+        ] %}
+
+        <div class="compare-stats">
+            {% for label, v1, v2, higher_better in stats %}
+            {% set max_val = [v1, v2] | max %}
+            {% set p1_pct = (v1 / max_val * 100) if max_val > 0 else 50 %}
+            {% set p2_pct = (v2 / max_val * 100) if max_val > 0 else 50 %}
+            {% set p1_wins = (v1 > v2) if higher_better else (v1 < v2) %}
+            {% set p2_wins = (v2 > v1) if higher_better else (v2 < v1) %}
+            <div class="compare-row">
+                <div class="compare-val {{ 'compare-winner' if p1_wins else '' }}">{{ v1 }}{% if 'Rate' in label or '%' in label %}%{% endif %}</div>
+                <div class="compare-bar-wrap">
+                    <div class="compare-bar-label">{{ label }}</div>
+                    <div class="compare-bars">
+                        <div class="compare-bar compare-bar-left {{ 'bar-winner' if p1_wins else '' }}" style="width:{{ p1_pct }}%"></div>
+                        <div class="compare-bar compare-bar-right {{ 'bar-winner' if p2_wins else '' }}" style="width:{{ p2_pct }}%"></div>
+                    </div>
+                </div>
+                <div class="compare-val {{ 'compare-winner' if p2_wins else '' }}">{{ v2 }}{% if 'Rate' in label or '%' in label %}%{% endif %}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% elif p1_name and p2_name %}
+    <p class="empty-state">One or both players not found. Check the Riot IDs.</p>
+    {% endif %}
+</div>
+{% endblock %}

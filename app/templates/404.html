@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}404 — Agent Not Found | ValoCheck{% endblock %}
+{% block title %}404 — Target Not Found | ValoCheck{% endblock %}
 
 {% block content %}
 <div class="container error-page">
     <div class="error-visual">
-        <svg class="error-crosshair" viewBox="0 0 200 200" width="120" height="120">
+        {# Crosshair SVG #}
+        <svg class="error-crosshair" viewBox="0 0 200 200" width="100" height="100">
             <circle cx="100" cy="100" r="40" fill="none" stroke="var(--primary)" stroke-width="2" opacity="0.3"/>
             <circle cx="100" cy="100" r="20" fill="none" stroke="var(--primary)" stroke-width="1.5" opacity="0.5"/>
             <line x1="100" y1="50" x2="100" y2="80" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"/>
@@ -15,12 +16,15 @@
             <circle cx="100" cy="100" r="3" fill="var(--primary)"/>
         </svg>
     </div>
+    <div class="error-vandal">
+        {% include '_partials/_vandal.html' with context %}
+    </div>
     <div class="error-code">404</div>
     <h1>Target Not Found</h1>
-    <p>The player went off the grid. Maybe they're lurking somewhere else.</p>
+    <p>Missed the shot. This player doesn't exist or the page moved.</p>
     <form class="search-form error-search" action="/search" method="get" autocomplete="off">
         <div class="search-wrapper">
-            <input type="text" name="q" class="search-input" placeholder="Name#TAG" required aria-label="Search player">
+            <input type="text" name="q" class="search-input" placeholder="Try another Name#TAG" required aria-label="Search player">
             <button type="submit" class="search-btn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
@@ -28,6 +32,6 @@
             </button>
         </div>
     </form>
-    <a href="/" class="btn">Back to Home</a>
+    <a href="/" class="btn">Back to Base</a>
 </div>
 {% endblock %}
