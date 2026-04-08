@@ -1,10 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}{% if region %}{{ regions[region] }} Leaderboard{% else %}Leaderboard{% endif %} | ValoCheck{% endblock %}
+{% block title %}{% if region %}{{ regions[region] }} Leaderboard{% else %}Leaderboard{% endif %} — Valorant Ranked | ValoCheck{% endblock %}
+{% block description %}Top 500 Valorant players{% if region %} in {{ regions[region] }}{% endif %}. Live ranked leaderboard with RR and win stats.{% endblock %}
 
 {% block content %}
 <div class="container">
-    <h1>Leaderboard</h1>
+    <div class="lb-page-header">
+        <div>
+            <h1>Leaderboard</h1>
+            <p class="lb-subtitle">Competitive Ranked Rating {% if region %}// {{ regions[region] | upper }}{% endif %}</p>
+        </div>
+        {% if region and players %}
+        <div class="lb-meta">
+            <span class="lb-meta-item">{{ players | length }} Players</span>
+            <span class="lb-meta-item">Radiant + Immortal</span>
+        </div>
+        {% endif %}
+    </div>
+
     <div class="region-tabs">
         {% for r, label in regions.items() %}
         <a href="/leaderboard/{{ r }}/" class="region-tab {{ 'active' if region == r else '' }}">{{ label }}</a>
@@ -14,23 +27,37 @@
     {% if players %}
     <div class="lb-table">
         <div class="lb-header">
-            <span>#</span>
-            <span>Player</span>
-            <span>Rank Rating</span>
-            <span>Wins</span>
+            <span class="lb-col-rank">Place</span>
+            <span class="lb-col-player">Player Name</span>
+            <span class="lb-col-rr">Ranked Rating</span>
+            <span class="lb-col-wins">Wins</span>
         </div>
         {% for p in players %}
-        <div class="lb-row">
-            <span class="lb-pos">{{ p.rank | default(p.leaderboardRank | default(loop.index)) }}</span>
-            <span class="lb-name">
-                {% set pname = p.name | default(p.gameName | default('')) %}
-                {% set ptag = p.tag | default(p.tagLine | default('')) %}
-                {% if pname %}
-                <a href="/player/{{ pname }}/{{ ptag | default('NA') }}/">{{ pname }}#{{ ptag | default('NA') }}</a>
-                {% else %}Secret Agent{% endif %}
+        {% set pname = p.name | default(p.gameName | default('')) %}
+        {% set ptag = p.tag | default(p.tagLine | default('')) %}
+        {% set pos = p.rank | default(p.leaderboardRank | default(loop.index)) %}
+        <div class="lb-row {{ 'lb-row-top3' if pos <= 3 else '' }}">
+            <span class="lb-col-rank">
+                {% if pos <= 3 %}
+                <span class="lb-medal lb-medal-{{ pos }}">{{ pos }}</span>
+                {% else %}
+                {{ pos }}
+                {% endif %}
             </span>
-            <span class="lb-rr">{{ p.rr | default(p.rankedRating | default(0)) }}</span>
-            <span class="lb-wins">{{ p.wins | default(p.numberOfWins | default(0)) }}</span>
+            <span class="lb-col-player">
+                {% if pname %}
+                <a href="/player/{{ pname }}/{{ ptag | default('NA') }}/">
+                    <span class="lb-player-name">{{ pname }}</span><span class="lb-player-tag">#{{ ptag | default('NA') }}</span>
+                </a>
+                {% else %}
+                <span class="lb-player-name lb-anon">Secret Agent</span>
+                {% endif %}
+            </span>
+            <span class="lb-col-rr">
+                <span class="lb-rr-value">{{ p.rr | default(p.rankedRating | default(0)) }}</span>
+                <span class="lb-rr-label">RR</span>
+            </span>
+            <span class="lb-col-wins">{{ p.wins | default(p.numberOfWins | default(0)) }}</span>
         </div>
         {% endfor %}
     </div>

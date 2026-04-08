@@ -22,11 +22,6 @@
             <p class="search-error">{{ error }}</p>
             {% endif %}
         </form>
-        <div class="hero-vandal" id="heroVandal" onclick="vandalShoot(this)">
-            {% with class="vandal-hero", width=260, height=98 %}
-            {% include '_partials/_vandal.html' %}
-            {% endwith %}
-        </div>
         <div class="hero-examples">
             <span>Try:</span>
             <a href="/player/TenZ/0505/">TenZ#0505</a>
@@ -145,26 +140,6 @@ function switchLb(region, btn) {
     document.querySelectorAll('.home-lb-tab').forEach(function(t) { t.classList.remove('active'); });
     document.getElementById('lb-' + region).classList.remove('hidden');
     btn.classList.add('active');
-}
-
-// Vandal shoot animation
-function vandalShoot(el) {
-    var svg = el.querySelector('.vandal-svg');
-    var flash = svg.querySelector('.vandal-flash');
-    if (!flash || svg.classList.contains('shooting')) return;
-    svg.classList.add('shooting');
-    flash.style.opacity = '1';
-    flash.style.transform = 'scale(1)';
-    svg.style.transform = 'translateX(-6px)';
-    setTimeout(function() {
-        svg.style.transform = 'translateX(2px)';
-    }, 60);
-    setTimeout(function() {
-        svg.style.transform = '';
-        flash.style.opacity = '0';
-        flash.style.transform = 'scale(0.5) translateX(10px)';
-        svg.classList.remove('shooting');
-    }, 200);
 }
 
 // Search autocomplete
