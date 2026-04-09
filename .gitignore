@@ -6,3 +6,7 @@ __pycache__/
 .env
 .claude/skills/
 design-system/
+data/cache.db-shm
+data/cache.db-wal
+data/*.log
+data/*.json
