@@ -1,0 +1,22 @@
+=== Thu Apr  9 01:53:13 AM CEST 2026 Mega Night Scrape ===
+2026-04-09 01:53:13,549 INFO ValoCheck Night Mega Scraper starting...
+2026-04-09 01:53:13,549 INFO Riot API key: present
+2026-04-09 01:53:13,559 INFO Loaded 1755 players from leaderboard files
+2026-04-09 01:53:13,559 INFO Phase 1: Riot API lookup for 1755 players...
+2026-04-09 01:53:19,893 INFO   [100/1755] 98 new, 0 cached, 2 errors
+2026-04-09 01:53:19,942 WARNING Riot rate limited, waiting 115s
+2026-04-09 01:55:21,037 INFO   [200/1755] 197 new, 0 cached, 3 errors
+2026-04-09 01:55:21,085 WARNING Riot rate limited, waiting 115s
+2026-04-09 01:57:22,256 INFO   [300/1755] 296 new, 0 cached, 4 errors
+2026-04-09 01:57:22,307 WARNING Riot rate limited, waiting 115s
+2026-04-09 01:59:23,368 INFO   [400/1755] 395 new, 0 cached, 5 errors
+2026-04-09 01:59:23,419 WARNING Riot rate limited, waiting 115s
+2026-04-09 02:01:33,207 INFO   [500/1755] 493 new, 0 cached, 7 errors
+2026-04-09 02:01:45,647 WARNING Riot rate limited, waiting 98s
+2026-04-09 02:03:34,224 INFO   [600/1755] 592 new, 0 cached, 8 errors
+2026-04-09 02:03:46,817 WARNING Riot rate limited, waiting 98s
+2026-04-09 02:05:35,177 INFO   [700/1755] 689 new, 0 cached, 11 errors
+2026-04-09 02:05:47,497 WARNING Riot rate limited, waiting 99s
+2026-04-09 02:07:36,881 INFO   [800/1755] 788 new, 0 cached, 12 errors
+2026-04-09 02:07:49,237 WARNING Riot rate limited, waiting 99s
+2026-04-09 02:09:38,681 INFO   [900/1755] 888 new, 0 cached, 12 errors
