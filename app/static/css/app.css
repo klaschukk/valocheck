@@ -654,6 +654,11 @@ a.match-row-link:hover { text-decoration: none; }
 .guide-cta { margin-top: 32px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
 .guide-cta p { margin: 0; }
 
+.roadmap-step { padding: 20px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 12px; border-left: 3px solid var(--border); }
+.roadmap-rank { font-family: 'Russo One', sans-serif; font-size: 1rem; letter-spacing: 0.5px; }
+.roadmap-time { font-size: 0.75rem; color: var(--text-dim); margin-top: 2px; margin-bottom: 8px; }
+.roadmap-step h3 { font-size: 0.9375rem; margin-bottom: 8px; }
+
 .guide-agents-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin: 16px 0; }
 .guide-agent-card { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; transition: all 0.15s; }
 .guide-agent-card:hover { background: var(--bg-hover); text-decoration: none; transform: translateY(-1px); }

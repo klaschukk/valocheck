@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Best Valorant Sensitivity Settings 2026 — DPI & eDPI Guide | ValoCheck{% endblock %}
+{% block description %}Find your perfect Valorant sensitivity. DPI, eDPI calculator, pro player settings, and how to find the right sens for your playstyle.{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-back"><a href="/tips/">&larr; Tips & Guides</a></div>
+    <h1>Sensitivity Guide</h1>
+    <p class="section-desc">How to find your perfect sensitivity in Valorant. Pro settings, eDPI, and tuning tips.</p>
+
+    <div class="guide-content">
+        <h2>What is eDPI?</h2>
+        <p><strong>eDPI = DPI x In-Game Sensitivity</strong></p>
+        <p>This is the only number that matters. Two players with different DPI but the same eDPI will have identical mouse movement in-game.</p>
+
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <h3>eDPI Calculator</h3>
+            <div style="display:flex;gap:12px;align-items:center;margin-top:10px;flex-wrap:wrap;">
+                <div>
+                    <label style="font-size:0.75rem;color:var(--text-dim);display:block;">Mouse DPI</label>
+                    <input type="number" id="dpiInput" value="800" min="100" max="16000" style="width:100px;padding:8px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'Chakra Petch',sans-serif;">
+                </div>
+                <span style="font-size:1.25rem;color:var(--text-dim);">&times;</span>
+                <div>
+                    <label style="font-size:0.75rem;color:var(--text-dim);display:block;">In-Game Sens</label>
+                    <input type="number" id="sensInput" value="0.3" min="0.01" max="10" step="0.01" style="width:100px;padding:8px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'Chakra Petch',sans-serif;">
+                </div>
+                <span style="font-size:1.25rem;color:var(--text-dim);">=</span>
+                <div>
+                    <label style="font-size:0.75rem;color:var(--text-dim);display:block;">eDPI</label>
+                    <span id="edpiResult" style="font-family:'Russo One',sans-serif;font-size:1.5rem;color:var(--accent);">240</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Recommended eDPI Ranges</h2>
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <div class="rank-dist-chart">
+                <div class="rank-dist-row">
+                    <span class="rank-dist-name" style="color:var(--win)">Low (150-250)</span>
+                    <div class="rank-dist-bar-wrap"><div class="rank-dist-bar" style="width:70%;background:var(--win)"></div></div>
+                    <span class="rank-dist-pct">Pro Standard</span>
+                </div>
+                <div class="rank-dist-row">
+                    <span class="rank-dist-name" style="color:var(--rank-gold)">Medium (250-400)</span>
+                    <div class="rank-dist-bar-wrap"><div class="rank-dist-bar" style="width:50%;background:var(--rank-gold)"></div></div>
+                    <span class="rank-dist-pct">Viable</span>
+                </div>
+                <div class="rank-dist-row">
+                    <span class="rank-dist-name" style="color:var(--loss)">High (400+)</span>
+                    <div class="rank-dist-bar-wrap"><div class="rank-dist-bar" style="width:20%;background:var(--loss)"></div></div>
+                    <span class="rank-dist-pct">Not recommended</span>
+                </div>
+            </div>
+        </div>
+        <p>~80% of pro players use eDPI between 200-300. Lower sensitivity = more precise aim but slower turning.</p>
+
+        <h2>Pro Player Sensitivity Settings</h2>
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <table style="width:100%;border-collapse:collapse;font-size:0.875rem;">
+                <thead><tr style="border-bottom:1px solid var(--border);color:var(--text-dim);font-size:0.75rem;text-transform:uppercase;">
+                    <th style="text-align:left;padding:8px 0;">Player</th>
+                    <th>DPI</th><th>Sens</th><th>eDPI</th>
+                </tr></thead>
+                <tbody>
+                    <tr style="border-bottom:1px solid rgba(30,45,61,0.3);"><td style="padding:8px 0;font-weight:600;">TenZ</td><td style="text-align:center;">800</td><td style="text-align:center;">0.238</td><td style="text-align:center;color:var(--accent);">190</td></tr>
+                    <tr style="border-bottom:1px solid rgba(30,45,61,0.3);"><td style="padding:8px 0;font-weight:600;">Aspas</td><td style="text-align:center;">800</td><td style="text-align:center;">0.305</td><td style="text-align:center;color:var(--accent);">244</td></tr>
+                    <tr style="border-bottom:1px solid rgba(30,45,61,0.3);"><td style="padding:8px 0;font-weight:600;">Derke</td><td style="text-align:center;">400</td><td style="text-align:center;">0.65</td><td style="text-align:center;color:var(--accent);">260</td></tr>
+                    <tr style="border-bottom:1px solid rgba(30,45,61,0.3);"><td style="padding:8px 0;font-weight:600;">yay</td><td style="text-align:center;">800</td><td style="text-align:center;">0.27</td><td style="text-align:center;color:var(--accent);">216</td></tr>
+                    <tr style="border-bottom:1px solid rgba(30,45,61,0.3);"><td style="padding:8px 0;font-weight:600;">ScreaM</td><td style="text-align:center;">400</td><td style="text-align:center;">0.786</td><td style="text-align:center;color:var(--accent);">314</td></tr>
+                    <tr><td style="padding:8px 0;font-weight:600;">Chronicle</td><td style="text-align:center;">800</td><td style="text-align:center;">0.3</td><td style="text-align:center;color:var(--accent);">240</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>How to Find YOUR Sensitivity</h2>
+        <ol class="about-features">
+            <li>Start at 800 DPI, 0.3 in-game sens (eDPI 240) — this is the pro average</li>
+            <li>Play 3-5 deathmatches. If you're constantly overshooting targets, lower it. If you can't turn fast enough, raise it.</li>
+            <li>Adjust by 0.02-0.05 at a time. Small changes.</li>
+            <li>Once comfortable, STOP changing it. Let muscle memory develop for at least 1 week.</li>
+            <li>Make sure you have enough mousepad space — you need at least 30cm for a full 180 turn at low sens.</li>
+        </ol>
+
+        <div class="guide-cta">
+            <p>Also check our <a href="/guides/crosshair-settings/">crosshair settings guide</a> and <a href="/crosshairs/">crosshair builder</a>.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    var dpi = document.getElementById('dpiInput');
+    var sens = document.getElementById('sensInput');
+    var result = document.getElementById('edpiResult');
+    function calc() { result.textContent = Math.round(dpi.value * sens.value); }
+    dpi.addEventListener('input', calc);
+    sens.addEventListener('input', calc);
+})();
+</script>
+{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best Valorant Sensitivity Settings 2026 — DPI & eDPI Guide",
+    "description": "Find your perfect Valorant sensitivity. eDPI calculator, pro player settings, and tuning tips.",
+    "url": "{{ config.BASE_URL }}/guides/sensitivity/",
+    "datePublished": "2026-04-09",
+    "author": {"@type": "Organization", "name": "ValoCheck"}
+}
+</script>
+{% endblock %}

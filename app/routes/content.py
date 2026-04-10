@@ -122,6 +122,16 @@ def guide_weapons():
     return render_template("guides/weapons.html")
 
 
+@content_bp.route("/guides/iron-to-radiant/")
+def guide_iron_to_radiant():
+    return render_template("guides/iron_to_radiant.html")
+
+
+@content_bp.route("/guides/sensitivity/")
+def guide_sensitivity():
+    return render_template("guides/sensitivity.html")
+
+
 @content_bp.route("/guides/maps/")
 def guide_maps():
     maps = _get_maps()

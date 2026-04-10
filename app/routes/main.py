@@ -100,6 +100,8 @@ def sitemap():
         ("/guides/how-to-rank-up/", "monthly", "0.8"),
         ("/guides/weapons/", "monthly", "0.8"),
         ("/guides/maps/", "monthly", "0.8"),
+        ("/guides/iron-to-radiant/", "monthly", "0.8"),
+        ("/guides/sensitivity/", "monthly", "0.8"),
         ("/seasons/", "weekly", "0.7"),
         ("/about/", "monthly", "0.3"),
     ]
