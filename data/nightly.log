@@ -21,3 +21,49 @@ Traceback (most recent call last):
   File "<string>", line 7, in <module>
 sqlite3.OperationalError: cannot VACUUM from within a transaction
 2026-04-08 03:00:04 Nightly refresh complete
+2026-04-09 03:00:01 Starting nightly refresh
+2026-04-09 03:00:01,559 INFO Fetching leaderboard: eu
+2026-04-09 03:00:01,766 ERROR Error fetching eu at offset 0: 401 Client Error: Unauthorized for url: https://api.henrikdev.xyz/valorant/v2/leaderboard/eu?start=0&size=100
+2026-04-09 03:00:01,767 WARNING No data for eu, skipping
+2026-04-09 03:00:01,768 INFO Fetching leaderboard: na
+2026-04-09 03:00:01,927 ERROR Error fetching na at offset 0: 401 Client Error: Unauthorized for url: https://api.henrikdev.xyz/valorant/v2/leaderboard/na?start=0&size=100
+2026-04-09 03:00:01,929 WARNING No data for na, skipping
+2026-04-09 03:00:01,929 INFO Fetching leaderboard: ap
+2026-04-09 03:00:02,100 ERROR Error fetching ap at offset 0: 401 Client Error: Unauthorized for url: https://api.henrikdev.xyz/valorant/v2/leaderboard/ap?start=0&size=100
+2026-04-09 03:00:02,101 WARNING No data for ap, skipping
+2026-04-09 03:00:02,102 INFO Fetching leaderboard: kr
+2026-04-09 03:00:02,271 ERROR Error fetching kr at offset 0: 401 Client Error: Unauthorized for url: https://api.henrikdev.xyz/valorant/v2/leaderboard/kr?start=0&size=100
+2026-04-09 03:00:02,273 WARNING No data for kr, skipping
+2026-04-09 03:00:02,273 INFO Done. Total: 0 players across 4 regions
+2026-04-09 03:00:02,521 INFO Fetching agents...
+2026-04-09 03:00:02,644 INFO Saved 29 agents
+2026-04-09 03:00:03,644 INFO Fetching maps...
+2026-04-09 03:00:03,666 INFO Saved 21 maps
+2026-04-09 03:00:03,667 INFO Done!
+Traceback (most recent call last):
+  File "<string>", line 7, in <module>
+sqlite3.OperationalError: cannot VACUUM from within a transaction
+2026-04-09 03:00:04 Nightly refresh complete
+2026-04-10 03:00:01 Starting nightly refresh
+2026-04-10 03:00:02,189 INFO Fetching leaderboard: eu
+2026-04-10 03:00:02,379 ERROR Error fetching eu at offset 0: 401 Client Error: Unauthorized for url: https://api.henrikdev.xyz/valorant/v2/leaderboard/eu?start=0&size=100
+2026-04-10 03:00:02,380 WARNING No data for eu, skipping
+2026-04-10 03:00:02,381 INFO Fetching leaderboard: na
+2026-04-10 03:00:02,543 ERROR Error fetching na at offset 0: 401 Client Error: Unauthorized for url: https://api.henrikdev.xyz/valorant/v2/leaderboard/na?start=0&size=100
+2026-04-10 03:00:02,545 WARNING No data for na, skipping
+2026-04-10 03:00:02,546 INFO Fetching leaderboard: ap
+2026-04-10 03:00:02,741 ERROR Error fetching ap at offset 0: 401 Client Error: Unauthorized for url: https://api.henrikdev.xyz/valorant/v2/leaderboard/ap?start=0&size=100
+2026-04-10 03:00:02,744 WARNING No data for ap, skipping
+2026-04-10 03:00:02,744 INFO Fetching leaderboard: kr
+2026-04-10 03:00:02,921 ERROR Error fetching kr at offset 0: 401 Client Error: Unauthorized for url: https://api.henrikdev.xyz/valorant/v2/leaderboard/kr?start=0&size=100
+2026-04-10 03:00:02,923 WARNING No data for kr, skipping
+2026-04-10 03:00:02,924 INFO Done. Total: 0 players across 4 regions
+2026-04-10 03:00:03,164 INFO Fetching agents...
+2026-04-10 03:00:03,296 INFO Saved 29 agents
+2026-04-10 03:00:04,296 INFO Fetching maps...
+2026-04-10 03:00:04,348 INFO Saved 21 maps
+2026-04-10 03:00:04,348 INFO Done!
+Traceback (most recent call last):
+  File "<string>", line 7, in <module>
+sqlite3.OperationalError: cannot VACUUM from within a transaction
+2026-04-10 03:00:04 Nightly refresh complete

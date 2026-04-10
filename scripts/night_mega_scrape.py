@@ -306,8 +306,8 @@ def phase3_clean_cache(db: sqlite3.Connection) -> None:
     logger.info("Phase 3: Cleaning cache...")
     try:
         deleted = db.execute("DELETE FROM cache WHERE expires_at < ?", (time.time(),)).rowcount
-        db.execute("VACUUM")
         db.commit()
+        db.execute("VACUUM")
         logger.info("  Cleaned %d expired entries", deleted)
     except Exception as e:
         logger.error("  Cache clean error: %s", e)

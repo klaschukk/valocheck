@@ -117,6 +117,17 @@ def guide_rank_up():
     return render_template("guides/how_to_rank_up.html")
 
 
+@content_bp.route("/guides/weapons/")
+def guide_weapons():
+    return render_template("guides/weapons.html")
+
+
+@content_bp.route("/guides/maps/")
+def guide_maps():
+    maps = _get_maps()
+    return render_template("guides/maps_guide.html", maps=maps)
+
+
 @content_bp.route("/agents/")
 def agents_index():
     agents = _get_agents()

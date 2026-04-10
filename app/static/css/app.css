@@ -689,6 +689,27 @@ a.match-row-link:hover { text-decoration: none; }
 .season-row-dates { font-size: 0.8125rem; color: var(--text-muted); }
 .season-row-acts { font-size: 0.75rem; color: var(--text-dim); text-align: right; }
 
+/* ── Weapon Tiers ── */
+.weapon-tier { margin-bottom: 20px; }
+.weapon-tier-label { display: inline-block; padding: 4px 14px; border-radius: var(--radius-sm); font-family: 'Russo One', sans-serif; font-size: 0.8125rem; letter-spacing: 1px; margin-bottom: 10px; }
+.tier-s { background: rgba(252,233,124,0.12); color: var(--rank-radiant); border: 1px solid rgba(252,233,124,0.25); }
+.tier-a { background: rgba(45,190,108,0.1); color: var(--win); border: 1px solid rgba(45,190,108,0.2); }
+.tier-b { background: rgba(62,184,176,0.1); color: var(--rank-platinum); border: 1px solid rgba(62,184,176,0.2); }
+.weapon-tier-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.weapon-card { padding: 16px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.weapon-name { font-family: 'Russo One', sans-serif; font-size: 1rem; margin-bottom: 6px; }
+.weapon-stats-row { display: flex; gap: 12px; font-size: 0.75rem; color: var(--text-dim); margin-bottom: 8px; }
+.weapon-card p { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+/* ── Map Guide ── */
+.map-guide-card { padding: 24px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-xl); margin-bottom: 16px; }
+.map-guide-card h2 { font-size: 1.25rem; margin-bottom: 6px; }
+.map-guide-desc { font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 14px; }
+.map-guide-picks { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.map-pick { display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.8125rem; }
+.map-pick-role { font-size: 0.625rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.map-guide-card > p:last-of-type { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.7; }
+
 /* ══ ABOUT PAGE ══ */
 .about-grid { display: grid; grid-template-columns: 1fr 280px; gap: 20px; margin-top: 20px; }
 .about-main h2 { font-size: 1rem; margin-bottom: 10px; }

@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}Best Valorant Weapons 2026 — Gun Tier List & Stats | ValoCheck{% endblock %}
+{% block description %}Best Valorant weapons ranked. Vandal vs Phantom, pistol round buys, and weapon damage stats for 2026.{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-back"><a href="/tips/">&larr; Tips & Guides</a></div>
+    <h1>Weapon Guide 2026</h1>
+    <p class="section-desc">Complete Valorant weapon tier list with damage stats, price, and recommendations.</p>
+
+    <div class="guide-content">
+        <h2>Weapon Tier List</h2>
+
+        <div class="weapon-tier">
+            <div class="weapon-tier-label tier-s">S Tier</div>
+            <div class="weapon-tier-items">
+                <div class="weapon-card">
+                    <div class="weapon-name">Vandal</div>
+                    <div class="weapon-stats-row">
+                        <span>2900 creds</span><span>160 dmg headshot</span><span>40 dmg body</span>
+                    </div>
+                    <p>One-tap headshot at any range. The most popular rifle in pro play. No damage falloff.</p>
+                </div>
+                <div class="weapon-card">
+                    <div class="weapon-name">Phantom</div>
+                    <div class="weapon-stats-row">
+                        <span>2900 creds</span><span>156 dmg head (close)</span><span>39 dmg body</span>
+                    </div>
+                    <p>Higher fire rate than Vandal, less recoil. Better for spraying and close-range. Silenced — no tracers.</p>
+                </div>
+                <div class="weapon-card">
+                    <div class="weapon-name">Operator</div>
+                    <div class="weapon-stats-row">
+                        <span>4700 creds</span><span>255 dmg body</span><span>1-shot kill</span>
+                    </div>
+                    <p>One-shot body kill. Expensive but game-changing. Best on Jett/Chamber for quick repositioning.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="weapon-tier">
+            <div class="weapon-tier-label tier-a">A Tier</div>
+            <div class="weapon-tier-items">
+                <div class="weapon-card">
+                    <div class="weapon-name">Spectre</div>
+                    <div class="weapon-stats-row">
+                        <span>1600 creds</span><span>78 dmg head</span><span>26 dmg body</span>
+                    </div>
+                    <p>Best force-buy weapon. Strong in close-mid range. Great run-and-gun accuracy.</p>
+                </div>
+                <div class="weapon-card">
+                    <div class="weapon-name">Ghost</div>
+                    <div class="weapon-stats-row">
+                        <span>500 creds</span><span>105 dmg head</span><span>30 dmg body</span>
+                    </div>
+                    <p>Best pistol round buy. Headshot kills through light shield. Silenced.</p>
+                </div>
+                <div class="weapon-card">
+                    <div class="weapon-name">Marshal</div>
+                    <div class="weapon-stats-row">
+                        <span>950 creds</span><span>202 dmg head</span><span>101 dmg body</span>
+                    </div>
+                    <p>Budget sniper. One-shot headshot, body shot + teammate finish. Great eco buy.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="weapon-tier">
+            <div class="weapon-tier-label tier-b">B Tier</div>
+            <div class="weapon-tier-items">
+                <div class="weapon-card">
+                    <div class="weapon-name">Bulldog</div>
+                    <div class="weapon-stats-row">
+                        <span>2050 creds</span><span>116 dmg head</span><span>35 dmg body</span>
+                    </div>
+                    <p>Budget rifle with burst-fire mode. 3-round burst is accurate at range.</p>
+                </div>
+                <div class="weapon-card">
+                    <div class="weapon-name">Guardian</div>
+                    <div class="weapon-stats-row">
+                        <span>2250 creds</span><span>195 dmg head</span><span>65 dmg body</span>
+                    </div>
+                    <p>Semi-auto rifle. One-tap headshot. Good for players with precise aim who can't afford Vandal.</p>
+                </div>
+                <div class="weapon-card">
+                    <div class="weapon-name">Sheriff</div>
+                    <div class="weapon-stats-row">
+                        <span>800 creds</span><span>159 dmg head</span><span>55 dmg body</span>
+                    </div>
+                    <p>One-tap headshot pistol. High skill ceiling. Popular eco round pick.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Vandal vs Phantom — Which to Buy?</h2>
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <p><strong>Choose Vandal if:</strong> you hit headshots consistently, play long-range angles, or need one-tap potential at all distances.</p>
+            <p><strong>Choose Phantom if:</strong> you prefer spraying, play close-mid range, or want the advantage of no tracers (enemies can't see where you're shooting from through smokes).</p>
+            <p><strong>Pro preference:</strong> roughly 55% Vandal / 45% Phantom in pro play. It's personal preference — both are equally viable.</p>
+        </div>
+
+        <h2>Pistol Round Strategy</h2>
+        <div class="section-card" style="padding:20px;margin-top:12px;">
+            <ul class="about-features">
+                <li><strong>Ghost (500)</strong> — best overall pistol buy. One-tap light shield at close range.</li>
+                <li><strong>Frenzy (450)</strong> — good for aggressive rushes. Full auto, but inaccurate at range.</li>
+                <li><strong>Classic (free) + abilities</strong> — viable if your agent needs expensive utility round 1.</li>
+                <li><strong>Light shield (400) + Classic</strong> — survivability over firepower. Decent option.</li>
+            </ul>
+        </div>
+
+        <div class="guide-cta">
+            <p>Track your weapon performance by <a href="/">searching your profile</a>. See which weapons you get the most kills with.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best Valorant Weapons 2026 — Gun Tier List",
+    "description": "Best Valorant weapons ranked. Vandal vs Phantom, damage stats, and buying strategy.",
+    "url": "{{ config.BASE_URL }}/guides/weapons/",
+    "datePublished": "2026-04-09",
+    "author": {"@type": "Organization", "name": "ValoCheck"}
+}
+</script>
+{% endblock %}
