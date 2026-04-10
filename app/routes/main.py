@@ -94,6 +94,7 @@ def sitemap():
         ("/crosshairs/", "monthly", "0.7"),
         ("/tips/", "monthly", "0.7"),
         ("/compare/", "monthly", "0.5"),
+        ("/guides/", "weekly", "0.8"),
         ("/guides/best-agents/", "monthly", "0.8"),
         ("/guides/rank-distribution/", "monthly", "0.8"),
         ("/guides/crosshair-settings/", "monthly", "0.8"),

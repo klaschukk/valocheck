@@ -654,6 +654,17 @@ a.match-row-link:hover { text-decoration: none; }
 .guide-cta { margin-top: 32px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
 .guide-cta p { margin: 0; }
 
+/* Guide hub */
+.guides-hub { margin-top: 24px; }
+.guide-hub-section { margin-bottom: 28px; }
+.guide-hub-section h2 { font-size: 1rem; margin-bottom: 12px; }
+.guide-hub-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+.guide-hub-card { display: flex; align-items: flex-start; gap: 14px; padding: 18px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); text-decoration: none; transition: all 0.15s; }
+.guide-hub-card:hover { background: var(--bg-card); border-color: var(--accent); transform: translateY(-2px); text-decoration: none; }
+.guide-hub-icon { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(0,255,194,0.08); border: 1px solid rgba(0,255,194,0.15); border-radius: var(--radius); color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+.guide-hub-card h3 { font-family: 'Russo One', sans-serif; font-size: 0.875rem; color: var(--text); margin-bottom: 4px; }
+.guide-hub-card p { font-size: 0.8125rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
 .roadmap-step { padding: 20px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 12px; border-left: 3px solid var(--border); }
 .roadmap-rank { font-family: 'Russo One', sans-serif; font-size: 1rem; letter-spacing: 0.5px; }
 .roadmap-time { font-size: 0.75rem; color: var(--text-dim); margin-top: 2px; margin-bottom: 8px; }

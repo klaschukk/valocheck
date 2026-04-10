@@ -96,6 +96,11 @@ def seasons():
     return render_template("seasons.html", episodes=episodes, acts=acts)
 
 
+@content_bp.route("/guides/")
+def guides_index():
+    return render_template("guides/index.html")
+
+
 @content_bp.route("/guides/best-agents/")
 def guide_best_agents():
     agents = _get_agents()
