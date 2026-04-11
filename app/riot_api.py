@@ -136,6 +136,7 @@ def get_player_profile(name: str, tag: str) -> dict[str, Any] | None:
     total_first_bloods = 0
     wins, losses = 0, 0
     agent_stats: dict[str, dict] = {}
+    map_stats: dict[str, dict] = {}
 
     for match in matches_raw:
         # Cache full match data for match detail page
@@ -191,6 +192,16 @@ def get_player_profile(name: str, tag: str) -> dict[str, Any] | None:
             wins += 1
         else:
             losses += 1
+
+        # Map stats
+        map_name = metadata.get("map", "Unknown")
+        if map_name not in map_stats:
+            map_stats[map_name] = {"games": 0, "wins": 0, "kills": 0, "deaths": 0}
+        map_stats[map_name]["games"] += 1
+        if won:
+            map_stats[map_name]["wins"] += 1
+        map_stats[map_name]["kills"] += kills
+        map_stats[map_name]["deaths"] += deaths
 
         # Agent stats
         if agent_name not in agent_stats:
@@ -301,7 +312,20 @@ def get_player_profile(name: str, tag: str) -> dict[str, Any] | None:
         "total_assists": total_assists,
         "wins": wins,
         "losses": losses,
+        "total_headshots": total_headshots,
+        "total_bodyshots": total_bodyshots,
+        "total_legshots": total_legshots,
         "matches": matches,
         "agents": agents_display,
+        "maps": [
+            {
+                "name": m,
+                "games": s["games"],
+                "wins": s["wins"],
+                "win_rate": round(s["wins"] / max(s["games"], 1) * 100, 1),
+                "kd": round(s["kills"] / max(s["deaths"], 1), 2),
+            }
+            for m, s in sorted(map_stats.items(), key=lambda x: x[1]["games"], reverse=True)
+        ],
         "mmr_history": mmr_history,
     }

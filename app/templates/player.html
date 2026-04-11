@@ -171,6 +171,54 @@
         </div>
     </div>
 
+    {# ── Hit Distribution + Map Stats Row ── #}
+    <div class="charts-row">
+        {# Hit Distribution Donut #}
+        {% set total_shots = player.total_headshots + player.total_bodyshots + player.total_legshots %}
+        {% if total_shots > 0 %}
+        {% set hs_pct = (player.total_headshots / total_shots * 100) | round(1) %}
+        {% set bs_pct = (player.total_bodyshots / total_shots * 100) | round(1) %}
+        {% set ls_pct = (player.total_legshots / total_shots * 100) | round(1) %}
+        <div class="section-card chart-card-sm">
+            <div class="section-head"><h2>Hit Distribution</h2></div>
+            <div class="hit-dist-wrap">
+                <svg viewBox="0 0 120 120" class="hit-dist-svg">
+                    {% set hs_deg = hs_pct * 3.6 %}
+                    {% set bs_deg = bs_pct * 3.6 %}
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="var(--rank-gold)" stroke-width="12" stroke-dasharray="{{ hs_pct * 3.14 }} 314" transform="rotate(-90 60 60)"/>
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="var(--accent)" stroke-width="12" stroke-dasharray="{{ bs_pct * 3.14 }} 314" stroke-dashoffset="-{{ hs_pct * 3.14 }}" transform="rotate(-90 60 60)"/>
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="var(--text-dim)" stroke-width="12" stroke-dasharray="{{ ls_pct * 3.14 }} 314" stroke-dashoffset="-{{ (hs_pct + bs_pct) * 3.14 }}" transform="rotate(-90 60 60)"/>
+                </svg>
+                <div class="hit-dist-legend">
+                    <div class="hit-legend-item"><span class="hit-dot" style="background:var(--rank-gold)"></span>Head {{ hs_pct }}%</div>
+                    <div class="hit-legend-item"><span class="hit-dot" style="background:var(--accent)"></span>Body {{ bs_pct }}%</div>
+                    <div class="hit-legend-item"><span class="hit-dot" style="background:var(--text-dim)"></span>Legs {{ ls_pct }}%</div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {# Map Win Rates #}
+        {% if player.maps %}
+        <div class="section-card chart-card-lg">
+            <div class="section-head"><h2>Map Performance</h2></div>
+            <div class="map-stats-list">
+                {% for m in player.maps %}
+                <div class="map-stat-row">
+                    <span class="map-stat-name">{{ m.name }}</span>
+                    <span class="map-stat-games">{{ m.games }}G</span>
+                    <div class="map-stat-bar-wrap">
+                        <div class="map-stat-bar {{ 'map-bar-good' if m.win_rate >= 50 else 'map-bar-bad' }}" style="width:{{ m.win_rate }}%"></div>
+                    </div>
+                    <span class="map-stat-wr {{ 'ins-good' if m.win_rate >= 50 else 'ins-bad' }}">{{ m.win_rate }}%</span>
+                    <span class="map-stat-kd">{{ m.kd }} K/D</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
     <div class="content-cols">
         <div class="section-card">
             <div class="section-head"><h2>Recent Matches</h2><a href="/player/{{ player.name }}/{{ player.tag }}/matches/">View All</a></div>
