@@ -236,6 +236,23 @@ a.match-row-link:hover { text-decoration: none; }
 .winloss-labels .wl-w { color: var(--win); }
 .winloss-labels .wl-l { color: var(--loss); }
 
+/* ══ CHARTS ══ */
+.chart-container { margin: 20px 0; }
+.rank-chart-svg { width: 100%; max-height: 320px; }
+.chart-bar { transition: height 0.6s ease, y 0.6s ease; }
+
+.radar-section { padding: 20px; margin-bottom: 20px; }
+.radar-inner { display: flex; align-items: center; justify-content: center; flex-direction: column; }
+.radar-svg { width: 220px; height: 220px; }
+.radar-label { font-size: 0.6875rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 8px; }
+
+.pick-chart { display: flex; flex-direction: column; gap: 6px; }
+.pick-chart-row { display: grid; grid-template-columns: 80px 1fr 45px; align-items: center; gap: 10px; }
+.pick-chart-name { font-size: 0.8125rem; font-weight: 600; }
+.pick-chart-bar-wrap { height: 16px; background: var(--bg-card); border-radius: 3px; overflow: hidden; }
+.pick-chart-bar { height: 100%; background: linear-gradient(90deg, var(--accent), rgba(0,255,194,0.4)); border-radius: 3px; transition: width 0.5s ease; }
+.pick-chart-val { font-size: 0.75rem; color: var(--accent); font-weight: 600; text-align: right; }
+
 /* ══ EXTENDED STATS ROW ══ */
 .extended-row { display: grid; grid-template-columns: 140px 1fr; gap: 16px; margin-bottom: 24px; }
 

@@ -7,7 +7,7 @@ import pytest
 
 # ── Navigation consistency ──
 
-_PAGES_WITH_NAV = ["/", "/agents/", "/leaderboard/", "/tips/", "/crosshairs/"]
+_PAGES_WITH_NAV = ["/", "/agents/", "/leaderboard/", "/guides/", "/crosshairs/"]
 
 
 @pytest.mark.parametrize("url", _PAGES_WITH_NAV)
@@ -17,7 +17,7 @@ def test_header_nav_links(client, url):
     assert "/agents/" in html
     assert "/maps/" in html
     assert "/crosshairs/" in html
-    assert "/tips/" in html
+    assert "/guides/" in html
 
 
 @pytest.mark.parametrize("url", _PAGES_WITH_NAV)

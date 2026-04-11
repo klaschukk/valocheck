@@ -8,6 +8,24 @@
     <h1>Agent Insights</h1>
     <p class="section-desc">Agent meta overview based on top-ranked competitive matches. Data from Radiant/Immortal players.</p>
 
+    {# Top Agents Pick Rate Chart #}
+    {% if agent_meta %}
+    <div class="section-card" style="padding:20px;margin-bottom:24px;">
+        <h2 style="margin-bottom:16px;">Pick Rate — Top 10 Agents</h2>
+        <div class="pick-chart">
+            {% for m in agent_meta[:10] %}
+            <div class="pick-chart-row">
+                <span class="pick-chart-name">{{ m.agent }}</span>
+                <div class="pick-chart-bar-wrap">
+                    <div class="pick-chart-bar" style="width:{{ (m.pick_rate / agent_meta[0].pick_rate * 100) | round }}%"></div>
+                </div>
+                <span class="pick-chart-val">{{ m.pick_rate }}%</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
     {# Role Filter #}
     <div class="insight-filters">
         <button class="insight-filter active" onclick="filterRole('all', this)">All</button>

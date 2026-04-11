@@ -138,6 +138,39 @@
         {% endif %}
     </div>
 
+    {# ── Performance Radar ── #}
+    {% set kd_n = [player.kd / 2.0 * 100, 100] | min %}
+    {% set wr_n = player.win_pct %}
+    {% set hs_n = [player.hs_pct / 40 * 100, 100] | min %}
+    {% set acs_n = [player.acs / 300 * 100, 100] | min %}
+    {% set kr_n = [player.kills_per_round / 1.5 * 100, 100] | min %}
+    {% set axes_x = [0, 0.951, 0.588, -0.588, -0.951] %}
+    {% set axes_y = [1, 0.309, -0.809, -0.809, 0.309] %}
+    {% set vals = [kd_n, wr_n, hs_n, acs_n, kr_n] %}
+    <div class="section-card radar-section">
+        <div class="radar-inner">
+            <svg viewBox="0 0 200 200" class="radar-svg">
+                {% for r in [75, 56, 37, 18] %}
+                <polygon points="{% for i in range(5) %}{{ (100 + r * axes_x[i]) | round(1) }},{{ (100 - r * axes_y[i]) | round(1) }} {% endfor %}" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                {% endfor %}
+                {% for i in range(5) %}
+                <line x1="100" y1="100" x2="{{ (100 + 75 * axes_x[i]) | round(1) }}" y2="{{ (100 - 75 * axes_y[i]) | round(1) }}" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                {% endfor %}
+                <polygon points="{% for i in range(5) %}{% set v = vals[i] / 100 * 72 %}{{ (100 + v * axes_x[i]) | round(1) }},{{ (100 - v * axes_y[i]) | round(1) }} {% endfor %}" fill="rgba(0,255,194,0.12)" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+                {% for i in range(5) %}
+                {% set v = vals[i] / 100 * 72 %}
+                <circle cx="{{ (100 + v * axes_x[i]) | round(1) }}" cy="{{ (100 - v * axes_y[i]) | round(1) }}" r="3.5" fill="var(--accent)"/>
+                {% endfor %}
+                <text x="100" y="14" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-weight="600">K/D {{ player.kd }}</text>
+                <text x="186" y="72" text-anchor="start" fill="var(--text-muted)" font-size="9" font-weight="600">WR {{ player.win_pct }}%</text>
+                <text x="162" y="178" text-anchor="start" fill="var(--text-muted)" font-size="9" font-weight="600">HS {{ player.hs_pct }}%</text>
+                <text x="38" y="178" text-anchor="end" fill="var(--text-muted)" font-size="9" font-weight="600">ACS {{ player.acs }}</text>
+                <text x="14" y="72" text-anchor="end" fill="var(--text-muted)" font-size="9" font-weight="600">K/R {{ player.kills_per_round }}</text>
+            </svg>
+            <div class="radar-label">Performance Radar</div>
+        </div>
+    </div>
+
     <div class="content-cols">
         <div class="section-card">
             <div class="section-head"><h2>Recent Matches</h2><a href="/player/{{ player.name }}/{{ player.tag }}/matches/">View All</a></div>
